@@ -1,0 +1,19 @@
+{
+  "name": "heroesofmirren.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf dist .cache",
+    "build": "parcel build ./index.html ./assets/*",
+    "serve": "parcel serve ./index.html ./assets/*",
+    "start": "npm run serve"
+  },
+  "author": "Chris Lewis",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^1.11.0",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1"
+  }
+}
