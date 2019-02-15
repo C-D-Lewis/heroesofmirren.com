@@ -16,7 +16,8 @@ const Page = ({ children }) => {
 
 const Image = ({ src }) => {
   const style = {
-    maxWidth: '700px',
+    width: '600px',
+    maxWidth: '100%',
     height: 'auto',
     margin: 'auto',
   };
