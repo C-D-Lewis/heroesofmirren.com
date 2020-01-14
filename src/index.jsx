@@ -1,43 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Page from './components/Page.jsx';
+import Image from './components/Image.jsx';
 
-const Page = ({ children }) => {
-  const style = {
-    display: 'flex',
-    flexDirection: 'column',
-    textAlign: 'center',
-    justifyContent: 'center',
-    width: '100%',
-    height: '100%',
-  };
+const Application = () => {
 
-  return <div style={style}>{children}</div>;
+  return (
+    <Page>
+      <Image src="./assets/heroes.png"/>
+    </Page>
+  );
 };
-
-const Image = ({ src }) => {
-  const style = {
-    width: '600px',
-    height: 'auto',
-    margin: 'auto',
-  };
-
-  return <img style={style} src={src}/>;
-};
-
-class Application extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <Page>
-        <Image src="./assets/heroes.png"/>
-      </Page>
-    );
-  }
-
-}
 
 ReactDOM.render(<Application/>, document.getElementById('app'));
