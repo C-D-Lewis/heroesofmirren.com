@@ -1,29 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Page from './components/Page.jsx';
+import Container from './components/Container.jsx';
 import Image from './components/Image.jsx';
 
 const IMAGES = [
-  { name: 'logo-new.png', width: 300 },
-  { name: 'minecart.png', width: 'initial' },
-  { name: 'bartop.jpg', width: 'initial' },
-  { name: 'clyde-steph.jpg', width: 'initial' },
-  { name: 'clyde-cat.jpg', width: 300 },
-  { name: 'tackle.jpeg', width: 410 },
-  { name: 'paper-plane.jpg', width: 200 },
-  { name: 'harpie.jpg', width: 'initial' },
-  { name: 'reykjavik.jpg', width: 300 },
-  { name: 'special.jpeg', width: 300 },
-  { name: 'butt-hammer.jpg', width: 200 },
+  { name: 'logo-new.png', maxWidth: 300 },
+  { name: 'minecart.png' },
+  { name: 'bartop.jpg' },
+  { name: 'clyde-steph.jpg' },
+  { name: 'clyde-cat.jpg', maxWidth: 300 },
+  { name: 'tackle.jpeg', maxWidth: 410 },
+  { name: 'paper-plane.jpg', maxWidth: 200 },
+  { name: 'harpie.jpg' },
+  { name: 'reykjavik.jpg', maxWidth: 300 },
+  { name: 'special.jpeg', maxWidth: 300 },
+  { name: 'butt-hammer.jpg', maxWidth: 200 },
 ];
 
 const Application = () => {
   return (
-    <Page>
-      {IMAGES.map(({ name, width = 'initial' }) => (
-        <Image src={`./assets/${name}`} restyle={{ width }} />
+    <Container style={{
+      textAlign: 'center',
+      width: '100%',
+    }}>
+      {IMAGES.map(({ name, maxWidth = 500 }) => (
+        <Image key={name} src={`./assets/${name}`} style={{ maxWidth, margin: 'auto' }} />
       ))}
-    </Page>
+    </Container>
   );
 };
 
