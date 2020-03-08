@@ -1,5 +1,5 @@
 import React from 'react';
-import { Images } from '../theme';
+import { Images } from '../assets';
 import Container from './Container.jsx';
 import Image from './Image.jsx';
 
@@ -8,7 +8,7 @@ const Gallery = () =>
     {Images.map(({ name, maxWidth = 500 }) => (
       <Image
         key={name}
-        src={`./assets/${name}`}
+        src={`./assets/images/${name}`}
         style={{
           maxWidth,
           margin: 'auto',

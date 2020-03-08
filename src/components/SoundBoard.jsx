@@ -1,6 +1,16 @@
 import React from 'react';
 import Container from './Container.jsx'
 
-const SoundBoard = () => <Container>This will be the soundboard</Container>
+const SoundByte = ({ sound, label, icon }) =>
+  <Container style={{
+
+  }}>
+    
+  </Container>;
+
+const SoundBoard = () =>
+  <Container style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+
+  </Container>
 
 export default SoundBoard;

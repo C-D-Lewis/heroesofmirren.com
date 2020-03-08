@@ -9,7 +9,7 @@ const Header = () =>
     justifyContent: 'center',
     marginBottom: 10,
   }}>
-    <Image src="./assets/logo-new.png" style={{ width: 200 }} />
+    <Image src="./assets/images/logo-new.png" style={{ width: 200 }} />
   </Container>;
 
 export default Header;
