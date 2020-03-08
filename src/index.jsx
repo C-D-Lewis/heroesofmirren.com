@@ -3,21 +3,26 @@ import ReactDOM from 'react-dom';
 import Page from './components/Page.jsx';
 import Image from './components/Image.jsx';
 
+const IMAGES = [
+  { name: 'logo-new.png', width: 300 },
+  { name: 'minecart.png', width: 'initial' },
+  { name: 'bartop.jpg', width: 'initial' },
+  { name: 'clyde-steph.jpg', width: 'initial' },
+  { name: 'clyde-cat.jpg', width: 300 },
+  { name: 'tackle.jpeg', width: 410 },
+  { name: 'paper-plane.jpg', width: 200 },
+  { name: 'harpie.jpg', width: 'initial' },
+  { name: 'reykjavik.jpg', width: 300 },
+  { name: 'special.jpeg', width: 300 },
+  { name: 'butt-hammer.jpg', width: 200 },
+];
+
 const Application = () => {
   return (
     <Page>
-      <Image src="./assets/logo-new.png" restyle={{ width: 300 }}/>
-      <Image src="./assets/minecart.png"/>
-      <Image src="./assets/bartop.jpg"/>
-      <Image src="./assets/clyde-steph.jpg"/>
-      <Image src="./assets/clyde-cat.jpg" restyle={{ width: 300 }}/>
-      <Image src="./assets/tackle.jpeg" restyle={{ width: 410 }}/>
-      <Image src="./assets/paper-plane.jpg" restyle={{ width: 200 }}/>
-      <Image src="./assets/harpie.jpg"/>
-      <Image src="./assets/reykjavik.jpg" restyle={{ width: 300 }}/>
-      <Image src="./assets/special.jpeg" restyle={{ width: 300 }}/>
-
-      <Image src="./assets/butt-hammer.jpg" restyle={{ width: 200 }}/>
+      {IMAGES.map(({ name, width = 'initial' }) => (
+        <Image src={`./assets/${name}`} restyle={{ width }} />
+      ))}
     </Page>
   );
 };
