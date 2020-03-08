@@ -4,7 +4,6 @@ import Container from './components/Container.jsx';
 import Image from './components/Image.jsx';
 
 const IMAGES = [
-  { name: 'logo-new.png', maxWidth: 300 },
   { name: 'minecart.png' },
   { name: 'bartop.jpg' },
   { name: 'clyde-steph.jpg' },
@@ -17,15 +16,37 @@ const IMAGES = [
   { name: 'butt-hammer.jpg', maxWidth: 200 },
 ];
 
+const Header = () =>
+  <Container style={{
+    height: 200,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginBottom: 30,
+  }}>
+    <Image src="./assets/logo-new.png" style={{ width: 200 }} />
+  </Container>;
+
 const Application = () => {
   return (
     <Container style={{
       textAlign: 'center',
       width: '100%',
     }}>
-      {IMAGES.map(({ name, maxWidth = 500 }) => (
-        <Image key={name} src={`./assets/${name}`} style={{ maxWidth, margin: 'auto' }} />
-      ))}
+      <Header />
+      <Container style={{
+
+      }} >
+        {IMAGES.map(({ name, maxWidth = 500 }) => (
+          <Image
+            key={name}
+            src={`./assets/${name}`}
+            style={{
+              maxWidth,
+              margin: 'auto',
+              marginBottom: 50,
+            }} />
+        ))}
+      </Container>
     </Container>
   );
 };

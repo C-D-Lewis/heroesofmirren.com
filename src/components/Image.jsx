@@ -5,7 +5,6 @@ const Image = ({ src, style }) =>
     style={{
       maxWidth: '500px',
       height: 'auto',
-      paddingTop: 50,
       ...style,
     }}
     src={src}
