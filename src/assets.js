@@ -51,12 +51,12 @@ export const Sounds = [
   { label: "Enemy Approaching", icon: 'enemy.jpg',         sound: 'enemy_approaching.mp3' },
   { label: "No God No",         icon: 'nogodno.jpg',       sound: 'nogodno.mp3'           },
   { label: "Wilhelm Scream",    icon: 'wilhelm.jpg',       sound: 'wilhelm.mp3'           },
+  { label: 'That\'s Hot',       icon: 'thatshot.jpg',      soundPrefix: 'thatshot', max: 3 },
   { label: "FF7 Fight",         icon: 'ff7fight.jpg',      sound: 'ff7fight.mp3'          },
   { label: "OOF",               icon: 'oof.jpg',           sound: 'oof.mp3'               },
   { label: "You Died!",         icon: 'mcoof.png',         sound: 'mcoof.mp3'             },
   { label: "Howie Scream",      icon: 'howie.jpg',         sound: 'howie.mp3'             },
   { label: "Curb",              icon: 'curb.jpg',          sound: 'curb.mp3'              },
   { label: 'Oblivion Guard',    icon: 'scum.png',          soundPrefix: 'guard', max: 21  },
-  // new ThatsHotButton(),
   // new DemocracyManifestButton(),
 ];
