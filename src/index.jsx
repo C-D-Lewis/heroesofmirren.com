@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import { Colors } from './theme';
 import Container from './components/Container.jsx';
 import Gallery from './components/Gallery.jsx';
 import Header from './components/Header.jsx';
 import Image from './components/Image.jsx';
 import SoundBoard from './components/SoundBoard.jsx';
+import SoundboardModeSelect from './components/SoundboardModeSelect.jsx';
 import { TabBar, Tab } from './components/TabBar.jsx';
 
 const Application = () => {
   const [tab, setTab] = useState('gallery');
+  const [soundboardMode, setSoundboardMode] = useState('all');
 
   return (
     <Container style={{
       textAlign: 'center',
       width: '100%',
+      height: '100%',
     }}>
       <Header />
       <TabBar>
@@ -29,9 +31,16 @@ const Application = () => {
           Soundboard
         </Tab>
       </TabBar>
-      <Container>
+      <Container style={{ height: '100%' }}>
         {tab === 'gallery' && <Gallery />}
-        {tab === 'soundboard' && <SoundBoard />}
+        {tab === 'soundboard' && (
+          <div style={{ height: '100%' }}>
+            <SoundboardModeSelect
+              setSoundboardMode={setSoundboardMode}
+              soundboardMode={soundboardMode} />
+            <SoundBoard soundboardMode={soundboardMode} />
+          </div>
+        )}
       </Container>
     </Container>
   );
