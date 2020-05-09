@@ -7,7 +7,8 @@ const Header = () =>
     height: 200,
     flexDirection: 'row',
     justifyContent: 'center',
-    marginBottom: 10,
+    paddingBottom: 10,
+    backgroundColor: 'white',
   }}>
     <Image src="./assets/images/logo-new.png" style={{ width: 200 }} />
   </Container>;

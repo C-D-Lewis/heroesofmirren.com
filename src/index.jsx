@@ -17,6 +17,7 @@ const Application = () => {
       textAlign: 'center',
       width: '100%',
       height: '100%',
+      backgroundColor: 'black',
     }}>
       <Header />
       <TabBar>

@@ -4,7 +4,11 @@ import Container from './Container.jsx';
 import Image from './Image.jsx';
 
 const Gallery = () =>
-  <Container style={{ marginTop: 50 }}>
+  <Container
+    style={{
+      backgroundColor: 'white',
+      paddingTop: 50,
+    }}>
     {Images.map(({ name, maxWidth = 500 }) => (
       <Image
         key={name}

@@ -7,7 +7,7 @@ import RandomSoundByte from './RandomSoundByte.jsx';
 const soundsForCategory = (category, query) => {
   if (category == query || category === 'all') {
     return Sounds
-      .filter(p => p.category === query)
+      .filter(p => p.categories.includes(query))
       .map(item => item.sound
         ? <SoundByte key={item.label} data={item} />
         : <RandomSoundByte key={item.label} data={item} />)
