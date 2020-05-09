@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Colors } from './theme';
 import Container from './components/Container.jsx';
@@ -10,15 +10,6 @@ import { TabBar, Tab } from './components/TabBar.jsx';
 
 const Application = () => {
   const [tab, setTab] = useState('gallery');
-
-  // Load the service worker
-  useEffect(() => {
-    if (navigator.serviceWorker) {
-      navigator.serviceWorker.register('/dist/worker.js')
-        .then(() => console.log('serviceWorker installed'))
-        .catch(err => console.log(`Error installing serviceWorker: ${e.stack}`));
-    }
-  }, []);
 
   return (
     <Container style={{

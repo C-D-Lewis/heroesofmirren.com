@@ -1,6 +1,4 @@
 const path = require('path');
-const workboxPlugin = require('workbox-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: './src/index.jsx',
@@ -23,19 +21,4 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new workboxPlugin.GenerateSW({
-      swDest: 'worker.js',
-      clientsClaim: true,
-      skipWaiting: true,
-      runtimeCaching: [
-        {
-          urlPattern: '/.*',
-          handler: 'NetworkFirst',
-        },
-      ],
-      exclude: [],
-    }),
-  ],
 };
