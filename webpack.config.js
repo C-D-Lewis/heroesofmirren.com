@@ -15,7 +15,10 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
-            plugins: ['transform-react-jsx'],
+            plugins: [
+              'transform-react-jsx',
+              ['@babel/plugin-transform-runtime', { 'regenerator': true }]
+            ],
           },
         },
       },

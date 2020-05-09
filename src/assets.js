@@ -42,7 +42,7 @@ export const Sounds = [
   { label: 'Yaaaaaayyyy',       icon: 'happy_children.jpg', sound: 'yaaay.mp3'          },
   { label: 'Bwa bwa bwaaa',     icon: 'sad_trombone.jpg',   sound: 'sad_trombone.mp3'   },
   { label: 'God Have Mercy',    icon: 'mercy.jpg',          sound: 'mercy.mp3'          },
-  // new ToastButton(),
+  { label: 'Toast - Yes!',      icon: 'yes.jpg',            soundPrefix: 'yes_', max: 11 },
   { label: "The Garbage Man",   icon: 'garbage_man.png',   sound: 'garbage_man.mp3'       },
   { label: "The Tower!",        icon: 'the_tower.jpg',     sound: 'tower.mp3'             },
   { label: "Chest Opening",     icon: 'chest_opening.png', sound: 'chest_opening.mp3'     },
