@@ -16,7 +16,7 @@ const Pill = ({ children, onClick, isSelected }) => (
   </div>
 );
 
-const SoundboardModeSelect = ({ soundboardMode, setSoundboardMode }) => (
+const SoundboardModeSelect = ({ category, setCategory }) => (
   <Container
     style={{
       flexDirection: 'row',
@@ -24,14 +24,19 @@ const SoundboardModeSelect = ({ soundboardMode, setSoundboardMode }) => (
       padding: 10,
     }}>
     <Pill
-      isSelected={soundboardMode === 'all'}
-      onClick={() => setSoundboardMode('all')}>
+      isSelected={category === 'all'}
+      onClick={() => setCategory('all')}>
       All
     </Pill>
     <Pill
-      isSelected={soundboardMode === 'none'}
-      onClick={() => setSoundboardMode('none')}>
-      None
+      isSelected={category === 'ia'}
+      onClick={() => setCategory('ia')}>
+      IA
+    </Pill>
+    <Pill
+      isSelected={category === 'dnd'}
+      onClick={() => setCategory('dnd')}>
+      D&D
     </Pill>
   </Container>
 );

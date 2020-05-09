@@ -10,7 +10,7 @@ import { TabBar, Tab } from './components/TabBar.jsx';
 
 const Application = () => {
   const [tab, setTab] = useState('gallery');
-  const [soundboardMode, setSoundboardMode] = useState('all');
+  const [category, setCategory] = useState('all');
 
   return (
     <Container style={{
@@ -36,9 +36,9 @@ const Application = () => {
         {tab === 'soundboard' && (
           <div style={{ height: '100%' }}>
             <SoundboardModeSelect
-              setSoundboardMode={setSoundboardMode}
-              soundboardMode={soundboardMode} />
-            <SoundBoard soundboardMode={soundboardMode} />
+              setCategory={setCategory}
+              category={category} />
+            <SoundBoard category={category} />
           </div>
         )}
       </Container>

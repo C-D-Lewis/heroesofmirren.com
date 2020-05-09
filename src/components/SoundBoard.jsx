@@ -4,20 +4,29 @@ import Container from './Container.jsx';
 import SoundByte from './SoundByte.jsx';
 import RandomSoundByte from './RandomSoundByte.jsx';
 
-const SoundBoard = ({ soundboardMode = 'all' }) =>
+const soundsForCategory = (category, query) => {
+  if (category == query || category === 'all') {
+    return Sounds
+      .filter(p => p.category === query)
+      .map(item => item.sound
+        ? <SoundByte key={item.label} data={item} />
+        : <RandomSoundByte key={item.label} data={item} />)
+  }
+
+  return null;
+};
+
+const SoundBoard = ({ category = 'all' }) =>
   <Container
     style={{
       flexDirection: 'row',
       flexWrap: 'wrap',
       backgroundColor: 'black',
       padding: 10,
-      height: soundboardMode === 'all' ? 'initial' : '100%',
     }}>
-    { soundboardMode == 'all' && (
-      Sounds.map(item => item.sound
-        ? <SoundByte key={item.label} data={item} />
-        : <RandomSoundByte key={item.label} data={item} />)
-    )}
+    {soundsForCategory(category, 'all')}
+    {soundsForCategory(category, 'ia')}
+    {soundsForCategory(category, 'dnd')}
   </Container>
 
 export default SoundBoard;
