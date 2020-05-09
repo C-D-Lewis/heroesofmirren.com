@@ -4,10 +4,12 @@ import Container from './Container.jsx'
 
 const SoundByte = ({ data }) => {
   const [audio, setAudio] = useState(null);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const audioEl = new Audio(`./assets/sounds/${data.sound}`);
-    setAudio(audioEl);
+    const newAudio = new Audio(`./assets/sounds/${data.sound}`);
+    newAudio.addEventListener('canplay', () => setReady(true));
+    setAudio(newAudio);
   }, []);
 
   return (
@@ -16,14 +18,14 @@ const SoundByte = ({ data }) => {
       style={{
         backgroundColor: 'white',
         borderRadius: 10,
-        maxWidth: 120,
+        width: 120,
         margin: 5,
       }}>
       <img
         src={`./assets/icons/${data.icon}`}
         style={{
           width: '100%',
-          height: 'auto',
+          height: 70,
           maxHeight: 70,
         }} />
       <span
@@ -33,8 +35,9 @@ const SoundByte = ({ data }) => {
           display: 'flex',
           justifyContent: 'center',
           padding: 5,
+          paddingLeft: 0,
         }}>
-        {data.label}
+        {ready ? data.label : '...'}
       </span>
     </Container>
   );
