@@ -38,6 +38,11 @@ const SoundboardModeSelect = ({ category, setCategory }) => (
       onClick={() => setCategory('dnd')}>
       D&D
     </Pill>
+    <Pill
+      isSelected={category === 'songs'}
+      onClick={() => setCategory('songs')}>
+      Songs
+    </Pill>
   </Container>
 );
 

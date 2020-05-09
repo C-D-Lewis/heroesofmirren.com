@@ -5,7 +5,7 @@ import SoundByte from './SoundByte.jsx';
 import RandomSoundByte from './RandomSoundByte.jsx';
 
 const soundsForCategory = (category, query) => {
-  if (category == query || category === 'all') {
+  if (category === query || category === 'all') {
     return Sounds
       .filter(p => p.categories.includes(query))
       .map(item => item.sound
@@ -27,6 +27,7 @@ const SoundBoard = ({ category = 'all' }) =>
     {soundsForCategory(category, 'all')}
     {soundsForCategory(category, 'ia')}
     {soundsForCategory(category, 'dnd')}
+    {soundsForCategory(category, 'songs')}
   </Container>
 
 export default SoundBoard;
