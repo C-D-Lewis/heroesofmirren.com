@@ -14,10 +14,14 @@ const RandomSoundByte = ({ data }) => {
   const [ready, setReady] = useState(false);
 
   // Load the first audio
-  useEffect(async () => {
-    const newAudio = await loadAudio(data, 0);
-    setAudioList([...audioList, newAudio]);
-    setReady(true);
+  useEffect(() => {
+    const loadFirstAudio = async () => {
+      const newAudio = await loadAudio(data, 0);
+      setAudioList([...audioList, newAudio]);
+      setReady(true);
+    };
+
+    loadFirstAudio();
   }, []);
 
   return (
