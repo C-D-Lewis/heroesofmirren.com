@@ -56,7 +56,7 @@ export const Sounds = [
   { label: "You Died!",         icon: 'mcoof.png',         sound: 'mcoof.mp3'             },
   { label: "Howie Scream",      icon: 'howie.jpg',         sound: 'howie.mp3'             },
   { label: "Curb",              icon: 'curb.jpg',          sound: 'curb.mp3'              },
-  // new GuardQuoteButton(),
+  { label: 'Oblivion Guard',    icon: 'scum.png',          soundPrefix: 'guard', max: 21  },
   // new ThatsHotButton(),
   // new DemocracyManifestButton(),
 ];
