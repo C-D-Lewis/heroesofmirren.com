@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Container from './Container.jsx';
-
-const SOUNTBYTE_WIDTH = 120;
-const SOUNTBYTE_HEIGHT = 70;
+import SoundboardButton from './SoundboardButton.jsx';
 
 const loadAudio = (data, index) => new Promise((resolve, reject) => {
   const newAudio = new Audio(`./assets/sounds/${data.soundPrefix}${index + 1}.mp3`);
@@ -24,50 +21,20 @@ const RandomSoundByte = ({ data }) => {
     loadFirstAudio();
   }, []);
 
-  return (
-    <Container
-      onClick={async () => {
-        const index = Math.round(Math.random() * (data.max - 1));
+  const playRandomSound = async () => {
+    const index = Math.round(Math.random() * (data.max - 1));
+    if (audioList[index]) {
+      // If it's loaded
+      audioList[index].play();
+      return;
+    }
 
-        // If it's loaded
-        if (audioList[index]) {
-          audioList[index].play();
-          return;
-        }
+    const newAudio = await loadAudio(data, index);
+    newAudio.play();
+    setAudioList([...audioList, newAudio]);
+  };
 
-        const newAudio = await loadAudio(data, index);
-        newAudio.play();
-        setAudioList([...audioList, newAudio]);
-      }}
-      style={{
-        backgroundColor: ready ? 'white' : 'black',
-        borderRadius: 10,
-        width: SOUNTBYTE_WIDTH,
-        margin: 5,
-        opacity: ready ? 1 : 0,
-        transition: '1s',
-      }}>
-      <img
-        src={`./assets/icons/${data.icon}`}
-        style={{
-          width: '100%',
-          height: SOUNTBYTE_HEIGHT,
-          maxHeight: SOUNTBYTE_HEIGHT,
-          objectFit: 'cover',
-        }} />
-      <span
-        style={{
-          fontSize: '0.8rem',
-          width: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          padding: 5,
-          paddingLeft: 0,
-        }}>
-        {ready ? data.label : '...'}
-      </span>
-    </Container>
-  );
+  return <SoundboardButton data={data} ready={ready} onClick={playRandomSound} />;
 };
 
 export default RandomSoundByte;
