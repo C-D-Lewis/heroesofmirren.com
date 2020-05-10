@@ -5,7 +5,7 @@ import Gallery from './components/Gallery.jsx';
 import Header from './components/Header.jsx';
 import Image from './components/Image.jsx';
 import SoundBoard from './components/SoundBoard.jsx';
-import SoundboardModeSelect from './components/SoundboardModeSelect.jsx';
+import SoundboardCategorySelect from './components/SoundboardCategorySelect.jsx';
 import { TabBar, Tab } from './components/TabBar.jsx';
 
 const Application = () => {
@@ -36,7 +36,7 @@ const Application = () => {
         {tab === 'gallery' && <Gallery />}
         {tab === 'soundboard' && (
           <div style={{ height: '100%' }}>
-            <SoundboardModeSelect
+            <SoundboardCategorySelect
               setCategory={setCategory}
               category={category} />
             <SoundBoard category={category} />

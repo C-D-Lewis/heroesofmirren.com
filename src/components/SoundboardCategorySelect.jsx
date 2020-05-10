@@ -7,16 +7,17 @@ const Pill = ({ children, onClick, isSelected }) => (
     style={{
       borderRadius: 50,
       backgroundColor: Colors.primary,
-      padding: '5px 10px',
+      padding: '8px 12px',
       color: isSelected ? 'white': '#555',
       margin: 5,
+      cursor: 'pointer',
     }}
     onClick={onClick}>
     {children}
   </div>
 );
 
-const SoundboardModeSelect = ({ category, setCategory }) => (
+const SoundboardCategorySelect = ({ category, setCategory }) => (
   <Container
     style={{
       flexDirection: 'row',
@@ -46,4 +47,4 @@ const SoundboardModeSelect = ({ category, setCategory }) => (
   </Container>
 );
 
-export default SoundboardModeSelect;
+export default SoundboardCategorySelect;

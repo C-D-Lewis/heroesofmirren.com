@@ -1,7 +1,7 @@
 {
   "name": "heroesofmirren.com",
   "version": "1.0.0",
-  "description": "",
+  "description": "yo yo yo let me tell you something real quick",
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf dist",
@@ -10,7 +10,7 @@
     "start": "npm run build && python3 -m http.server"
   },
   "author": "Chris Lewis",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/plugin-transform-runtime": "^7.9.6",
