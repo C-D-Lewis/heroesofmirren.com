@@ -1,3 +1,4 @@
+/** List of images shown in Gallery */
 export const Images = [
   { name: 'minecart.png'                   },
   { name: 'bartop.jpg'                     },
@@ -11,7 +12,16 @@ export const Images = [
   { name: 'butt-hammer.jpg', maxWidth: 200 },
 ];
 
-/** id is used for favorites list, dont change after adding */
+/**
+ * List of sounds with associated label, icon, and sound file.
+ *
+ * Random buttons specify instead the soundPrefix before the number in each file name.
+ *
+ * categories must match one of the Pills in SoundboardCategorySelect.jsx
+ * and soundsForCategory in Soundboard.jsx
+ *
+ * Note - id is used for favorites list, dont change after adding.
+ */
 export const Sounds = [
   { id: 'rick',           categories: ['ia', 'songs'],  label: 'Angels',             icon: 'rick.jpg',           sound: 'angels.mp3'             },
   { id: 'knuckles',       categories: ['ia'],           label: 'Oh No',              icon: 'knuckles.jpg',       sound: 'ohno.mp3'               },

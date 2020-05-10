@@ -1,5 +1,11 @@
 import React from 'react';
 
+/**
+ * Container component.
+ *
+ * @param {Object} props - Component props.
+ * @returns {HTMLElement}
+ */
 const Container = ({ style, children, ...rest }) =>
   <div
     style={{

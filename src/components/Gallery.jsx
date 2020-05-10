@@ -3,6 +3,11 @@ import { Images } from '../assets';
 import Container from './Container.jsx';
 import Image from './Image.jsx';
 
+/**
+ * Gallery component.
+ *
+ * @returns {HTMLElement}
+ */
 const Gallery = () =>
   <Container
     style={{

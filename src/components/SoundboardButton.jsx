@@ -1,18 +1,26 @@
 import React from 'react';
 import Container from './Container.jsx';
 
-const SOUNTBYTE_WIDTH = 120;
-const SOUNTBYTE_HEIGHT = 70;
+/** Button width */
+const BUTTON_WIDTH = 120;
+/** Button height */
+const BUTTON_HEIGHT = 70;
 
-const SoundboardButton = ({ ready, data, onClick }) => (
+/**
+ * SoundboardButton component, shared by SountByte and RandomSoundByte.
+ *
+ * @param {Object} props - Component props.
+ * @returns {HTMLElement}
+ */
+const SoundboardButton = ({ loaded, data, onClick }) => (
   <Container
     onClick={onClick}
     style={{
-      backgroundColor: ready ? 'white' : '#555',
+      backgroundColor: loaded ? 'white' : 'black',
       borderRadius: 10,
-      width: SOUNTBYTE_WIDTH,
+      width: BUTTON_WIDTH,
       margin: 5,
-      opacity: ready ? 1 : 0,
+      opacity: loaded ? 1 : 0,
       transition: '1s',
       overflow: 'hidden',
     }}>
@@ -20,8 +28,8 @@ const SoundboardButton = ({ ready, data, onClick }) => (
       src={`./assets/icons/${data.icon}`}
       style={{
         width: '100%',
-        height: SOUNTBYTE_HEIGHT,
-        maxHeight: SOUNTBYTE_HEIGHT,
+        height: BUTTON_HEIGHT,
+        maxHeight: BUTTON_HEIGHT,
         objectFit: 'cover',
       }} />
     <span
@@ -33,7 +41,7 @@ const SoundboardButton = ({ ready, data, onClick }) => (
         padding: 5,
         paddingLeft: 0,
       }}>
-      {ready ? data.label : '...'}
+      {loaded ? data.label : '...'}
     </span>
   </Container>
 );

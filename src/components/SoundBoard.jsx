@@ -4,19 +4,30 @@ import Container from './Container.jsx';
 import SoundByte from './SoundByte.jsx';
 import RandomSoundByte from './RandomSoundByte.jsx';
 
+/**
+ * Show just the sounds for the chosen category.
+ *
+ * @param {string} category - Chosen category.
+ * @param {string} query - Query for this filter.
+ * @returns {Array<HTMLElement>} List of SoundByte or RandomSoundByte elements.
+ */
 const soundsForCategory = (category, query) => {
-  if (category === query || category === 'all') {
-    return Sounds
-      .filter(p => p.categories.includes(query))
-      .map(item => item.sound
-        ? <SoundByte key={item.label} data={item} />
-        : <RandomSoundByte key={item.label} data={item} />)
-  }
+  if (!(category === query || category === 'all')) return null;
 
-  return null;
+  return Sounds
+    .filter(p => p.categories.includes(query))
+    .map(item => item.sound
+      ? <SoundByte key={item.label} data={item} />
+      : <RandomSoundByte key={item.label} data={item} />)
 };
 
-const SoundBoard = ({ category = 'all' }) =>
+/**
+ * Soundboard component.
+ *
+ * @param {Object} props - Component props.
+ * @returns {HTMLElement}
+ */
+const Soundboard = ({ category = 'all' }) =>
   <Container
     style={{
       flexDirection: 'row',
@@ -30,4 +41,4 @@ const SoundBoard = ({ category = 'all' }) =>
     {soundsForCategory(category, 'songs')}
   </Container>
 
-export default SoundBoard;
+export default Soundboard;

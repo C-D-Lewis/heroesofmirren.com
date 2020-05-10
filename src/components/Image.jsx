@@ -1,5 +1,11 @@
 import React from 'react';
 
+/**
+ * Image component.
+ *
+ * @param {Object} props - Component props.
+ * @returns {HTMLElement}
+ */
 const Image = ({ src, style }) =>
   <img
     style={{

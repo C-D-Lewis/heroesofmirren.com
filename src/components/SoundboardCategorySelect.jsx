@@ -2,6 +2,12 @@ import React from 'react';
 import Container from './Container.jsx';
 import { Colors } from '../theme';
 
+/**
+ * Pill component.
+ *
+ * @param {Object} props - Component props.
+ * @returns {HTMLElement}
+ */
 const Pill = ({ children, onClick, isSelected }) => (
   <div
     style={{
@@ -17,6 +23,12 @@ const Pill = ({ children, onClick, isSelected }) => (
   </div>
 );
 
+/**
+ * SoundboardCategorySelect component.
+ *
+ * @param {Object} props - Component props.
+ * @returns {HTMLElement}
+ */
 const SoundboardCategorySelect = ({ category, setCategory }) => (
   <Container
     style={{

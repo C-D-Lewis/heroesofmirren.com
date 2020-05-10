@@ -2,6 +2,12 @@ import React from 'react';
 import { Colors } from '../theme';
 import Container from './Container.jsx';
 
+/**
+ * TabBar component.
+ *
+ * @param {Object} props - Component props.
+ * @returns {HTMLElement}
+ */
 export const TabBar = ({ children }) =>
   <Container
     style={{
@@ -14,6 +20,12 @@ export const TabBar = ({ children }) =>
     {children}
   </Container>;
 
+/**
+ * Tab component.
+ *
+ * @param {Object} props - Component props.
+ * @returns {HTMLElement}
+ */
 export const Tab = ({ children, isSelected, onClick }) =>
   <Container
     style={{

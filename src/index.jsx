@@ -4,21 +4,27 @@ import Container from './components/Container.jsx';
 import Gallery from './components/Gallery.jsx';
 import Header from './components/Header.jsx';
 import Image from './components/Image.jsx';
-import SoundBoard from './components/SoundBoard.jsx';
+import Soundboard from './components/Soundboard.jsx';
 import SoundboardCategorySelect from './components/SoundboardCategorySelect.jsx';
 import { TabBar, Tab } from './components/TabBar.jsx';
 
+/**
+ * Application component.
+ *
+ * @returns {HTMLElement}
+ */
 const Application = () => {
   const [tab, setTab] = useState('gallery');
   const [category, setCategory] = useState('all');
 
   return (
-    <Container style={{
-      textAlign: 'center',
-      width: '100%',
-      height: '100%',
-      backgroundColor: 'black',
-    }}>
+    <Container
+      style={{
+        textAlign: 'center',
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'black',
+      }}>
       <Header />
       <TabBar>
         <Tab
@@ -39,7 +45,7 @@ const Application = () => {
             <SoundboardCategorySelect
               setCategory={setCategory}
               category={category} />
-            <SoundBoard category={category} />
+            <Soundboard category={category} />
           </div>
         )}
       </Container>
