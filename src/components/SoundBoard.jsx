@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Sounds } from '../assets';
 import Container from './Container.jsx';
 import SoundByte from './SoundByte.jsx';
 import RandomSoundByte from './RandomSoundByte.jsx';
+import SoundboardCategorySelect from './SoundboardCategorySelect.jsx';
 
 /**
  * Show just the sounds for the chosen category.
@@ -24,21 +25,30 @@ const soundsForCategory = (category, query) => {
 /**
  * Soundboard component.
  *
- * @param {Object} props - Component props.
  * @returns {HTMLElement}
  */
-const Soundboard = ({ category = 'all' }) =>
-  <Container
-    style={{
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      backgroundColor: 'black',
-      padding: 10,
-    }}>
-    {soundsForCategory(category, 'all')}
-    {soundsForCategory(category, 'ia')}
-    {soundsForCategory(category, 'dnd')}
-    {soundsForCategory(category, 'songs')}
-  </Container>
+const Soundboard = () => {
+  const [category, setCategory] = useState('all');
+
+  return (
+    <div style={{ height: '100%' }}>
+      <SoundboardCategorySelect
+        setCategory={setCategory}
+        category={category} />
+      <Container
+        style={{
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          backgroundColor: 'black',
+          padding: 10,
+        }}>
+        {soundsForCategory(category, 'all')}
+        {soundsForCategory(category, 'ia')}
+        {soundsForCategory(category, 'dnd')}
+        {soundsForCategory(category, 'songs')}
+      </Container>
+    </div>
+  );
+};
 
 export default Soundboard;

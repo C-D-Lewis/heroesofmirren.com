@@ -5,7 +5,6 @@ import Gallery from './components/Gallery.jsx';
 import Header from './components/Header.jsx';
 import Image from './components/Image.jsx';
 import Soundboard from './components/Soundboard.jsx';
-import SoundboardCategorySelect from './components/SoundboardCategorySelect.jsx';
 import { TabBar, Tab } from './components/TabBar.jsx';
 
 /**
@@ -15,7 +14,6 @@ import { TabBar, Tab } from './components/TabBar.jsx';
  */
 const Application = () => {
   const [tab, setTab] = useState('gallery');
-  const [category, setCategory] = useState('all');
 
   return (
     <Container
@@ -40,14 +38,7 @@ const Application = () => {
       </TabBar>
       <Container style={{ height: '100%' }}>
         {tab === 'gallery' && <Gallery />}
-        {tab === 'soundboard' && (
-          <div style={{ height: '100%' }}>
-            <SoundboardCategorySelect
-              setCategory={setCategory}
-              category={category} />
-            <Soundboard category={category} />
-          </div>
-        )}
+        {tab === 'soundboard' && <Soundboard />}
       </Container>
     </Container>
   );
