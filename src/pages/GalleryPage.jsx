@@ -1,14 +1,14 @@
 import React from 'react';
 import { Images } from '../assets';
-import Container from './Container.jsx';
-import Image from './Image.jsx';
+import Container from '../components/Container.jsx';
+import Image from '../components/Image.jsx';
 
 /**
- * Gallery component.
+ * GalleryPage component.
  *
  * @returns {HTMLElement}
  */
-const Gallery = () =>
+const GalleryPage = () =>
   <Container
     style={{
       backgroundColor: 'white',
@@ -26,4 +26,4 @@ const Gallery = () =>
     ))}
   </Container>;
 
-export default Gallery;
+export default GalleryPage;

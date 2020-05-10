@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Sounds } from '../assets';
-import Container from './Container.jsx';
-import SoundByte from './SoundByte.jsx';
-import RandomSoundByte from './RandomSoundByte.jsx';
-import SoundboardCategorySelect from './SoundboardCategorySelect.jsx';
+import Container from '../components/Container.jsx';
+import SoundByte from '../components/SoundByte.jsx';
+import RandomSoundByte from '../components/RandomSoundByte.jsx';
+import SoundboardCategorySelect from '../components/SoundboardCategorySelect.jsx';
 
 /**
  * Show just the sounds for the chosen category.
@@ -23,11 +23,11 @@ const soundsForCategory = (category, query) => {
 };
 
 /**
- * Soundboard component.
+ * SoundboardPage component.
  *
  * @returns {HTMLElement}
  */
-const Soundboard = () => {
+const SoundboardPage = () => {
   const [category, setCategory] = useState('all');
 
   return (
@@ -51,4 +51,4 @@ const Soundboard = () => {
   );
 };
 
-export default Soundboard;
+export default SoundboardPage;
