@@ -42,6 +42,11 @@ const SoundboardCategorySelect = ({ category, setCategory }) => (
       All
     </Pill>
     <Pill
+      isSelected={category === 'favorites'}
+      onClick={() => setCategory('favorites')}>
+      Favorites
+    </Pill>
+    <Pill
       isSelected={category === 'ia'}
       onClick={() => setCategory('ia')}>
       IA
