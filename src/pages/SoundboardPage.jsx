@@ -23,7 +23,7 @@ const SoundboardPage = () => {
    * @returns {Array<HTMLElement>} List of SoundByte or RandomSoundByte elements.
    */
   const soundsForCategory = (category, query) => {
-    if (!(category === query || category === 'all')) return null;
+    if (category !== query) return null;
 
     if (category === 'favorites') {
       return Sounds
@@ -34,7 +34,7 @@ const SoundboardPage = () => {
     }
 
     return Sounds
-      .filter(p => p.categories.includes(query))
+      .filter(p => p.categories.includes(query) || query === 'all')
       .map(item => item.sound
         ? <SoundByte key={item.label} data={item} />
         : <RandomSoundByte key={item.label} data={item} />);
