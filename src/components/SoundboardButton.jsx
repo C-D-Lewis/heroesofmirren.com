@@ -3,7 +3,7 @@ import { getFavorites, setFavorites } from '../favorites';
 import Container from './Container.jsx';
 
 /** Button width */
-const BUTTON_WIDTH = 110;
+const BUTTON_WIDTH = 115;
 /** Button height */
 const BUTTON_HEIGHT = 70;
 
@@ -67,7 +67,7 @@ const SoundboardButton = ({ loaded, data, onClick }) => {
         src={`./assets/images/star_${isFavorite ? 'on' : 'off'}.png`}/>
       <span
         style={{
-          fontSize: '0.8rem',
+          fontSize: '0.7rem',
           width: '100%',
           display: 'flex',
           justifyContent: 'center',
