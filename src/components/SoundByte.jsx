@@ -13,7 +13,7 @@ const SoundByte = ({ data }) => {
 
   useEffect(() => {
     const newAudio = new Audio(`./assets/sounds/${data.sound}`);
-    newAudio.addEventListener('canplay', () => setLoaded(true));
+    newAudio.addEventListener('canplaythrough', () => setLoaded(true));
     setAudio(newAudio);
   }, []);
 

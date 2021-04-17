@@ -8,10 +8,10 @@ import SoundboardButton from './SoundboardButton.jsx';
  * @param {number} index - File index.
  * @returns {Promise<Audio>} The Audio element.
  */
-const loadAudio = (data, index) => new Promise((resolve, reject) => {
+const loadAudio = (data, index) => new Promise((resolve) => {
   const uri = `./assets/sounds/${data.soundPrefix}${index + 1}.mp3`;
   const newAudio = new Audio(uri);
-  newAudio.addEventListener('canplay', () => resolve(newAudio));
+  newAudio.addEventListener('canplaythrough', () => resolve(newAudio));
 });
 
 /**
@@ -26,6 +26,9 @@ const RandomSoundByte = ({ data }) => {
 
   // Load the first audio
   useEffect(() => {
+    /**
+     * Load the first audio sample.
+     */
     const loadFirstAudio = async () => {
       const newAudio = await loadAudio(data, 0);
       setAudioList([...audioList, newAudio]);
