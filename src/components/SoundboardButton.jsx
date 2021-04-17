@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getFavorites, setFavorites } from '../favorites';
+import { getFavorites, setFavorites } from '../services/favorites';
 import Container from './Container.jsx';
 
 /** Button width */

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Sounds } from '../assets';
-import { getFavorites } from '../favorites';
+import { getFavorites } from '../services/favorites';
 import Container from '../components/Container.jsx';
 import SoundByte from '../components/SoundByte.jsx';
 import RandomSoundByte from '../components/RandomSoundByte.jsx';
