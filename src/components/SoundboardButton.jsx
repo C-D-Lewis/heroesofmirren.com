@@ -3,7 +3,7 @@ import { getFavorites, setFavorites } from '../favorites';
 import Container from './Container.jsx';
 
 /** Button width */
-const BUTTON_WIDTH = 120;
+const BUTTON_WIDTH = 110;
 /** Button height */
 const BUTTON_HEIGHT = 70;
 
