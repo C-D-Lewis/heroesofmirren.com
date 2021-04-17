@@ -34,7 +34,7 @@ const SoundboardButton = ({ loaded, data, onClick }) => {
         borderRadius: 10,
         width: BUTTON_WIDTH,
         margin: 5,
-        opacity: loaded ? 1 : 0,
+        opacity: loaded ? 1 : 0.2,
         transition: '1s',
         overflow: 'hidden',
         position: 'relative',

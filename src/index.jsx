@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { TabBar, Tab } from './components/TabBar.jsx';
 import Container from './components/Container.jsx';
 import Header from './components/Header.jsx';
-import Image from './components/Image.jsx';
 import GalleryPage from './pages/GalleryPage.jsx';
 import SoundboardPage from './pages/SoundboardPage.jsx';
 

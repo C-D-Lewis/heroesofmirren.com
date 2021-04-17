@@ -1,6 +1,6 @@
 import React from 'react'
 import Container from './Container.jsx';
-import Image from './Image.jsx';
+import LargeImage from './LargeImage.jsx';
 
 /** Header height */
 const HEADER_HEIGHT = 200;
@@ -19,7 +19,7 @@ const Header = () =>
       paddingBottom: 10,
       backgroundColor: 'white',
     }}>
-    <Image
+    <LargeImage
       src="./assets/images/logo-new.png"
       style={{ width: HEADER_HEIGHT }}/>
   </Container>;

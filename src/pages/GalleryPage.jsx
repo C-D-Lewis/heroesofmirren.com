@@ -1,7 +1,7 @@
 import React from 'react';
 import { Images } from '../assets';
 import Container from '../components/Container.jsx';
-import Image from '../components/Image.jsx';
+import LargeImage from '../components/LargeImage.jsx';
 
 /**
  * GalleryPage component.
@@ -15,7 +15,7 @@ const GalleryPage = () =>
       paddingTop: 50,
     }}>
     {Images.map(({ name, maxWidth = 500 }) => (
-      <Image
+      <LargeImage
         key={name}
         src={`./assets/images/${name}`}
         style={{

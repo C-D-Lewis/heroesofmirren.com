@@ -6,7 +6,7 @@ import React from 'react';
  * @param {Object} props - Component props.
  * @returns {HTMLElement}
  */
-const Image = ({ src, style }) =>
+const LargeImage = ({ src, style }) =>
   <img
     style={{
       width: '100%',
@@ -17,4 +17,4 @@ const Image = ({ src, style }) =>
     src={src}
   />;
 
-export default Image;
+export default LargeImage;

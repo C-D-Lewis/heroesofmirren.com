@@ -44,7 +44,7 @@ const SoundboardPage = () => {
   useEffect(() => {
     setFavorites(getFavorites());
 
-    const handle = setInterval(() => setFavorites(getFavorites()), 100);
+    const handle = setInterval(() => setFavorites(getFavorites()), 500);
     return () => clearInterval(handle);
   }, []);
 
