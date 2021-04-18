@@ -67,4 +67,6 @@ export const Sounds = [
   { id: 'curb',           categories: ['dnd'],          label: "Curb",               icon: 'curb.jpg',           sound: 'curb.mp3'               },
   { id: 'guard',          categories: ['dnd'],          label: 'Oblivion Guard',     icon: 'scum.png',           soundPrefix: 'guard', max: 21   },
   { id: 'dm',             categories: ['dnd'],          label: 'Democracy Manifest', icon: 'dm.jpg',             soundPrefix: 'dm',    max: 10   },
+  { id: 'wasted',         categories: ['dnd'],          label: "Wasted",             icon: 'wasted.jpg',         sound: 'wasted.mp3'             },
+  { id: 'youdied',        categories: ['dnd'],          label: "YOU DIED",           icon: 'youdied.jpg',        sound: 'youdied.mp3'            },
 ];
