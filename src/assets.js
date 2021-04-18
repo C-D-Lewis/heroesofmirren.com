@@ -20,7 +20,7 @@ export const Images = [
  * categories must match one of the Pills in SoundboardCategorySelect.jsx
  * and soundsForCategory in Soundboard.jsx
  *
- * Note - id is used for favorites list, dont change after adding.
+ * Note - id is used for favorites list, don't change after adding!
  */
 export const Sounds = [
   { id: 'rick',           categories: ['ia', 'songs'],  label: 'Angels',             icon: 'rick.jpg',           sound: 'angels.mp3'             },
@@ -69,4 +69,5 @@ export const Sounds = [
   { id: 'dm',             categories: ['dnd'],          label: 'Democracy Manifest', icon: 'dm.jpg',             soundPrefix: 'dm',    max: 10   },
   { id: 'wasted',         categories: ['dnd'],          label: "Wasted",             icon: 'wasted.jpg',         sound: 'wasted.mp3'             },
   { id: 'youdied',        categories: ['dnd'],          label: "YOU DIED",           icon: 'youdied.jpg',        sound: 'youdied.mp3'            },
+  { id: 'theyrefresh',    categories: ['dnd'],          label: "They're fresh",      icon: 'theyrefresh.jpg',    sound: 'theyrefresh.mp3'        },
 ];
