@@ -30,15 +30,15 @@ const SoundboardButton = ({ loaded, data, onClick }) => {
   return (
     <Container
       style={{
-        backgroundColor: loaded ? 'white' : 'black',
-        borderRadius: 10,
+        backgroundColor: loaded ? 'white' : 'lightgrey',
+        borderRadius: 5,
         width: BUTTON_WIDTH,
         margin: 5,
         opacity: loaded ? 1 : 0.2,
         transition: '1s',
         overflow: 'hidden',
         position: 'relative',
-        boxShadow: '2px 2px 3px 1px #5554',
+        boxShadow: '2px 2px 3px 1px #5556',
       }}>
       <img
         onClick={onClick}
