@@ -17,6 +17,7 @@ const Pill = ({ children, onClick, isSelected }) => (
       color: isSelected ? 'white': '#555',
       margin: 5,
       cursor: 'pointer',
+      fontWeight: 'bold',
     }}
     onClick={onClick}>
     {children}
