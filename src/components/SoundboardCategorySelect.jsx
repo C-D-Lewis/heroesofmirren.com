@@ -34,7 +34,7 @@ const SoundboardCategorySelect = ({ category, setCategory }) => (
   <Container
     style={{
       flexDirection: 'row',
-      backgroundColor: 'black',
+      backgroundColor: 'white',
       padding: 10,
     }}>
     <Pill

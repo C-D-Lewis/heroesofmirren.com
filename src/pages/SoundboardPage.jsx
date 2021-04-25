@@ -57,7 +57,7 @@ const SoundboardPage = () => {
         style={{
           flexDirection: 'row',
           flexWrap: 'wrap',
-          backgroundColor: 'black',
+          backgroundColor: 'white',
           padding: 10,
         }}>
         {soundsForCategory(category, 'all')}

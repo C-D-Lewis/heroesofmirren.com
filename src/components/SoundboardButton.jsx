@@ -38,6 +38,7 @@ const SoundboardButton = ({ loaded, data, onClick }) => {
         transition: '1s',
         overflow: 'hidden',
         position: 'relative',
+        boxShadow: '2px 2px 3px 1px #5554',
       }}>
       <img
         onClick={onClick}
