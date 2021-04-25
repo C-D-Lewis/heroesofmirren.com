@@ -70,4 +70,6 @@ export const Sounds = [
   { id: 'wasted',         categories: ['dnd'],          label: "Wasted",             icon: 'wasted.jpg',         sound: 'wasted.mp3'             },
   { id: 'youdied',        categories: ['dnd'],          label: "YOU DIED",           icon: 'youdied.jpg',        sound: 'youdied.mp3'            },
   { id: 'theyrefresh',    categories: ['dnd'],          label: "They're fresh",      icon: 'theyrefresh.jpg',    sound: 'theyrefresh.mp3'        },
+  { id: 'harrydead',      categories: ['dnd'],          label: "Harry is dead",      icon: 'harrydead.jpg',      sound: 'harrydead.mp3'          },
+  { id: 'voldylaugh',     categories: ['dnd'],          label: "Eh, hehe!",          icon: 'voldylaugh.jpg',     sound: 'voldylaugh.mp3'         },
 ];
