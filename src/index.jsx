@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { TabBar, Tab } from './components/TabBar.jsx';
 import Container from './components/Container.jsx';
 import Header from './components/Header.jsx';
+import Footer from './components/Footer.jsx';
 import GalleryPage from './pages/GalleryPage.jsx';
 import SoundboardPage from './pages/SoundboardPage.jsx';
 
@@ -37,10 +38,11 @@ const Application = () => {
           Soundboard
         </Tab>
       </TabBar>
-      <Container style={{ height: '100%' }}>
+      <Container>
         {tab === 'gallery' && <GalleryPage />}
         {tab === 'soundboard' && <SoundboardPage />}
       </Container>
+      <Footer />
     </Container>
   );
 };

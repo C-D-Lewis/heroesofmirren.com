@@ -9,3 +9,7 @@ html, body, #app {
 * {
   font-family: sans-serif;
 }
+
+a {
+  color: rgb(249, 160, 75)
+}
