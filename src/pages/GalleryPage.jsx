@@ -24,6 +24,7 @@ const GalleryPage = () =>
           marginBottom: 50,
         }} />
     ))}
+    <span>Art by Steph Bond</span>
   </Container>;
 
 export default GalleryPage;
