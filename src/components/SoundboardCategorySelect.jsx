@@ -8,12 +8,12 @@ import { Colors } from '../theme';
  * @param {Object} props - Component props.
  * @returns {HTMLElement}
  */
-const Pill = ({ children, onClick, isSelected }) => (
+const Pill = ({ children, onClick, isSelected, vPad = 8 }) => (
   <div
     style={{
       borderRadius: 50,
       backgroundColor: Colors.primary,
-      padding: '8px 12px',
+      padding: `${vPad}px 12px`,
       color: isSelected ? 'white': '#555',
       margin: 5,
       cursor: 'pointer',
@@ -44,8 +44,15 @@ const SoundboardCategorySelect = ({ category, setCategory }) => (
     </Pill>
     <Pill
       isSelected={category === 'favorites'}
-      onClick={() => setCategory('favorites')}>
-      Favorites
+      onClick={() => setCategory('favorites')}
+      vPad={3}>
+      <img
+        style={{
+          width: 24,
+          height: 24,
+        }}
+        src="./assets/images/star_on.png"
+      />
     </Pill>
     <Pill
       isSelected={category === 'ia'}
@@ -61,6 +68,11 @@ const SoundboardCategorySelect = ({ category, setCategory }) => (
       isSelected={category === 'songs'}
       onClick={() => setCategory('songs')}>
       Songs
+    </Pill>
+    <Pill
+      isSelected={category === 'drg'}
+      onClick={() => setCategory('drg')}>
+      DRG
     </Pill>
   </Container>
 );

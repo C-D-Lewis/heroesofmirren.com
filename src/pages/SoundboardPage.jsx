@@ -65,6 +65,7 @@ const SoundboardPage = () => {
         {soundsForCategory(category, 'ia')}
         {soundsForCategory(category, 'dnd')}
         {soundsForCategory(category, 'songs')}
+        {soundsForCategory(category, 'drg')}
       </Container>
     </div>
   );
