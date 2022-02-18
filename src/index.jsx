@@ -21,7 +21,7 @@ const Application = () => {
         textAlign: 'center',
         width: '100%',
         height: '100%',
-        maxWidth: 600,
+        maxWidth: 625,
         margin: 'auto',
       }}>
       <Header />

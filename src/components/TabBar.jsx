@@ -16,6 +16,7 @@ export const TabBar = ({ children }) =>
       height: 50,
       flexDirection: 'row',
       justifyContent: 'center',
+      boxShadow: '2px 2px 3px 1px #5556',
     }}>
     {children}
   </Container>;

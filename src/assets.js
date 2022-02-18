@@ -4,11 +4,11 @@ export const Images = [
   { name: 'bartop.jpg'                     },
   { name: 'clyde-steph.jpg'                },
   { name: 'clyde-cat.jpg',   maxWidth: 300 },
-  { name: 'tackle.jpeg',     maxWidth: 410 },
+  { name: 'tackle.jpeg',     maxWidth: 450 },
   { name: 'paper-plane.jpg', maxWidth: 200 },
   { name: 'harpie.jpg'                     },
   { name: 'reykjavik.jpg',   maxWidth: 300 },
-  { name: 'special.jpeg',    maxWidth: 300 },
+  { name: 'special.jpeg',    maxWidth: 350 },
   { name: 'butt-hammer.jpg', maxWidth: 200 },
 ];
 
