@@ -11,6 +11,12 @@ const GalleryImages = [
   { name: 'reykjavik.jpg',   maxWidth: 300 },
   { name: 'special.jpeg',    maxWidth: 350 },
   { name: 'butt-hammer.jpg', maxWidth: 200 },
+  { name: 'clyde-coat.jpg',  maxWidth: 320 },
+  { name: 'ana-clyde-2.jpg', maxWidth: 360 },
+  { name: 'clyde-fight.jpg', maxWidth: 400 },
+  { name: 'ana-clyde.jpg',   maxWidth: 360 },
+  { name: 'megaclyde.jpg',   maxWidth: 400 },
+  { name: 'ishmael.jpg',     maxWidth: 400 },
 ];
 
 /**
