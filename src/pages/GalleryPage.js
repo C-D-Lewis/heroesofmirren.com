@@ -50,23 +50,43 @@ const Attribution = () => fabricate.Row()
   ]);
 
 /**
+ * GalleryThumbnail component.
+ *
+ * @param {string} name - Name of the image.
+ * @returns {HTMLElement}
+ */
+const GalleryThumbnail = (name) => {
+  const src = `./assets/gallery/${name}`;
+
+  return fabricate('img')
+    .withAttributes({ src })
+    .withStyles({
+      width: '175px',
+      margin: 'auto',
+      margin: '10px',
+      objectFit: 'contain',
+      cursor: 'pointer',
+      border: '2px black',
+      borderRadius: '10px',
+      maxHeight: '175px',
+      padding: '5px',
+      backgroundColor: 'white',
+    })
+    .onClick(() => window.open(src, '_blank'));
+};
+
+/**
  * GalleryPage component.
  *
  * @returns {HTMLElement}
  */
-const GalleryPage = () => fabricate.Column()
+const GalleryPage = () => fabricate.Row()
   .withStyles({
-    backgroundColor: 'white',
-    paddingTop: '50px',
+    backgroundColor: '#eee',
+    flexWrap: 'wrap',
+    paddingTop: '10px',
   })
   .withChildren([
-    ...GalleryImages.map(({ name, maxWidth = 500 }) => (
-      LargeImage({ src: `./assets/gallery/${name}` })
-        .withStyles({
-          maxWidth: `${maxWidth}px`,
-          margin: 'auto',
-          marginBottom: '50px',
-        })
-    )),
+    ...GalleryImages.map(({ name }) => GalleryThumbnail(name)),
     Attribution(),
   ]);
