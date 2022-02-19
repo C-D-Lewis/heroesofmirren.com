@@ -4,7 +4,7 @@ import SoundboardButton from './SoundboardButton.jsx';
 /**
  * SountByte component.
  *
- * @param {Object} props - Component props.
+ * @param {object} props - Component props.
  * @returns {HTMLElement}
  */
 const SoundByte = ({ data }) => {

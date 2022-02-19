@@ -1,7 +1,7 @@
 /**
  * Get the list of favorites from localStorage.
  *
- * @returns {Array<string>} Array of favorites by 'id'
+ * @returns {Array<string>} Array of favorites by 'id', or empty if there are none.
  */
 export const getFavorites = () => JSON.parse(localStorage.getItem('favorites') || '[]');
 

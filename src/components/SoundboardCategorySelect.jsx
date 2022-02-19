@@ -1,47 +1,40 @@
-import React from 'react';
-import Container from './Container.jsx';
-import { Colors } from '../theme';
-
 /**
  * Pill component.
  *
- * @param {Object} props - Component props.
+ * @param {object} props - Component props.
  * @returns {HTMLElement}
  */
-const Pill = ({ children, onClick, isSelected, vPad = 8 }) => (
-  <div
-    style={{
-      borderRadius: 50,
-      backgroundColor: Colors.primary,
-      padding: `${vPad}px 12px`,
-      color: isSelected ? 'white': '#555',
-      margin: 5,
-      cursor: 'pointer',
-      fontWeight: 'bold',
-    }}
-    onClick={onClick}>
-    {children}
-  </div>
-);
+const Pill = ({ category, vPad = 8 }) => fabricate('div')
+  .withStyles({
+    borderRadius: 50,
+    backgroundColor: Colors.primary,
+    padding: `${vPad}px 12px`,
+    color: '#555',
+    margin: 5,
+    cursor: 'pointer',
+    fontWeight: 'bold',
+  })
+  .onClick(() => fabricate.updateState('category', () => category))
+  .watchState((el, state) => {
+    // When category selection changes
+    const isSelected = state.category === category;
+
+    el.addStyles({ color: isSelected ? 'white': '#555' });
+  });
 
 /**
  * SoundboardCategorySelect component.
  *
- * @param {Object} props - Component props.
+ * @param {object} props - Component props.
  * @returns {HTMLElement}
  */
-const SoundboardCategorySelect = ({ category, setCategory }) => (
-  <Container
-    style={{
-      flexDirection: 'row',
-      backgroundColor: 'white',
-      padding: 10,
-    }}>
-    <Pill
-      isSelected={category === 'all'}
-      onClick={() => setCategory('all')}>
-      All
-    </Pill>
+const SoundboardCategorySelect = ({ category }) => fabricate('row')
+  .withStyles({
+    backgroundColor: 'white',
+    padding: 10,
+  })
+  .withChildren([
+    Pill({ category: 'all' }).setText('All'),
     <Pill
       isSelected={category === 'favorites'}
       onClick={() => setCategory('favorites')}

@@ -7,6 +7,9 @@ import Footer from './components/Footer.jsx';
 import GalleryPage from './pages/GalleryPage.jsx';
 import SoundboardPage from './pages/SoundboardPage.jsx';
 
+// TODO
+// if (!getFavourites()) setFavourites([])
+
 /**
  * Application component.
  *

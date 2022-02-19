@@ -5,7 +5,7 @@ import Container from './Container.jsx';
 /**
  * TabBar component.
  *
- * @param {Object} props - Component props.
+ * @param {object} props - Component props.
  * @returns {HTMLElement}
  */
 export const TabBar = ({ children }) =>
@@ -24,7 +24,7 @@ export const TabBar = ({ children }) =>
 /**
  * Tab component.
  *
- * @param {Object} props - Component props.
+ * @param {object} props - Component props.
  * @returns {HTMLElement}
  */
 export const Tab = ({ children, isSelected, onClick }) =>

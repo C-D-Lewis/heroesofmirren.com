@@ -1,5 +1,5 @@
 /** List of images shown in Gallery */
-export const Images = [
+const GalleryImages = [
   { name: 'minecart.png'                   },
   { name: 'bartop.jpg'                     },
   { name: 'clyde-steph.jpg'                },
@@ -18,12 +18,12 @@ export const Images = [
  *
  * Random buttons specify instead the soundPrefix before the number in each file name.
  *
- * categories must match one of the Pills in SoundboardCategorySelect.jsx
- * and soundsForCategory in SoundboardPage.jsx
+ * categories must match one of the Pills in SoundboardCategorySelect.js
+ * and soundsForCategory in SoundboardPage.js
  *
  * Note - id is used for favorites list, don't change after adding!
  */
-export const Sounds = [
+const Sounds = [
   { id: 'rick',           categories: ['ia', 'songs'],  label: 'Angels',             icon: 'rick.jpg',           sound: 'angels.mp3'                 },
   { id: 'knuckles',       categories: ['ia'],           label: 'Oh No',              icon: 'knuckles.jpg',       sound: 'ohno.mp3'                   },
   { id: 'butters',        categories: ['ia'],           label: 'Robot Friend',       icon: 'butters.jpg',        sound: 'robot.mp3'                  },
