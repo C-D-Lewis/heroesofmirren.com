@@ -24,8 +24,9 @@ const RandomSoundByte = ({ data }) => {
    * Load the first audio sample.
    */
   const loadFirstAudio = async () => {
-    audioList.push(await loadAudio(data, 0))
-    fabricate.updateState(`RandomSoundByte:loaded:${data.id}`, () => true);
+    audioList.push(await loadAudio(data, 0));
+
+    fabricate.updateState(`SoundByte:loaded:${data.id}`, () => true);
   };
 
   /**

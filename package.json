@@ -2,28 +2,13 @@
   "name": "heroesofmirren.com",
   "version": "1.0.0",
   "description": "yo yo yo let me tell you something real quick",
-  "main": "index.js",
   "scripts": {
-    "clean": "rm -rf dist",
-    "build": "webpack --config webpack.config.js --mode production",
-    "build:dev": "webpack --config webpack.config.js --mode development",
-    "start": "npm run build && python3 -m http.server"
+    "start": "python3 -m http.server"
   },
   "author": "Chris Lewis",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.9.6",
-    "@babel/plugin-transform-runtime": "^7.9.6",
-    "@babel/preset-env": "^7.9.6",
-    "@babel/runtime": "^7.9.6",
-    "babel-loader": "^8.1.0",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
-    "webpack": "^5.69.1",
-    "webpack-cli": "^4.9.2"
   },
   "dependencies": {
-    "caniuse-lite": "^1.0.30001209"
   }
 }

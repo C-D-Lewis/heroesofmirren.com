@@ -46,6 +46,7 @@ const SoundboardButton = ({ data }) => {
         .onClick((el) => {
           // Update component state
           isFavorite = !isFavorite;
+          // TODO: addAttributes()
           el.withAttributes({ src: getFavoriteIcon() });
 
           // Update list in localStorage
@@ -72,7 +73,7 @@ const SoundboardButton = ({ data }) => {
         .setText('...'),
     ])
     .watchState((el, state) => {
-      if (!state[`RandomSoundByte:loaded:${id}`]) return;
+      if (!state[`SoundByte:loaded:${id}`]) return;
 
       // When this id has loaded, update display
       el.addStyles({
