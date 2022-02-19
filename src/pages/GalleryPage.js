@@ -59,8 +59,8 @@ const GalleryPage = () => fabricate.Column()
     backgroundColor: 'white',
     paddingTop: '50px',
   })
-  .withChildren(
-    GalleryImages.map(({ name, maxWidth = 500 }) => (
+  .withChildren([
+    ...GalleryImages.map(({ name, maxWidth = 500 }) => (
       LargeImage({ src: `./assets/gallery/${name}` })
         .withStyles({
           maxWidth: `${maxWidth}px`,
@@ -68,4 +68,5 @@ const GalleryPage = () => fabricate.Column()
           marginBottom: '50px',
         })
     )),
-  );
+    Attribution(),
+  ]);
