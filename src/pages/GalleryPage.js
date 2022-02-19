@@ -61,14 +61,14 @@ const GalleryThumbnail = (name) => {
   return fabricate('img')
     .withAttributes({ src })
     .withStyles({
-      width: '175px',
+      width: '160px',
       margin: 'auto',
       margin: '10px',
       objectFit: 'contain',
       cursor: 'pointer',
       border: '2px black',
       borderRadius: '10px',
-      maxHeight: '175px',
+      maxHeight: '160px',
       padding: '5px',
       backgroundColor: 'white',
     })
