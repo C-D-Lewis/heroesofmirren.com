@@ -61,14 +61,14 @@ const GalleryThumbnail = (name) => {
   return fabricate('img')
     .withAttributes({ src })
     .withStyles({
-      width: '160px',
+      width: '175px',
       margin: 'auto',
       margin: '10px',
       objectFit: 'contain',
       cursor: 'pointer',
       border: '2px black',
       borderRadius: '10px',
-      maxHeight: '160px',
+      maxHeight: '175px',
       padding: '5px',
       backgroundColor: 'white',
     })
@@ -80,24 +80,13 @@ const GalleryThumbnail = (name) => {
  *
  * @returns {HTMLElement}
  */
-const GalleryPage = () => {
-  let groups = [];
-  const imageList = [...GalleryImages];
-  while (imageList.length) {
-    groups.push(imageList.splice(0, 2));
-  }
-
-  return fabricate.Row()
-    .withStyles({
-      backgroundColor: '#eee',
-      flexWrap: 'wrap',
-      paddingTop: '10px',
-    })
-    .withChildren([
-      ...(
-        GalleryImages
-          .map(({ name }) => GalleryThumbnail(name))
-          .reduce((acc, item) => {}, [])
-        ),
-      Attribution(),
-    ]);
+const GalleryPage = () => fabricate.Row()
+  .withStyles({
+    backgroundColor: '#eee',
+    flexWrap: 'wrap',
+    paddingTop: '10px',
+  })
+  .withChildren([
+    ...GalleryImages.map(({ name }) => GalleryThumbnail(name)),
+    Attribution(),
+  ]);
