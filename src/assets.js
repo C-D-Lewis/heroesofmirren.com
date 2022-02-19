@@ -7,6 +7,7 @@ export const Images = [
   { name: 'tackle.jpeg',     maxWidth: 450 },
   { name: 'paper-plane.jpg', maxWidth: 200 },
   { name: 'harpie.jpg'                     },
+  { name: 'mouse-owl.jpg',   maxWidth: 280 },
   { name: 'reykjavik.jpg',   maxWidth: 300 },
   { name: 'special.jpeg',    maxWidth: 350 },
   { name: 'butt-hammer.jpg', maxWidth: 200 },

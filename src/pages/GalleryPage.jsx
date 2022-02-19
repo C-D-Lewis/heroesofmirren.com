@@ -66,7 +66,7 @@ const GalleryPage = () =>
     {Images.map(({ name, maxWidth = 500 }) => (
       <LargeImage
         key={name}
-        src={`./assets/images/${name}`}
+        src={`./assets/gallery/${name}`}
         style={{
           maxWidth,
           margin: 'auto',
