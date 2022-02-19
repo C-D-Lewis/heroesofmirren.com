@@ -12,7 +12,9 @@ const BUTTON_HEIGHT = 70;
 const SoundboardButton = ({ data }) => {
   const { id, icon, label } = data;
 
+  const thisUpdateKey = `audioLoaded:${id}`;
   let isFavorite = loadFavorites().includes(id);
+  let container;
 
   /**
    * Get path to favorite icon depending on state.
@@ -21,10 +23,32 @@ const SoundboardButton = ({ data }) => {
    */
   const getFavoriteIcon = () => `./assets/images/star_${isFavorite ? 'on' : 'off'}.png`;
 
-  return fabricate.Column()
+  const labelSpan = fabricate('span')
+    .withStyles({
+      fontSize: '0.7rem',
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      padding: '5px',
+      paddingLeft: '0px',
+    })
+    .setText('...');
+
+  /**
+   * Set the visibly loaded state.
+   */
+  const setVisiblyLoaded = () => {
+    container.addStyles({
+      backgroundColor: 'white',
+      opacity: '1',
+    });
+    labelSpan.setText(label);
+  };
+
+  container = fabricate.Column()
     .withStyles({
       backgroundColor: 'lightgrey',
-      borderRadius: '5',
+      borderRadius: '5px',
       width: `${BUTTON_WIDTH}px`,
       margin: '5px',
       opacity: '0.2',
@@ -32,8 +56,10 @@ const SoundboardButton = ({ data }) => {
       overflow: 'hidden',
       position: 'relative',
       boxShadow: '2px 2px 3px 1px #5556',
-    })
-    .withChildren([
+    });
+
+  // Allow assignment to complete
+  container.addChildren([
       fabricate('img')
         .withAttributes({ src: `./assets/icons/${icon}` })
         .withStyles({
@@ -52,6 +78,7 @@ const SoundboardButton = ({ data }) => {
           // Update list in localStorage
           const favorites = loadFavorites();
           saveFavorites(isFavorite ? [...favorites, id] : [...favorites.filter(p => p !== id)]);
+          fabricate.updateState('favoritesUpdated', () => Date.now());
         })
         .withStyles({
           position: 'absolute',
@@ -61,25 +88,18 @@ const SoundboardButton = ({ data }) => {
           top: '5px',
         })
         .withAttributes({ src: getFavoriteIcon() }),
-      fabricate('span')
-        .withStyles({
-          fontSize: '0.7rem',
-          width: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          padding: '5px',
-          paddingLeft: '0px',
-        })
-        .setText('...'),
+      labelSpan,
     ])
-    .watchState((el, state) => {
-      if (!state[`SoundByte:loaded:${id}`]) return;
+    .then(() => {
+      // If it's already loaded previously
+      if (fabricate.getState(thisUpdateKey)) setVisiblyLoaded();
+    })
+    .watchState((el, state, updatedKey) => {
+      if (updatedKey !== thisUpdateKey) return;
 
-      // When this id has loaded, update display
-      el.addStyles({
-        backgroundColor: 'white',
-        opacity: 1,
-      });
-      el.setText(label);
+      // // When this id has loaded, update display
+      setVisiblyLoaded();
     });
+
+  return container;
 };

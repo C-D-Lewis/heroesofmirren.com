@@ -16,8 +16,10 @@ const Application = () => fabricate.Column()
     TabBar()
       .withChildren([
         Tab({ tab: 'gallery' })
+          .onClick(() => fabricate.updateState('tab', () => 'gallery'))
           .setText('Gallery'),
         Tab({ tab: 'soundboard' })
+          .onClick(() => fabricate.updateState('tab', () => 'soundboard'))
           .setText('Soundboard'),
       ]),
     fabricate.Column()
@@ -33,3 +35,5 @@ const initialState = {
   category: 'all',
 };
 fabricate.app(Application(), initialState);
+
+fabricate.updateState('tab', () => 'gallery');

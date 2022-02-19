@@ -10,6 +10,8 @@ const SoundboardPage = () => {
    * @returns {Array<HTMLElement>} List of SoundByte or RandomSoundByte elements.
    */
   const soundsForCategory = (category) => {
+    const favorites = loadFavorites();
+
     // Just the favorites, regardless of category
     if (category === 'favorites') {
       return Sounds
@@ -37,10 +39,12 @@ const SoundboardPage = () => {
           backgroundColor: 'white',
           padding: '10px',
         })
-        .watchState((el, state) => {
-          // TODO: Know which key changed
-          el.clear();
+        .withChildren(soundsForCategory(state.category))
+        .watchState((el, state, updatedKey) => {
+          // Change of category or favorites list
+          if (!['favoritesUpdated', 'category'].includes(updatedKey)) return;
 
+          el.clear();
           el.addChildren(soundsForCategory(state.category));
         }),
     ]);

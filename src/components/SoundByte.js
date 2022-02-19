@@ -5,19 +5,10 @@
  * @returns {HTMLElement}
  */
 const SoundByte = ({ data }) => {
-  let audio = null;
+  const { id, sound } = data;
+  let audio;
 
-  /**
-   * Load the audio file.
-   */
-  const loadAudio = () => {
-    audio = new Audio(`./assets/sounds/${data.sound}`);
-    audio.addEventListener('canplaythrough', () => setLoaded(true));
+  loadAudio(id, sound).then(a => (audio = a));
 
-    fabricate.updateState(`SoundByte:loaded:${data.id}`)
-  };
-
-  return SoundboardButton({ data })
-    .onClick(playRandomSound)
-    .then(loadAudio);
+  return SoundboardButton({ data }).onClick(() => audio.play());
 };

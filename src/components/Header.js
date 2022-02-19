@@ -15,5 +15,8 @@ const Header = () => fabricate.Row()
   })
   .withChildren([
     LargeImage({ src: './assets/images/logo-new.png' })
-      .withStyles({ width: `${HEADER_SIZE}px` }),
+      .withStyles({
+        width: `${HEADER_SIZE}px`,
+        margin: '10px',
+      }),
   ]);

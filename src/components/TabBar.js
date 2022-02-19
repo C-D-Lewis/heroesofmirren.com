@@ -25,10 +25,12 @@ const Tab = ({ tab }) => fabricate.Column()
     padding: '10px 10px',
     cursor: 'pointer',
     flex: '1',
+    justifyContent: 'center',
   })
-  .watchState((el, state) => {
-    const isSelected = state.tab === tab;
+  .watchState((el, state, updatedKey) => {
+    if (updatedKey !== 'tab') return;
 
+    const isSelected = state.tab === tab;
     el.addStyles({
       backgroundColor: isSelected ? Colors.primary : 'initial',
       color: isSelected ? 'white' : '#555',

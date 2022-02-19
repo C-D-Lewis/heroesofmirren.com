@@ -4,7 +4,7 @@
  * @param {object} props - Component props.
  * @returns {HTMLElement}
  */
-const Pill = ({ category, vPad = 8 }) => fabricate('div')
+const Pill = ({ category, vPad = 10 }) => fabricate.Column()
   .withStyles({
     borderRadius: '50px',
     backgroundColor: Colors.primary,
@@ -13,9 +13,17 @@ const Pill = ({ category, vPad = 8 }) => fabricate('div')
     margin: '5px',
     cursor: 'pointer',
     fontWeight: 'bold',
+    justifyContent: 'center',
   })
   .onClick(() => fabricate.updateState('category', () => category))
-  .watchState((el, state) => {
+  .then((el) => {
+    if (fabricate.getState('category') === category) {
+      el.addStyles({ color: 'white' });
+    }
+  })
+  .watchState((el, state, updatedKey) => {
+    if (updatedKey !== 'category') return;
+
     // When category selection changes
     const isSelected = state.category === category;
 
@@ -27,7 +35,7 @@ const Pill = ({ category, vPad = 8 }) => fabricate('div')
  *
  * @returns {HTMLElement}
  */
-const SoundboardCategorySelect = () => fabricate('row')
+const SoundboardCategorySelect = () => fabricate.Row()
   .withStyles({
     backgroundColor: 'white',
     padding: '10px',
