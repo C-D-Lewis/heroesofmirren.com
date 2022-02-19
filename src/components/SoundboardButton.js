@@ -12,7 +12,7 @@ const BUTTON_HEIGHT = 70;
 const SoundboardButton = ({ data }) => {
   const { id, icon, label } = data;
 
-  let isFavorite = getFavorites().includes(id);
+  let isFavorite = loadFavorites().includes(id);
 
   /**
    * Get path to favorite icon depending on state.
@@ -24,10 +24,10 @@ const SoundboardButton = ({ data }) => {
   return fabricate.Column()
     .withStyles({
       backgroundColor: 'lightgrey',
-      borderRadius: 5,
-      width: BUTTON_WIDTH,
-      margin: 5,
-      opacity: 0.2,
+      borderRadius: '5',
+      width: `${BUTTON_WIDTH}px`,
+      margin: '5px',
+      opacity: '0.2',
       transition: '1s',
       overflow: 'hidden',
       position: 'relative',
@@ -38,8 +38,8 @@ const SoundboardButton = ({ data }) => {
         .withAttributes({ src: `./assets/icons/${icon}` })
         .withStyles({
           width: '100%',
-          height: BUTTON_HEIGHT,
-          maxHeight: BUTTON_HEIGHT,
+          height: `${BUTTON_HEIGHT}px`,
+          maxHeight: `${BUTTON_HEIGHT}px`,
           objectFit: 'cover',
         }),
       fabricate('img')
@@ -50,15 +50,15 @@ const SoundboardButton = ({ data }) => {
           el.withAttributes({ src: getFavoriteIcon() });
 
           // Update list in localStorage
-          const favorites = getFavorites();
-          setFavorites(isFavorite ? [...favorites, id] : [...favorites.filter(p => p !== id)]);
+          const favorites = loadFavorites();
+          saveFavorites(isFavorite ? [...favorites, id] : [...favorites.filter(p => p !== id)]);
         })
         .withStyles({
           position: 'absolute',
-          width: 28,
-          height: 28,
-          right: 5,
-          top: 5,
+          width: '28px',
+          height: '28px',
+          right: '5px',
+          top: '5px',
         })
         .withAttributes({ src: getFavoriteIcon() }),
       fabricate('span')
@@ -67,8 +67,8 @@ const SoundboardButton = ({ data }) => {
           width: '100%',
           display: 'flex',
           justifyContent: 'center',
-          padding: 5,
-          paddingLeft: 0,
+          padding: '5px',
+          paddingLeft: '0px',
         })
         .setText('...'),
     ])

@@ -6,11 +6,11 @@
  */
 const Pill = ({ category, vPad = 8 }) => fabricate('div')
   .withStyles({
-    borderRadius: 50,
+    borderRadius: '50px',
     backgroundColor: Colors.primary,
     padding: `${vPad}px 12px`,
     color: '#555',
-    margin: 5,
+    margin: '5px',
     cursor: 'pointer',
     fontWeight: 'bold',
   })
@@ -30,7 +30,7 @@ const Pill = ({ category, vPad = 8 }) => fabricate('div')
 const SoundboardCategorySelect = () => fabricate('row')
   .withStyles({
     backgroundColor: 'white',
-    padding: 10,
+    padding: '10px',
   })
   .withChildren([
     Pill({ category: 'all' }).setText('All'),
@@ -39,8 +39,8 @@ const SoundboardCategorySelect = () => fabricate('row')
         fabricate('img')
           .withAttributes({ src: './assets/images/star_on.png' })
           .withStyles({
-            width: 24,
-            height: 24,
+            width: '24px',
+            height: '24px',
           }),
       ]),
     Pill({ category: 'ia' }).setText('IA'),

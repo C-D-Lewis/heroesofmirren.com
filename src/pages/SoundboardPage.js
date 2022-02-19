@@ -35,7 +35,7 @@ const SoundboardPage = () => {
         .withStyles({
           flexWrap: 'wrap',
           backgroundColor: 'white',
-          padding: 10,
+          padding: '10px',
         })
         .watchState((el, state) => {
           // TODO: Know which key changed

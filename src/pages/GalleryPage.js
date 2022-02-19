@@ -10,9 +10,9 @@ const AttributionLinkIcon = ({ img, url }) => fabricate('a')
     fabricate('img')
       .withAttributes({ src: `./assets/images/${img}` })
       .withStyles({
-        width: 32,
-        height: 32,
-        margin: 5,
+        width: '32px',
+        height: '32px',
+        margin: '5px',
       }),
   ]);
 
@@ -25,10 +25,10 @@ const Attribution = () => fabricate.Row()
   .withStyles({
     alignItems: 'center',
     backgroundColor: 'white',
-    borderRadius: 10,
-    maxWidth: 300,
+    borderRadius: '10px',
+    maxWidth: '300px',
     margin: '15px auto',
-    padding: 12,
+    padding: '12px',
   })
   .withChildren([
     fabricate('span')
@@ -36,7 +36,7 @@ const Attribution = () => fabricate.Row()
         color: '#333',
         fontWeight: 'bold',
         fontSize: '1.1rem',
-        marginRight: 5,
+        marginRight: '5px',
       })
       .setText('Art by Steph Bond'),
     AttributionLinkIcon({
@@ -57,15 +57,15 @@ const Attribution = () => fabricate.Row()
 const GalleryPage = () => fabricate.Column()
   .withStyles({
     backgroundColor: 'white',
-    paddingTop: 50,
+    paddingTop: '50px',
   })
   .withChildren(
     GalleryImages.map(({ name, maxWidth = 500 }) => (
       LargeImage({ src: `./assets/gallery/${name}` })
         .withStyles({
-          maxWidth,
+          maxWidth: `${maxWidth}px`,
           margin: 'auto',
-          marginBottom: 50,
+          marginBottom: '50px',
         })
     )),
   );

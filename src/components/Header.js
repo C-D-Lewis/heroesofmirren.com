@@ -8,12 +8,12 @@ const HEADER_SIZE = 200;
  */
 const Header = () => fabricate.Row()
   .withStyles({
-    height: HEADER_SIZE,
+    height: `${HEADER_SIZE}px`,
     justifyContent: 'center',
-    paddingBottom: 10,
+    paddingBottom: '10px',
     backgroundColor: 'white',
   })
   .withChildren([
     LargeImage({ src: './assets/images/logo-new.png' })
-      .withStyles({ width: HEADER_SIZE }),
+      .withStyles({ width: `${HEADER_SIZE}px` }),
   ]);

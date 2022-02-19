@@ -20,14 +20,14 @@ const Footer = () => fabricate.Column()
         fabricate('img')
           .withAttributes({ src: './assets/images/github.png' })
           .withStyles({
-            width: 32,
-            height: 32,
+            width: '32px',
+            height: '32px',
           }),
         fabricate('span')
           .withStyles({
             color: 'white',
-            marginLeft: 10,
-            marginRight: 5,
+            marginLeft: '10px',
+            marginRight: '5px',
           })
           .setText('Source available'),
         fabricate('a')

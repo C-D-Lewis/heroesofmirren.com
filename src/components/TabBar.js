@@ -7,7 +7,7 @@ const TabBar = () => fabricate.Row()
   .withStyles({
     backgroundColor: Colors.secondary,
     width: '100%',
-    height: 50,
+    height: '50px',
     justifyContent: 'center',
   });
 
@@ -24,7 +24,7 @@ const Tab = ({ tab }) => fabricate.Column()
     color: '#555',
     padding: '10px 10px',
     cursor: 'pointer',
-    flex: 1,
+    flex: '1',
   })
   .watchState((el, state) => {
     const isSelected = state.tab === tab;

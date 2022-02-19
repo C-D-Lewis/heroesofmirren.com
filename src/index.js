@@ -8,7 +8,7 @@ const Application = () => fabricate.Column()
     textAlign: 'center',
     width: '100%',
     height: '100%',
-    maxWidth: 625,
+    maxWidth: '625px',
     margin: 'auto',
   })
   .withChildren([
@@ -22,8 +22,8 @@ const Application = () => fabricate.Column()
       ]),
     fabricate.Column()
       .withChildren([
-        when(state => state.tab === 'gallery', () => GalleryPage()),
-        when(state => state.tab === 'soundboard', () => SoundboardPage()),
+        fabricate.when(state => state.tab === 'gallery', () => GalleryPage()),
+        fabricate.when(state => state.tab === 'soundboard', () => SoundboardPage()),
       ]),
     Footer(),
   ]);
@@ -32,4 +32,4 @@ const initialState = {
   tab: 'gallery',
   category: 'all',
 };
-fabricate.app(document.getElementById('app'), initialState);
+fabricate.app(Application(), initialState);
