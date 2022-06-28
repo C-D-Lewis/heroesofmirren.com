@@ -81,5 +81,7 @@ const Sounds = [
   { id: 'voldylaugh',     categories: [],               label: 'Eh, hehe!',          icon: 'voldylaugh.jpg',     sound: 'voldylaugh'             },
   { id: 'afinehit',       categories: ['dnd'],          label: 'A fine hit!',        icon: 'afinehit.png',       sound: 'afinehit'               },
   { id: 'drg_salute',     categories: ['drg'],          label: 'Salute',             icon: 'drg_salute.png',     soundPrefix: 'drg_salute_', max: 11 },
-  { id: 'drg_mule',       categories: ['drg'],          label: 'M.U.L.E',            icon: 'drg_mule.png',       soundPrefix: 'drg_mule_', max: 10   },
+  { id: 'drg_mule',       categories: ['drg'],          label: 'M.U.L.E',            icon: 'drg_mule.png',       soundPrefix: 'drg_mule_',   max: 10 },
+  { id: 'hit_fool',       categories: [],               label: 'FOOOOOOOOOOOL!',     icon: 'hit_fool.png',       sound: 'hit_fool',              },
+  { id: 'hit_screwed',    categories: [],               label: 'You blew it!',       icon: 'hit_screwed.png',    sound: 'hit_screwed',           },
 ];
