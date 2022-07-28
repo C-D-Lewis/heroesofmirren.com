@@ -1,6 +1,6 @@
 # heroesofmirren.com
 
-Yo yo yo let me tell you something real quick
+Yo yo yo let me tell you something real quick.
 
 
 ## Setup
@@ -13,12 +13,6 @@ npm ci
 
 
 ## Run locally
-
-Build with `webpack`:
-
-```shell
-npm run build
-```
 
 Run a local dev server:
 
