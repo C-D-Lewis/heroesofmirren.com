@@ -1,3 +1,5 @@
+/* global loadFavorites saveFavorites */
+
 /** Button width */
 const BUTTON_WIDTH = 110;
 /** Button height */
@@ -9,9 +11,11 @@ const BUTTON_HEIGHT = 70;
  * @param {object} props - Component props.
  * @returns {HTMLElement}
  */
+// eslint-disable-next-line no-unused-vars
 const SoundboardButton = ({ data }) => {
   const { id, icon, label } = data;
 
+  // TODO manageState
   const thisUpdateKey = `audioLoaded:${id}`;
   let isFavorite = loadFavorites().includes(id);
   let container;
@@ -58,38 +62,41 @@ const SoundboardButton = ({ data }) => {
       boxShadow: '2px 2px 3px 1px #5556',
     });
 
+  const buttonIcon = fabricate('img')
+    .withAttributes({ src: `./assets/icons/${icon}` })
+    .withStyles({
+      width: '100%',
+      height: `${BUTTON_HEIGHT}px`,
+      maxHeight: `${BUTTON_HEIGHT}px`,
+      objectFit: 'cover',
+    });
+
+  const favoriteButton = fabricate('img')
+    .onClick((el) => {
+      // Update component state
+      isFavorite = !isFavorite;
+      el.withAttributes({ src: getFavoriteIcon() });
+
+      // Update list in localStorage
+      const favorites = loadFavorites();
+      saveFavorites(isFavorite ? [...favorites, id] : [...favorites.filter((p) => p !== id)]);
+      fabricate.updateState('favoritesUpdated', () => Date.now());
+    })
+    .withStyles({
+      position: 'absolute',
+      width: '28px',
+      height: '28px',
+      right: '5px',
+      top: '5px',
+    })
+    .withAttributes({ src: getFavoriteIcon() });
+
   // Allow assignment to complete
   container.addChildren([
-      fabricate('img')
-        .withAttributes({ src: `./assets/icons/${icon}` })
-        .withStyles({
-          width: '100%',
-          height: `${BUTTON_HEIGHT}px`,
-          maxHeight: `${BUTTON_HEIGHT}px`,
-          objectFit: 'cover',
-        }),
-      fabricate('img')
-        .onClick((el) => {
-          // Update component state
-          isFavorite = !isFavorite;
-          // TODO: addAttributes()
-          el.withAttributes({ src: getFavoriteIcon() });
-
-          // Update list in localStorage
-          const favorites = loadFavorites();
-          saveFavorites(isFavorite ? [...favorites, id] : [...favorites.filter(p => p !== id)]);
-          fabricate.updateState('favoritesUpdated', () => Date.now());
-        })
-        .withStyles({
-          position: 'absolute',
-          width: '28px',
-          height: '28px',
-          right: '5px',
-          top: '5px',
-        })
-        .withAttributes({ src: getFavoriteIcon() }),
-      labelSpan,
-    ])
+    buttonIcon,
+    favoriteButton,
+    labelSpan,
+  ])
     .then(() => {
       // If it's already loaded previously
       if (fabricate.getState(thisUpdateKey)) setVisiblyLoaded();

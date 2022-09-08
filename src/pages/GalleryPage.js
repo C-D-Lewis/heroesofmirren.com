@@ -1,3 +1,5 @@
+/* global GalleryImages */
+
 /**
  * AtributionLinkIcon component.
  *
@@ -61,8 +63,7 @@ const GalleryThumbnail = (name) => {
   return fabricate('img')
     .withAttributes({ src })
     .withStyles({
-      width: '160px',
-      margin: 'auto',
+      width: fabricate.isMobile() ? '26%' : '28%',
       margin: '10px',
       objectFit: 'contain',
       cursor: 'pointer',
@@ -80,6 +81,7 @@ const GalleryThumbnail = (name) => {
  *
  * @returns {HTMLElement}
  */
+// eslint-disable-next-line no-unused-vars
 const GalleryPage = () => fabricate.Row()
   .withStyles({
     backgroundColor: '#eee',

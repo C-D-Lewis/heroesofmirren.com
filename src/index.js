@@ -1,3 +1,5 @@
+/* global Header TabBar Tab GalleryPage SoundboardPage Footer */
+
 /**
  * Application component.
  *
@@ -24,8 +26,8 @@ const Application = () => fabricate.Column()
       ]),
     fabricate.Column()
       .withChildren([
-        fabricate.when(state => state.tab === 'gallery', () => GalleryPage()),
-        fabricate.when(state => state.tab === 'soundboard', () => SoundboardPage()),
+        fabricate.when((state) => state.tab === 'gallery', () => GalleryPage()),
+        fabricate.when((state) => state.tab === 'soundboard', () => SoundboardPage()),
       ]),
     Footer(),
   ]);

@@ -3,6 +3,7 @@
  *
  * @returns {HTMLElement}
  */
+// eslint-disable-next-line no-unused-vars
 const Footer = () => fabricate.Column()
   .withStyles({
     justifyContent: 'center',
@@ -36,5 +37,5 @@ const Footer = () => fabricate.Column()
             target: '_blank',
           })
           .setText('on GitHub'),
-      ])
+      ]),
   ]);

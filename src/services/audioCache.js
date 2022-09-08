@@ -1,4 +1,4 @@
-let cache = {};
+const cache = {};
 
 /**
  * Load an audio file if not cached already.
@@ -7,6 +7,7 @@ let cache = {};
  * @param {string} name - File name.
  * @returns {Audio} Loaded Audio.
  */
+// eslint-disable-next-line no-unused-vars
 const loadAudio = (id, name) => new Promise((resolve) => {
   if (cache[name]) {
     resolve(cache[name]);

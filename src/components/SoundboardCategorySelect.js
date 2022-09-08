@@ -27,7 +27,7 @@ const Pill = ({ category, vPad = 10 }) => fabricate.Column()
     // When category selection changes
     const isSelected = state.category === category;
 
-    el.addStyles({ color: isSelected ? 'white': '#555' });
+    el.addStyles({ color: isSelected ? 'white' : '#555' });
   });
 
 /**
@@ -35,6 +35,7 @@ const Pill = ({ category, vPad = 10 }) => fabricate.Column()
  *
  * @returns {HTMLElement}
  */
+// eslint-disable-next-line no-unused-vars
 const SoundboardCategorySelect = () => fabricate.Row()
   .withStyles({
     backgroundColor: 'white',

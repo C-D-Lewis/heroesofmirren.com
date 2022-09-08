@@ -3,6 +3,7 @@
  *
  * @returns {HTMLElement}
  */
+// eslint-disable-next-line no-unused-vars
 const TabBar = () => fabricate.Row()
   .withStyles({
     backgroundColor: Colors.secondary,
@@ -17,6 +18,7 @@ const TabBar = () => fabricate.Row()
  * @param {object} props - Component props.
  * @returns {HTMLElement}
  */
+// eslint-disable-next-line no-unused-vars
 const Tab = ({ tab }) => fabricate.Column()
   .withStyles({
     fontSize: '1.5rem',
