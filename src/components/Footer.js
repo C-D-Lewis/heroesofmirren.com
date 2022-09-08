@@ -3,8 +3,7 @@
  *
  * @returns {HTMLElement}
  */
-// eslint-disable-next-line no-unused-vars
-const Footer = () => fabricate.Column()
+fabricate.createComponent('Footer', () => fabricate.Column()
   .withStyles({
     justifyContent: 'center',
     backgroundColor: '#444',
@@ -38,4 +37,4 @@ const Footer = () => fabricate.Column()
           })
           .setText('on GitHub'),
       ]),
-  ]);
+  ]));

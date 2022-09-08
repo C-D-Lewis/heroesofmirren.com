@@ -1,4 +1,4 @@
-/* global loadAudio SoundboardButton */
+/* global loadAudio */
 
 /**
  * SountByte component.
@@ -15,5 +15,5 @@ const SoundByte = ({ data }) => {
     audio = a;
   });
 
-  return SoundboardButton({ data }).onClick(() => audio.play());
+  return fabricate.SoundboardButton({ data }).onClick(() => audio.play());
 };

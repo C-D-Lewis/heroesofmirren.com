@@ -11,12 +11,11 @@ const BUTTON_HEIGHT = 70;
  * @param {object} props - Component props.
  * @returns {HTMLElement}
  */
-// eslint-disable-next-line no-unused-vars
-const SoundboardButton = ({ data }) => {
+fabricate.createComponent('SoundboardButton', ({ data }) => {
   const { id, icon, label } = data;
 
-  // TODO manageState
-  const thisUpdateKey = `audioLoaded:${id}`;
+  const isLoaded = fabricate.manageState('loadAudio', id, false);
+
   let isFavorite = loadFavorites().includes(id);
   let container;
 
@@ -99,14 +98,12 @@ const SoundboardButton = ({ data }) => {
   ])
     .then(() => {
       // If it's already loaded previously
-      if (fabricate.getState(thisUpdateKey)) setVisiblyLoaded();
+      if (isLoaded.get()) setVisiblyLoaded();
     })
-    .watchState((el, state, updatedKey) => {
-      if (updatedKey !== thisUpdateKey) return;
-
-      // // When this id has loaded, update display
+    .watchState(() => {
+      // When this id has loaded, update display
       setVisiblyLoaded();
-    });
+    }, [isLoaded.key]);
 
   return container;
-};
+});

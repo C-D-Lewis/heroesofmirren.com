@@ -9,6 +9,8 @@ const cache = {};
  */
 // eslint-disable-next-line no-unused-vars
 const loadAudio = (id, name) => new Promise((resolve) => {
+  const isLoaded = fabricate.manageState('loadAudio', id, false);
+
   if (cache[name]) {
     resolve(cache[name]);
     return;
@@ -20,7 +22,7 @@ const loadAudio = (id, name) => new Promise((resolve) => {
     if (cache[name]) return;
 
     cache[name] = audio;
-    fabricate.updateState(`audioLoaded:${id}`, () => true);
+    isLoaded.set(true);
     resolve(audio);
   });
 });

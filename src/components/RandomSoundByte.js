@@ -1,4 +1,4 @@
-/* global loadAudio SoundboardButton */
+/* global loadAudio */
 
 /**
  * RandomSoundByte component.
@@ -19,7 +19,7 @@ const RandomSoundByte = ({ data }) => {
     audio.play();
   };
 
-  return SoundboardButton({ data })
+  return fabricate.SoundboardButton({ data })
     .onClick(playRandomSound)
     .then(() => loadAudio(id, `${soundPrefix}1`));
 };
