@@ -27,9 +27,10 @@ const Attribution = () => fabricate.Row()
   .withStyles({
     alignItems: 'center',
     borderRadius: '10px',
-    maxWidth: '300px',
     margin: '15px auto',
     padding: '12px',
+    width: '100%',
+    justifyContent: 'center',
   })
   .withChildren([
     fabricate('span')
@@ -63,7 +64,7 @@ const GalleryThumbnail = ({ name }) => {
   return fabricate('img')
     .withAttributes({ src })
     .withStyles({
-      width: fabricate.isMobile() ? '26%' : '28%',
+      width: '33%',
       margin: '10px',
       objectFit: 'contain',
       cursor: 'pointer',
@@ -82,13 +83,18 @@ const GalleryThumbnail = ({ name }) => {
  *
  * @returns {HTMLElement}
  */
-fabricate.declare('GalleryPage', () => fabricate.Row()
-  .withStyles({
-    backgroundColor: '#eee',
-    flexWrap: 'wrap',
-    paddingTop: '10px',
-  })
-  .withChildren([
-    ...Assets.galleryImages.map(GalleryThumbnail),
-    Attribution(),
-  ]));
+fabricate.declare('GalleryPage', () => {
+  const rows = [];
+  const imgs = [...Assets.galleryImages];
+  while (imgs.length) rows.push(imgs.splice(0, 3));
+
+  return fabricate.Column()
+    .withStyles({
+      backgroundColor: '#eee',
+      paddingTop: '10px',
+    })
+    .withChildren([
+      ...rows.map((items) => fabricate.Row().withChildren(items.map(GalleryThumbnail))),
+      Attribution(),
+    ]);
+});
