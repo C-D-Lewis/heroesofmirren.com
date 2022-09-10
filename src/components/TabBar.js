@@ -21,7 +21,7 @@ fabricate.declare('TabBar', () => fabricate.Row()
  */
 fabricate.declare('Tab', ({ tab }) => fabricate.Column()
   .withStyles({
-    fontSize: '1.5rem',
+    fontSize: fabricate.isMobile() ? '1.2rem' : '1.5rem',
     fontWeight: 'bold',
     color: '#555',
     padding: '10px 10px',

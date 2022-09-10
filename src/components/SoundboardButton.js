@@ -17,7 +17,6 @@ fabricate.declare('SoundboardButton', ({ data }) => {
   const isLoaded = fabricate.manageState('loadAudio', id, false);
 
   let isFavorite = FavoritesService.load().includes(id);
-  let container;
 
   /**
    * Get path to favorite icon depending on state.
@@ -25,6 +24,19 @@ fabricate.declare('SoundboardButton', ({ data }) => {
    * @returns {string} Icon path.
    */
   const getFavoriteIcon = () => `./assets/images/star_${isFavorite ? 'on' : 'off'}.png`;
+
+  const container = fabricate.Column()
+    .withStyles({
+      backgroundColor: 'lightgrey',
+      borderRadius: '5px',
+      width: `${BUTTON_WIDTH}px`,
+      margin: '5px',
+      opacity: '0.2',
+      transition: '1s',
+      overflow: 'hidden',
+      position: 'relative',
+      boxShadow: Theme.styles.boxShadow,
+    });
 
   const labelSpan = fabricate('span')
     .withStyles({
@@ -47,19 +59,6 @@ fabricate.declare('SoundboardButton', ({ data }) => {
     });
     labelSpan.setText(label);
   };
-
-  container = fabricate.Column()
-    .withStyles({
-      backgroundColor: 'lightgrey',
-      borderRadius: '5px',
-      width: `${BUTTON_WIDTH}px`,
-      margin: '5px',
-      opacity: '0.2',
-      transition: '1s',
-      overflow: 'hidden',
-      position: 'relative',
-      boxShadow: Theme.styles.boxShadow,
-    });
 
   const buttonIcon = fabricate('img')
     .withAttributes({ src: `./assets/icons/${icon}` })

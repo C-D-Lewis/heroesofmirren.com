@@ -21,11 +21,15 @@ const Application = () => fabricate.Column()
         fabricate('Tab', { tab: 'soundboard' })
           .onClick(() => fabricate.updateState('tab', () => 'soundboard'))
           .setText('Soundboard'),
+        fabricate('Tab', { tab: 'story' })
+          .onClick(() => fabricate.updateState('tab', () => 'story'))
+          .setText('Story'),
       ]),
     fabricate.Column()
       .withChildren([
         fabricate.when((state) => state.tab === 'gallery', () => fabricate('GalleryPage')),
         fabricate.when((state) => state.tab === 'soundboard', () => fabricate('SoundboardPage')),
+        fabricate.when((state) => state.tab === 'story', () => fabricate('StoryPage')),
       ]),
     fabricate('Footer'),
   ]);

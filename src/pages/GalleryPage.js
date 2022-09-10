@@ -53,10 +53,11 @@ const Attribution = () => fabricate.Row()
 /**
  * GalleryThumbnail component.
  *
- * @param {string} name - Name of the image.
+ * @param {object} props - Component props.
+ * @param {string} props.name - Name of the image.
  * @returns {HTMLElement}
  */
-const GalleryThumbnail = (name) => {
+const GalleryThumbnail = ({ name }) => {
   const src = `./assets/gallery/${name}`;
 
   return fabricate('img')
@@ -88,6 +89,6 @@ fabricate.declare('GalleryPage', () => fabricate.Row()
     paddingTop: '10px',
   })
   .withChildren([
-    ...Assets.galleryImages.map(({ name }) => GalleryThumbnail(name)),
+    ...Assets.galleryImages.map(GalleryThumbnail),
     Attribution(),
   ]));

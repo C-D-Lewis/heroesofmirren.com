@@ -91,5 +91,14 @@ Assets.sounds = [
 ];
 
 Assets.storyPages = [
-  { text: 'Example' },
+  { text: `Heroes arrive in fishing town Fairwater.
+Get a quest to go to a dairy from Rex at the local Adventurers Guild. A person of interest had disappeared there.
+In a shop, Jon barters for an orb, Aiden tries to steal a potion. Heroes subdue the shopkeeper with feeble staff strikes and pink light. Shopkeeper asks for something of value or else he will call the guards.
+Jon and Aiden to go graveyard, Dan barters for fish and renting a boat.
+Heroes walk along the path, surprise some bandits and win. The survivors are hung.
+Meet an old lady at the dairy who has lost Old Bessie.
+Find cow in field, all but Dan fall into a burial chamber and fight spooky skeletons.
+Next chamber has a giant spider, which instantly webs Jon. Chris kills after an arrow wounds its face. Loot the chamber.
+The final chamber contains spooky stairs with booming warnings. “I WILL FIND YOU!”. The heroes run from skeletons down the corridor. On the way out of the burial chamber, Jon and Aiden climb out while the others fight the horde. Everyone makes it out OK. 
+` },
 ];
