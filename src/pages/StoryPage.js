@@ -13,9 +13,9 @@ const mobileStyles = {
   fontSize: '18px',
   rotate: '-4.5deg',
   marginLeft: '61px',
-  marginTop: '75px',
-  maxWidth: '300px',
-  maxHeight: '380px',
+  marginTop: '80px',
+  maxWidth: '290px',
+  maxHeight: '370px',
 };
 
 /**

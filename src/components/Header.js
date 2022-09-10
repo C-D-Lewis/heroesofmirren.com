@@ -20,4 +20,7 @@ fabricate.declare('Header', () => fabricate.Row()
         width: `${HEADER_SIZE}px`,
         margin: '10px',
       }),
-  ]));
+  ])
+  .then((el) => {
+    window.addEventListener('scroll', console.log);
+  }));
