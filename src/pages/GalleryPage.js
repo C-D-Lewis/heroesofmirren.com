@@ -64,7 +64,7 @@ const GalleryThumbnail = ({ name }) => {
     .withAttributes({ src })
     .withStyles({
       width: '45%',
-      margin: '10px',
+      margin: '5px',
       objectFit: 'contain',
       cursor: 'pointer',
       border: '2px black',
