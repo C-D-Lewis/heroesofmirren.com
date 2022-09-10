@@ -1,5 +1,7 @@
 const cache = {};
 
+const AudioService = {};
+
 /**
  * Load an audio file if not cached already.
  *
@@ -7,8 +9,7 @@ const cache = {};
  * @param {string} name - File name.
  * @returns {Audio} Loaded Audio.
  */
-// eslint-disable-next-line no-unused-vars
-const loadAudio = (id, name) => new Promise((resolve) => {
+AudioService.loadAudio = (id, name) => new Promise((resolve) => {
   const isLoaded = fabricate.manageState('loadAudio', id, false);
 
   if (cache[name]) {

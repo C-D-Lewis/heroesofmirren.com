@@ -1,4 +1,4 @@
-/* global SoundByte RandomSoundByte loadFavorites SoundboardCategorySelect Sounds */
+/* global FavoritesService Assets */
 
 /**
  * To sound byte, depending on type.
@@ -6,28 +6,29 @@
  * @param {object} data - Object from assets.js
  * @returns {HTMLElement}
  */
-const toSoundByte = (data) => (data.sound ? SoundByte({ data }) : RandomSoundByte({ data }));
+const toSoundByte = (data) => (data.sound
+  ? fabricate('SoundByte', { data })
+  : fabricate('RandomSoundByte', { data }));
 
 /**
  * SoundboardPage component.
  *
  * @returns {HTMLElement}
  */
-// eslint-disable-next-line no-unused-vars
-const SoundboardPage = () => {
+fabricate.declare('SoundboardPage', () => {
   /**
    * Show just the sounds for the chosen category.
    *
    * @returns {Array<HTMLElement>} List of SoundByte or RandomSoundByte elements.
    */
   const soundsForCategory = (category) => {
-    const favorites = loadFavorites();
+    const favorites = FavoritesService.load();
 
     // Just the favorites, regardless of category
-    if (category === 'favorites') { return Sounds.filter((p) => favorites.includes(p.id)).map(toSoundByte); }
+    if (category === 'favorites') return Assets.sounds.filter((p) => favorites.includes(p.id)).map(toSoundByte);
 
     // Sounds for this category
-    return Sounds
+    return Assets.sounds
       .filter((p) => p.categories.includes(category) || category === 'all')
       .map(toSoundByte);
   };
@@ -35,7 +36,7 @@ const SoundboardPage = () => {
   return fabricate('div')
     .withStyles({ height: '100%' })
     .withChildren([
-      SoundboardCategorySelect(),
+      fabricate('SoundboardCategorySelect'),
       fabricate.Row()
         .withStyles({
           flexWrap: 'wrap',
@@ -43,12 +44,9 @@ const SoundboardPage = () => {
           padding: '10px',
         })
         .withChildren(soundsForCategory(fabricate.getState('category')))
-        .watchState((el, state, updatedKey) => {
-          // Change of category or favorites list
-          if (!['favoritesUpdated', 'category'].includes(updatedKey)) return;
-
+        .watchState((el, state) => {
           el.clear();
           el.addChildren(soundsForCategory(state.category));
-        }),
+        }, ['favoritesUpdated', 'category']),
     ]);
-};
+});

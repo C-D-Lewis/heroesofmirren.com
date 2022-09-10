@@ -1,4 +1,4 @@
-/* global GalleryImages */
+/* global Assets Theme */
 
 /**
  * AtributionLinkIcon component.
@@ -26,7 +26,6 @@ const AttributionLinkIcon = ({ img, url }) => fabricate('a')
 const Attribution = () => fabricate.Row()
   .withStyles({
     alignItems: 'center',
-    backgroundColor: 'white',
     borderRadius: '10px',
     maxWidth: '300px',
     margin: '15px auto',
@@ -72,6 +71,7 @@ const GalleryThumbnail = (name) => {
       maxHeight: '160px',
       padding: '5px',
       backgroundColor: 'white',
+      boxShadow: Theme.styles.boxShadow,
     })
     .onClick(() => window.open(src, '_blank'));
 };
@@ -81,14 +81,13 @@ const GalleryThumbnail = (name) => {
  *
  * @returns {HTMLElement}
  */
-// eslint-disable-next-line no-unused-vars
-const GalleryPage = () => fabricate.Row()
+fabricate.declare('GalleryPage', () => fabricate.Row()
   .withStyles({
     backgroundColor: '#eee',
     flexWrap: 'wrap',
     paddingTop: '10px',
   })
   .withChildren([
-    ...GalleryImages.map(({ name }) => GalleryThumbnail(name)),
+    ...Assets.galleryImages.map(({ name }) => GalleryThumbnail(name)),
     Attribution(),
-  ]);
+  ]));

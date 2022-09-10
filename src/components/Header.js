@@ -6,8 +6,7 @@ const HEADER_SIZE = 200;
  *
  * @returns {HTMLElement}
  */
-// eslint-disable-next-line no-unused-vars
-const Header = () => fabricate.Row()
+fabricate.declare('Header', () => fabricate.Row()
   .withStyles({
     height: `${HEADER_SIZE}px`,
     justifyContent: 'center',
@@ -21,4 +20,4 @@ const Header = () => fabricate.Row()
         width: `${HEADER_SIZE}px`,
         margin: '10px',
       }),
-  ]);
+  ]));

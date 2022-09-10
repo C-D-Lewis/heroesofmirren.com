@@ -1,4 +1,4 @@
-/* global loadFavorites saveFavorites */
+/* global Theme FavoritesService */
 
 /** Button width */
 const BUTTON_WIDTH = 110;
@@ -11,12 +11,12 @@ const BUTTON_HEIGHT = 70;
  * @param {object} props - Component props.
  * @returns {HTMLElement}
  */
-fabricate.createComponent('SoundboardButton', ({ data }) => {
+fabricate.declare('SoundboardButton', ({ data }) => {
   const { id, icon, label } = data;
 
   const isLoaded = fabricate.manageState('loadAudio', id, false);
 
-  let isFavorite = loadFavorites().includes(id);
+  let isFavorite = FavoritesService.load().includes(id);
   let container;
 
   /**
@@ -58,7 +58,7 @@ fabricate.createComponent('SoundboardButton', ({ data }) => {
       transition: '1s',
       overflow: 'hidden',
       position: 'relative',
-      boxShadow: '2px 2px 3px 1px #5556',
+      boxShadow: Theme.styles.boxShadow,
     });
 
   const buttonIcon = fabricate('img')
@@ -76,9 +76,10 @@ fabricate.createComponent('SoundboardButton', ({ data }) => {
       isFavorite = !isFavorite;
       el.withAttributes({ src: getFavoriteIcon() });
 
-      // Update list in localStorage
-      const favorites = loadFavorites();
-      saveFavorites(isFavorite ? [...favorites, id] : [...favorites.filter((p) => p !== id)]);
+      // Update list in localStorage, either adding or deleting
+      const favorites = FavoritesService.load();
+      const newList = isFavorite ? [...favorites, id] : [...favorites.filter((p) => p !== id)];
+      FavoritesService.save(newList);
       fabricate.updateState('favoritesUpdated', () => Date.now());
     })
     .withStyles({

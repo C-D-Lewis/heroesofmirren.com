@@ -1,3 +1,5 @@
+/* global Theme */
+
 /**
  * Pill component.
  *
@@ -7,7 +9,7 @@
 const Pill = ({ category, vPad = 10 }) => fabricate.Column()
   .withStyles({
     borderRadius: '50px',
-    backgroundColor: Colors.primary,
+    backgroundColor: Theme.colors.primary,
     padding: `${vPad}px 12px`,
     color: '#555',
     margin: '5px',
@@ -32,11 +34,8 @@ const Pill = ({ category, vPad = 10 }) => fabricate.Column()
 
 /**
  * SoundboardCategorySelect component.
- *
- * @returns {HTMLElement}
  */
-// eslint-disable-next-line no-unused-vars
-const SoundboardCategorySelect = () => fabricate.Row()
+fabricate.declare('SoundboardCategorySelect', () => fabricate.Row()
   .withStyles({
     backgroundColor: 'white',
     padding: '10px',
@@ -56,4 +55,4 @@ const SoundboardCategorySelect = () => fabricate.Row()
     Pill({ category: 'dnd' }).setText('D&D'),
     Pill({ category: 'songs' }).setText('Songs'),
     Pill({ category: 'drg' }).setText('DRG'),
-  ]);
+  ]));

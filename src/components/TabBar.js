@@ -1,16 +1,17 @@
+/* global Theme */
+
 /**
  * TabBar component.
  *
  * @returns {HTMLElement}
  */
-// eslint-disable-next-line no-unused-vars
-const TabBar = () => fabricate.Row()
+fabricate.declare('TabBar', () => fabricate.Row()
   .withStyles({
-    backgroundColor: Colors.secondary,
+    backgroundColor: Theme.colors.secondary,
     width: '100%',
     height: '50px',
     justifyContent: 'center',
-  });
+  }));
 
 /**
  * Tab component.
@@ -18,8 +19,7 @@ const TabBar = () => fabricate.Row()
  * @param {object} props - Component props.
  * @returns {HTMLElement}
  */
-// eslint-disable-next-line no-unused-vars
-const Tab = ({ tab }) => fabricate.Column()
+fabricate.declare('Tab', ({ tab }) => fabricate.Column()
   .withStyles({
     fontSize: '1.5rem',
     fontWeight: 'bold',
@@ -34,7 +34,7 @@ const Tab = ({ tab }) => fabricate.Column()
 
     const isSelected = state.tab === tab;
     el.addStyles({
-      backgroundColor: isSelected ? Colors.primary : 'initial',
+      backgroundColor: isSelected ? Theme.colors.primary : 'initial',
       color: isSelected ? 'white' : '#555',
     });
-  });
+  }));

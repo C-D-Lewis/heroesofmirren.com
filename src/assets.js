@@ -1,8 +1,9 @@
 /* eslint-disable object-curly-newline */
 
+const Assets = {};
+
 /** List of images shown in Gallery */
-// eslint-disable-next-line no-unused-vars
-const GalleryImages = [
+Assets.galleryImages = [
   { name: 'minecart.png'    },
   { name: 'bartop.jpg'      },
   { name: 'clyde-steph.jpg' },
@@ -32,8 +33,7 @@ const GalleryImages = [
  *
  * Note - id is used for favorites list, don't change after adding!
  */
-// eslint-disable-next-line no-unused-vars
-const Sounds = [
+Assets.sounds = [
   { id: 'rick',           categories: ['ia', 'songs'],  label: 'Angels',             icon: 'rick.jpg',           sound: 'angels'                     },
   { id: 'knuckles',       categories: ['ia'],           label: 'Oh No',              icon: 'knuckles.jpg',       sound: 'ohno'                       },
   { id: 'butters',        categories: ['ia'],           label: 'Robot Friend',       icon: 'butters.jpg',        sound: 'robot'                      },
@@ -88,4 +88,8 @@ const Sounds = [
   { id: 'drg_mule',       categories: ['drg'],          label: 'M.U.L.E',            icon: 'drg_mule.png',       soundPrefix: 'drg_mule_',   max: 10 },
   { id: 'hit_fool',       categories: [],               label: 'FOOOOOOOOOOOL!',     icon: 'hit_fool.png',       sound: 'hit_fool'                   },
   { id: 'hit_screwed',    categories: [],               label: 'You blew it!',       icon: 'hit_screwed.png',    sound: 'hit_screwed'                },
+];
+
+Assets.storyPages = [
+  { text: 'Example' },
 ];

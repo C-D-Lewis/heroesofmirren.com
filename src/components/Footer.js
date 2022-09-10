@@ -3,7 +3,7 @@
  *
  * @returns {HTMLElement}
  */
-fabricate.createComponent('Footer', () => fabricate.Column()
+fabricate.declare('Footer', () => fabricate.Column()
   .withStyles({
     justifyContent: 'center',
     backgroundColor: '#444',

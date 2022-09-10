@@ -1,5 +1,3 @@
-/* global Header TabBar Tab GalleryPage SoundboardPage */
-
 /**
  * Application component.
  *
@@ -14,22 +12,22 @@ const Application = () => fabricate.Column()
     margin: 'auto',
   })
   .withChildren([
-    Header(),
-    TabBar()
+    fabricate('Header'),
+    fabricate('TabBar')
       .withChildren([
-        Tab({ tab: 'gallery' })
+        fabricate('Tab', { tab: 'gallery' })
           .onClick(() => fabricate.updateState('tab', () => 'gallery'))
           .setText('Gallery'),
-        Tab({ tab: 'soundboard' })
+        fabricate('Tab', { tab: 'soundboard' })
           .onClick(() => fabricate.updateState('tab', () => 'soundboard'))
           .setText('Soundboard'),
       ]),
     fabricate.Column()
       .withChildren([
-        fabricate.when((state) => state.tab === 'gallery', () => GalleryPage()),
-        fabricate.when((state) => state.tab === 'soundboard', () => SoundboardPage()),
+        fabricate.when((state) => state.tab === 'gallery', () => fabricate('GalleryPage')),
+        fabricate.when((state) => state.tab === 'soundboard', () => fabricate('SoundboardPage')),
       ]),
-    fabricate.Footer(),
+    fabricate('Footer'),
   ]);
 
 const initialState = {
