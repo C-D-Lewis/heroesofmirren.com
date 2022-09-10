@@ -63,7 +63,7 @@ const GalleryThumbnail = ({ name }) => {
   return fabricate('img')
     .withAttributes({ src })
     .withStyles({
-      width: '50%',
+      width: '45%',
       margin: '5px',
       objectFit: 'contain',
       cursor: 'pointer',
