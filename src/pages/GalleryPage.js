@@ -63,7 +63,7 @@ const GalleryThumbnail = ({ name }) => {
   return fabricate('img')
     .withAttributes({ src })
     .withStyles({
-      width: '28%',
+      width: '45%',
       margin: '10px',
       objectFit: 'contain',
       cursor: 'pointer',
@@ -85,7 +85,7 @@ const GalleryThumbnail = ({ name }) => {
 fabricate.declare('GalleryPage', () => {
   const rows = [];
   const imgs = [...Assets.galleryImages];
-  while (imgs.length) rows.push(imgs.splice(0, 3));
+  while (imgs.length) rows.push(imgs.splice(0, 2));
 
   return fabricate.Column()
     .withStyles({
