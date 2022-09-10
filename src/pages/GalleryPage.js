@@ -63,7 +63,7 @@ const GalleryThumbnail = ({ name }) => {
   return fabricate('img')
     .withAttributes({ src })
     .withStyles({
-      width: '45%',
+      width: '50%',
       margin: '5px',
       objectFit: 'contain',
       cursor: 'pointer',
@@ -93,7 +93,7 @@ fabricate.declare('GalleryPage', () => {
       paddingTop: '10px',
     })
     .withChildren([
-      ...rows.map((items) => fabricate.Row().withChildren(items.map(GalleryThumbnail))),
+      ...rows.map((items) => fabricate.Row().withStyles({ justifyContent: 'center' }).withChildren(items.map(GalleryThumbnail))),
       Attribution(),
     ]);
 });
