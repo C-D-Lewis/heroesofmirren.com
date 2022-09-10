@@ -29,7 +29,6 @@ const Attribution = () => fabricate.Row()
     borderRadius: '10px',
     margin: '15px auto',
     padding: '12px',
-    width: '100%',
     justifyContent: 'center',
   })
   .withChildren([
@@ -64,7 +63,7 @@ const GalleryThumbnail = ({ name }) => {
   return fabricate('img')
     .withAttributes({ src })
     .withStyles({
-      width: '33%',
+      width: '28%',
       margin: '10px',
       objectFit: 'contain',
       cursor: 'pointer',
