@@ -63,8 +63,9 @@ const GalleryThumbnail = ({ name }) => {
   return fabricate('img')
     .withAttributes({ src })
     .withStyles({
-      width: '45%',
-      margin: '5px',
+      flex: '1 1 0',
+      minWidth: '0',
+      margin: '0px 5px',
       objectFit: 'contain',
       cursor: 'pointer',
       border: '2px black',
@@ -76,6 +77,14 @@ const GalleryThumbnail = ({ name }) => {
     })
     .onClick(() => window.open(src, '_blank'));
 };
+
+/**
+ * GalleryRow component.
+ *
+ * @returns {HTMLElement}
+ */
+const GalleryRow = () => fabricate.Row()
+  .withStyles({ justifyContent: 'center', padding: '5px' });
 
 /**
  * GalleryPage component.
@@ -93,7 +102,7 @@ fabricate.declare('GalleryPage', () => {
       paddingTop: '10px',
     })
     .withChildren([
-      ...rows.map((items) => fabricate.Row().withStyles({ justifyContent: 'center' }).withChildren(items.map(GalleryThumbnail))),
+      ...rows.map((items) => GalleryRow().withChildren(items.map(GalleryThumbnail))),
       Attribution(),
     ]);
 });

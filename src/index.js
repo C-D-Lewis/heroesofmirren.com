@@ -1,4 +1,10 @@
-const getQueryParam = name => new URLSearchParams(window.location.search).get(name);
+/**
+ * Get a query param.
+ *
+ * @param {string} name - Parameter name.
+ * @returns {string|undefined} Value if found.
+ */
+const getQueryParam = (name) => new URLSearchParams(window.location.search).get(name);
 
 /**
  * Application component.
@@ -26,9 +32,11 @@ const Application = () => {
           fabricate('Tab', { tab: 'soundboard' })
             .onClick(() => fabricate.updateState('tab', () => 'soundboard'))
             .setText('Soundboard'),
-          showStoryTab ? fabricate('Tab', { tab: 'story' })
-            .onClick(() => fabricate.updateState('tab', () => 'story'))
-            .setText('Story') : fabricate('div'),
+          showStoryTab
+            ? fabricate('Tab', { tab: 'story' })
+              .onClick(() => fabricate.updateState('tab', () => 'story'))
+              .setText('Story')
+            : fabricate('div'),
         ]),
       fabricate.Column()
         .withChildren([

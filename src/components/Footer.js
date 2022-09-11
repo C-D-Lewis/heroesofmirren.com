@@ -13,7 +13,7 @@ fabricate.declare('Footer', () => fabricate.Column()
     fabricate.Row()
       .withStyles({
         justifyContent: 'center',
-        padding: '20px 0px',
+        padding: '10px 0px',
         alignItems: 'center',
       })
       .withChildren([

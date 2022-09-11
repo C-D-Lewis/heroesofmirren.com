@@ -11,42 +11,54 @@ const toSoundByte = (data) => (data.sound
   : fabricate('RandomSoundByte', { data }));
 
 /**
+ * SoundboardRow component.
+ *
+ * @returns {HTMLElement}
+ */
+const SoundboardRow = () => fabricate.Row()
+  .withStyles({ justifyContent: 'center', padding: '5px' });
+
+/**
+ * Show just the sounds for the chosen category, in rows.
+ *
+ * @returns {Array<HTMLElement>} List of SoundByte or RandomSoundByte elements.
+ */
+const soundRowsForCategory = (category) => {
+  const favorites = FavoritesService.load();
+  const rowSize = fabricate.isMobile() ? 3 : 5;
+
+  const soundList = Assets.sounds.filter(
+    (p) => (category === 'favorites'
+      // Just the favorites, regardless of category
+      ? favorites.includes(p.id)
+      // Sounds for this category
+      : p.categories.includes(category) || category === 'all'),
+  )
+    .map(toSoundByte);
+
+  const rows = [];
+  const arr = [...soundList];
+  while (arr.length) rows.push(arr.splice(0, rowSize));
+
+  return rows.map((items) => SoundboardRow().withChildren(items));
+};
+
+/**
  * SoundboardPage component.
  *
  * @returns {HTMLElement}
  */
-fabricate.declare('SoundboardPage', () => {
-  /**
-   * Show just the sounds for the chosen category.
-   *
-   * @returns {Array<HTMLElement>} List of SoundByte or RandomSoundByte elements.
-   */
-  const soundsForCategory = (category) => {
-    const favorites = FavoritesService.load();
-
-    // Just the favorites, regardless of category
-    if (category === 'favorites') return Assets.sounds.filter((p) => favorites.includes(p.id)).map(toSoundByte);
-
-    // Sounds for this category
-    return Assets.sounds
-      .filter((p) => p.categories.includes(category) || category === 'all')
-      .map(toSoundByte);
-  };
-
-  return fabricate('div')
-    .withStyles({ height: '100%' })
-    .withChildren([
-      fabricate('SoundboardCategorySelect'),
-      fabricate.Row()
-        .withStyles({
-          flexWrap: 'wrap',
-          backgroundColor: 'white',
-          padding: '10px',
-        })
-        .withChildren(soundsForCategory(fabricate.getState('category')))
-        .watchState((el, state) => {
-          el.clear();
-          el.addChildren(soundsForCategory(state.category));
-        }, ['favoritesUpdated', 'category']),
-    ]);
-});
+fabricate.declare('SoundboardPage', () => fabricate.Column()
+  .withChildren([
+    fabricate('SoundboardCategorySelect'),
+    fabricate.Column()
+      .withStyles({
+        backgroundColor: 'white',
+        padding: '10px',
+      })
+      .withChildren(soundRowsForCategory(fabricate.getState('category')))
+      .watchState((el, state) => {
+        el.clear();
+        el.addChildren(soundRowsForCategory(state.category));
+      }, ['favoritesUpdated', 'category']),
+  ]));

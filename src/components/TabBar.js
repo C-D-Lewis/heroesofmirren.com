@@ -9,7 +9,7 @@ fabricate.declare('TabBar', () => fabricate.Row()
   .withStyles({
     backgroundColor: Theme.colors.secondary,
     width: '100%',
-    height: '50px',
+    height: fabricate.isMobile() ? '40px' : '50px',
     justifyContent: 'center',
   }));
 

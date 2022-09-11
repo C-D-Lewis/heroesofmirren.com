@@ -23,23 +23,18 @@ const Pill = ({ category, vPad = 10 }) => fabricate.Column()
       el.addStyles({ color: 'white' });
     }
   })
-  .watchState((el, state, updatedKey) => {
-    if (updatedKey !== 'category') return;
-
+  .watchState((el, state) => {
     // When category selection changes
     const isSelected = state.category === category;
 
     el.addStyles({ color: isSelected ? 'white' : '#555' });
-  });
+  }, ['category']);
 
 /**
  * SoundboardCategorySelect component.
  */
 fabricate.declare('SoundboardCategorySelect', () => fabricate.Row()
-  .withStyles({
-    backgroundColor: 'white',
-    padding: '10px',
-  })
+  .withStyles({ backgroundColor: 'white', padding: '10px' })
   .withChildren([
     Pill({ category: 'all' }).setText('All'),
     Pill({ category: 'favorites', vPad: 3 })
