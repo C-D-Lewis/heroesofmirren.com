@@ -54,7 +54,7 @@ fabricate.declare('SoundboardPage', () => fabricate.Column()
     fabricate.Column()
       .withStyles({
         backgroundColor: 'white',
-        padding: '10px',
+        padding: '0px 10px',
       })
       .withChildren(soundRowsForCategory(fabricate.getState('category')))
       .watchState((el, state) => {
