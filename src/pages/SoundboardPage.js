@@ -56,9 +56,12 @@ fabricate.declare('SoundboardPage', () => fabricate.Column()
         backgroundColor: 'white',
         padding: '0px 10px',
       })
-      .withChildren(soundRowsForCategory(fabricate.getState('category')))
       .watchState((el, state) => {
         el.clear();
         el.addChildren(soundRowsForCategory(state.category));
-      }, ['favoritesUpdated', 'category']),
+      }, ['favoritesUpdated', 'category'])
+      .then((el, { category }) => {
+        // Initial display
+        el.addChildren(soundRowsForCategory(category));
+      }),
   ]));
