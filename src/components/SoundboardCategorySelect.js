@@ -18,8 +18,8 @@ const Pill = ({ category, vPad = 10 }) => fabricate.Column()
     justifyContent: 'center',
   })
   .onClick(() => fabricate.updateState('category', () => category))
-  .then((el) => {
-    if (fabricate.getState('category') === category) {
+  .then((el, state) => {
+    if (state.category === category) {
       el.addStyles({ color: 'white' });
     }
   })
