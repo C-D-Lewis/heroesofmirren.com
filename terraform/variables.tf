@@ -19,7 +19,7 @@ variable "vpc_id" {
 variable "zone_id" {
   type        = string
   description = "Route53 zone ID"
-  default     = "transfer from godaddy"
+  default     = "Z0035116JDBHMXY8KYEK"
 }
 
 variable "domain_name" {
@@ -31,5 +31,5 @@ variable "domain_name" {
 variable "certificate_arn" {
   type        = string
   description = "Certificate ARN in ACM"
-  default     = ""
+  default     = "arn:aws:acm:us-east-1:617929423658:certificate/53458288-46bf-4d00-8fd9-a2ab163189a3"
 }

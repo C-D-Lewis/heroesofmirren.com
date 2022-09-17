@@ -17,8 +17,12 @@ resource "aws_s3_bucket" "client_bucket" {
   ]
 }
 EOF
+}
 
-  website {
-    index_document = "index.html"
+resource "aws_s3_bucket_website_configuration" "bucket_website" {
+  bucket = aws_s3_bucket.client_bucket.id
+
+  index_document {
+    suffix = "index.html"
   }
 }
