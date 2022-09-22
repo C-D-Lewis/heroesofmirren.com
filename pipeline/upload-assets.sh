@@ -12,7 +12,6 @@ if [ ! "$(cat index.html | grep COMMIT)" ]; then
 fi
 
 # Update version to fix cached script issues
-COMMIT=$(date +%s)
 sed -i.bak "s/COMMIT/$COMMIT/g" index.html
 
 # Push
