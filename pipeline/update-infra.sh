@@ -5,4 +5,4 @@ set -eu
 # Run terraform
 cd terraform
 terraform init
-terraform apply
+terraform apply -auto-approve
