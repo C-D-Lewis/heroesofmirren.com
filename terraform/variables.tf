@@ -28,8 +28,14 @@ variable "domain_name" {
   default     = "heroesofmirren.com"
 }
 
+variable "alt_domain_name" {
+  type        = string
+  description = "Alternate CNAME domain name, if any"
+  default     = "www.heroesofmirren.com"
+}
+
 variable "certificate_arn" {
   type        = string
   description = "Certificate ARN in ACM"
-  default     = "arn:aws:acm:us-east-1:617929423658:certificate/f38e345e-9a4c-41f8-a54f-debcce78fb04"
+  default     = "arn:aws:acm:us-east-1:617929423658:certificate/3599134e-eb85-4349-991b-d294b7291787"
 }
