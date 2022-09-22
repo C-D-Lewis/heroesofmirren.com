@@ -1,6 +1,8 @@
 # heroesofmirren.com
 
-Yo yo yo let me tell you something real quick.
+> Yo yo yo let me tell you something real quick.
+
+Site for the mighty Heroes of Mirren.
 
 
 ## Setup
@@ -20,7 +22,23 @@ Run a local dev server:
 npm start
 ```
 
-## Adding new sounds
+## Deploy
+
+The site is deployed by GitHub actions when a new commit is added to the
+`master` branch.
+
+Alternatively, it can be deployed manually via Terraform and AWS CLI:
+
+```
+./pipeline/upload-assets.sh
+
+./pipeline/update-infra.sh
+
+./pipeline/invalidation.sh
+```
+
+
+## Adding new images and sounds
 
 Images and sounds are listed in `src/assets.js`, and have entries there that
 should correspond to images and sounds in `assets/icons` and `assets/sounds`
