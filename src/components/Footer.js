@@ -3,35 +3,32 @@
  *
  * @returns {HTMLElement}
  */
-fabricate.declare('Footer', () => fabricate.Column()
-  .withStyles({
+fabricate.declare('Footer', () => fabricate('Column')
+  .setStyles({
     justifyContent: 'center',
     backgroundColor: '#444',
     boxShadow: 'inset 1px 4px 11px -6px black',
   })
-  .withChildren([
-    fabricate.Row()
-      .withStyles({
+  .setChildren([
+    fabricate('Row')
+      .setStyles({
         justifyContent: 'center',
         padding: '10px 0px',
         alignItems: 'center',
       })
-      .withChildren([
+      .setChildren([
         fabricate('img')
-          .withAttributes({ src: './assets/images/github.png' })
-          .withStyles({
-            width: '32px',
-            height: '32px',
-          }),
+          .setAttributes({ src: './assets/images/github.png' })
+          .setStyles({ width: '32px', height: '32px' }),
         fabricate('span')
-          .withStyles({
+          .setStyles({
             color: 'white',
             marginLeft: '10px',
             marginRight: '5px',
           })
           .setText('Source available'),
         fabricate('a')
-          .withAttributes({
+          .setAttributes({
             href: 'https://github.com/C-D-Lewis/heroesofmirren.com',
             target: '_blank',
           })

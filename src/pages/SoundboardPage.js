@@ -1,5 +1,3 @@
-/* global FavoritesService Assets */
-
 /**
  * To sound byte, depending on type.
  *
@@ -15,8 +13,8 @@ const toSoundByte = (data) => (data.sound
  *
  * @returns {HTMLElement}
  */
-const SoundboardRow = () => fabricate.Row()
-  .withStyles({ justifyContent: 'center', padding: '5px' });
+const SoundboardRow = () => fabricate('Row')
+  .setStyles({ justifyContent: 'center', padding: '5px' });
 
 /**
  * Show just the sounds for the chosen category, in rows.
@@ -25,7 +23,10 @@ const SoundboardRow = () => fabricate.Row()
  */
 const soundRowsForCategory = (category) => {
   const favorites = FavoritesService.load();
-  const rowSize = fabricate.isMobile() ? 3 : 5;
+  const rowSize = fabricate.isNarrow() ? 3 : 5;
+
+  // Update app state with favorites list - relies on 'favorites' being a list of IDs
+  fabricate.update(Utils.isFavoriteKey(favorites), true);
 
   const soundList = Assets.sounds.filter(
     (p) => (category === 'favorites'
@@ -33,14 +34,15 @@ const soundRowsForCategory = (category) => {
       ? favorites.includes(p.id)
       // Sounds for this category
       : p.categories.includes(category) || category === 'all'),
-  )
-    .map(toSoundByte);
+  );
 
   const rows = [];
   const arr = [...soundList];
   while (arr.length) rows.push(arr.splice(0, rowSize));
 
-  return rows.map((items) => SoundboardRow().withChildren(items));
+  return rows.map((items) => SoundboardRow()
+    .setStyles({ justifyContent: items.length === rowSize ? 'center' : 'start' })
+    .setChildren(items.map(toSoundByte)));
 };
 
 /**
@@ -48,20 +50,12 @@ const soundRowsForCategory = (category) => {
  *
  * @returns {HTMLElement}
  */
-fabricate.declare('SoundboardPage', () => fabricate.Column()
-  .withChildren([
+fabricate.declare('SoundboardPage', () => fabricate('Column')
+  .setChildren([
     fabricate('SoundboardCategorySelect'),
-    fabricate.Column()
-      .withStyles({
-        backgroundColor: 'white',
-        padding: '0px 10px',
-      })
-      .watchState((el, state) => {
-        el.clear();
-        el.addChildren(soundRowsForCategory(state.category));
-      }, ['favoritesUpdated', 'category'])
-      .then((el, { category }) => {
-        // Initial display
-        el.addChildren(soundRowsForCategory(category));
-      }),
+    fabricate('Column')
+      .setStyles({ backgroundColor: 'white', padding: '0px 10px' })
+      .onUpdate((el, state) => {
+        el.setChildren(soundRowsForCategory(state.category));
+      }, ['fabricate:init', 'favoritesUpdated', 'category']),
   ]));

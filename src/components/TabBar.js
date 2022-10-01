@@ -1,15 +1,13 @@
-/* global Theme */
-
 /**
  * TabBar component.
  *
  * @returns {HTMLElement}
  */
-fabricate.declare('TabBar', () => fabricate.Row()
-  .withStyles({
+fabricate.declare('TabBar', () => fabricate('Row')
+  .setStyles({
     backgroundColor: Theme.colors.secondary,
     width: '100%',
-    height: fabricate.isMobile() ? '40px' : '50px',
+    height: fabricate.isNarrow() ? '40px' : '50px',
     justifyContent: 'center',
   }));
 
@@ -19,9 +17,9 @@ fabricate.declare('TabBar', () => fabricate.Row()
  * @param {object} props - Component props.
  * @returns {HTMLElement}
  */
-fabricate.declare('Tab', ({ tab }) => fabricate.Column()
-  .withStyles({
-    fontSize: fabricate.isMobile() ? '1.2rem' : '1.5rem',
+fabricate.declare('Tab', ({ tab }) => fabricate('Column')
+  .setStyles({
+    fontSize: fabricate.isNarrow() ? '1.2rem' : '1.5rem',
     fontWeight: 'bold',
     color: '#555',
     padding: '10px 10px',
@@ -29,12 +27,11 @@ fabricate.declare('Tab', ({ tab }) => fabricate.Column()
     flex: '1',
     justifyContent: 'center',
   })
-  .watchState((el, state, updatedKey) => {
-    if (updatedKey !== 'tab') return;
-
+  .onUpdate((el, state) => {
     const isSelected = state.tab === tab;
-    el.addStyles({
+
+    el.setStyles({
       backgroundColor: isSelected ? Theme.colors.primary : 'initial',
       color: isSelected ? 'white' : '#555',
     });
-  }));
+  }, ['fabricate:init', 'tab']));

@@ -1,5 +1,3 @@
-/* global AudioService */
-
 /**
  * SountByte component.
  *

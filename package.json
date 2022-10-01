@@ -32,7 +32,11 @@
     },
     "globals": {
       "fabricate": "readonly",
-      "Colors": "readonly"
+      "Theme": "readonly",
+      "Utils": "readonly",
+      "Assets": "readonly",
+      "FavoritesService": "readonly",
+      "AudioService": "readonly"
     }
   }
 }

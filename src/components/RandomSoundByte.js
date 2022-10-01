@@ -1,5 +1,3 @@
-/* global AudioService */
-
 /**
  * RandomSoundByte component.
  *
@@ -22,5 +20,5 @@ fabricate.declare('RandomSoundByte', ({ data }) => {
 
   return fabricate('SoundboardButton', { data })
     .onClick(playRandomSound)
-    .then(() => AudioService.loadAudio(id, `${soundPrefix}1`));
+    .onCreate(() => AudioService.loadAudio(id, `${soundPrefix}1`));
 });

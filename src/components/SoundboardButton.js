@@ -1,9 +1,15 @@
-/* global Theme FavoritesService */
-
 /** Button width */
 const BUTTON_WIDTH = 110;
 /** Button height */
 const BUTTON_HEIGHT = 70;
+
+/**
+ * Get path to favorite icon depending on state.
+ *
+ * @param {boolean} isFavorite - true if this sound is a favorite.
+ * @returns {string} Icon path.
+ */
+const getFavoriteIcon = (isFavorite) => `./assets/images/star_${isFavorite ? 'on' : 'off'}.png`;
 
 /**
  * SoundboardButton component, shared by SountByte and RandomSoundByte.
@@ -14,19 +20,11 @@ const BUTTON_HEIGHT = 70;
 fabricate.declare('SoundboardButton', ({ data }) => {
   const { id, icon, label } = data;
 
-  const isLoaded = fabricate.manageState('loadAudio', id, false);
+  const audioLoadedKey = Utils.audioLoadedKey(id);
+  const isFavoriteKey = Utils.isFavoriteKey(id);
 
-  let isFavorite = FavoritesService.load().includes(id);
-
-  /**
-   * Get path to favorite icon depending on state.
-   *
-   * @returns {string} Icon path.
-   */
-  const getFavoriteIcon = () => `./assets/images/star_${isFavorite ? 'on' : 'off'}.png`;
-
-  const container = fabricate.Column()
-    .withStyles({
+  const container = fabricate('Column')
+    .setStyles({
       backgroundColor: 'lightgrey',
       borderRadius: '5px',
       width: `${BUTTON_WIDTH}px`,
@@ -39,7 +37,7 @@ fabricate.declare('SoundboardButton', ({ data }) => {
     });
 
   const labelSpan = fabricate('span')
-    .withStyles({
+    .setStyles({
       fontSize: '0.7rem',
       width: '100%',
       display: 'flex',
@@ -49,61 +47,64 @@ fabricate.declare('SoundboardButton', ({ data }) => {
     })
     .setText('...');
 
-  /**
-   * Set the visibly loaded state.
-   */
-  const setVisiblyLoaded = () => {
-    container.addStyles({
-      backgroundColor: 'white',
-      opacity: '1',
-    });
-    labelSpan.setText(label);
-  };
-
-  const buttonIcon = fabricate('img')
-    .withAttributes({ src: `./assets/icons/${icon}` })
-    .withStyles({
+  const buttonIcon = fabricate('Image', { src: `./assets/icons/${icon}` })
+    .setStyles({
       width: '100%',
       height: `${BUTTON_HEIGHT}px`,
       maxHeight: `${BUTTON_HEIGHT}px`,
       objectFit: 'cover',
     });
 
-  const favoriteButton = fabricate('img')
-    .onClick((el) => {
-      // Update component state
-      isFavorite = !isFavorite;
-      el.withAttributes({ src: getFavoriteIcon() });
+  const favoriteButton = fabricate('Image', { src: getFavoriteIcon(false) })
+    .onClick((el, state) => {
+      const isFavorite = !state[isFavoriteKey];
 
       // Update list in localStorage, either adding or deleting
       const favorites = FavoritesService.load();
       const newList = isFavorite ? [...favorites, id] : [...favorites.filter((p) => p !== id)];
       FavoritesService.save(newList);
-      fabricate.updateState('favoritesUpdated', () => Date.now());
+
+      // Update app state
+      fabricate.update({
+        [isFavoriteKey]: isFavorite,
+        favoritesUpdated: Date.now(),
+      });
     })
-    .withStyles({
+    .setStyles({
       position: 'absolute',
       width: '28px',
       height: '28px',
       right: '5px',
       top: '5px',
     })
-    .withAttributes({ src: getFavoriteIcon() });
+    .onUpdate((el, state) => {
+      el.setAttributes({ src: getFavoriteIcon(state[isFavoriteKey]) });
+    }, [isFavoriteKey])
+    .onCreate((el, state) => {
+      // Re-created each time 'category' changes
+      el.setAttributes({ src: getFavoriteIcon(state[isFavoriteKey]) });
+    });
+
+  /**
+   * Set the visibly loaded state.
+   */
+  const setVisiblyLoaded = () => {
+    container.setStyles({ backgroundColor: 'white', opacity: '1' });
+    labelSpan.setText(label);
+  };
 
   // Allow assignment to complete
-  container.addChildren([
-    buttonIcon,
-    favoriteButton,
-    labelSpan,
-  ])
-    .then(() => {
-      // If it's already loaded previously
-      if (isLoaded.get()) setVisiblyLoaded();
+  container
+    .setChildren([
+      buttonIcon,
+      favoriteButton,
+      labelSpan,
+    ])
+    .onCreate((el, state) => {
+      // If already loaded
+      if (state[audioLoadedKey]) setVisiblyLoaded();
     })
-    .watchState(() => {
-      // When this id has loaded, update display
-      setVisiblyLoaded();
-    }, [isLoaded.key]);
+    .onUpdate(setVisiblyLoaded, [audioLoadedKey]);
 
   return container;
 });
