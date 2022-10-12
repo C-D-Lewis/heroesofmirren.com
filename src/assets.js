@@ -94,6 +94,7 @@ Assets.sounds = [
   { id: 'thanksforstaff', categories: [],               label: 'Thanks for Staff',    icon: 'thanksforstaff.png', sound: 'thanksforstaffmagnus'       },
   { id: 'noirecorrect',   categories: [],               label: 'Correct Guess',       icon: 'noirecorrect.png',   sound: 'noirecorrect'               },
   { id: 'noirewrong',     categories: [],               label: 'Incorrect Guess',     icon: 'noirewrong.png',     sound: 'noirewrong'                 },
+  { id: 'davywet',        categories: ['sot'],          label: 'Afraid to get wet?',  icon: 'davywet.png',        sound: 'davywet'                    },
 ];
 
 Assets.storyPages = [

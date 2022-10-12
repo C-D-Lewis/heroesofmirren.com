@@ -39,4 +39,5 @@ fabricate.declare('SoundboardCategorySelect', () => fabricate('Row')
     Pill({ category: 'dnd' }).setText('D&D'),
     Pill({ category: 'songs' }).setText('Songs'),
     Pill({ category: 'drg' }).setText('DRG'),
+    Pill({ category: 'sot' }).setText('SoT'),
   ]));
