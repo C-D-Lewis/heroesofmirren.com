@@ -4,13 +4,13 @@
  * @param {object} props - Component props.
  * @returns {HTMLElement}
  */
-const Pill = ({ category, vPad = 10 }) => fabricate('Column')
+const Pill = ({ category }) => fabricate('Column')
   .setStyles({
     borderRadius: '50px',
     backgroundColor: Theme.colors.primary,
-    padding: `${vPad}px 12px`,
+    padding: '3px 10px',
     color: '#555',
-    margin: '5px',
+    margin: '3px',
     cursor: 'pointer',
     fontWeight: 'bold',
     justifyContent: 'center',
@@ -27,7 +27,7 @@ const Pill = ({ category, vPad = 10 }) => fabricate('Column')
  * SoundboardCategorySelect component.
  */
 fabricate.declare('SoundboardCategorySelect', () => fabricate('Row')
-  .setStyles({ backgroundColor: 'white', padding: '10px' })
+  .setStyles({ backgroundColor: '#eee', padding: '10px 5px' })
   .setChildren([
     Pill({ category: 'all' }).setText('All'),
     Pill({ category: 'favorites', vPad: 3 })

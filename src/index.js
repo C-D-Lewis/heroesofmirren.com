@@ -38,6 +38,7 @@ const Application = () => fabricate('Column')
     fabricate('Header'),
     AppTabBar(),
     fabricate('Column')
+      .setStyles({ flex: 1 })
       .setChildren([
         fabricate('GalleryPage').when(({ tab }) => tab === 'gallery'),
         fabricate('SoundboardPage').when(({ tab }) => tab === 'soundboard'),

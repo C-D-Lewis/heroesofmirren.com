@@ -14,7 +14,7 @@ const toSoundByte = (data) => (data.sound
  * @returns {HTMLElement}
  */
 const SoundboardRow = () => fabricate('Row')
-  .setStyles({ justifyContent: 'center', padding: '5px' });
+  .setStyles({ justifyContent: 'center', padding: '0px 3px 3px 3px' });
 
 /**
  * Show just the sounds for the chosen category, in rows.
@@ -48,10 +48,11 @@ const SoundRowsForCategory = (category) => {
  * @returns {HTMLElement}
  */
 fabricate.declare('SoundboardPage', () => fabricate('Column')
+  .setStyles({ flex: 1 })
   .setChildren([
     fabricate('SoundboardCategorySelect'),
     fabricate('Column')
-      .setStyles({ backgroundColor: 'white', padding: '0px 10px' })
+      .setStyles({ backgroundColor: '#eee', padding: '0px 10px 20px 10px', flex: 1 })
       .onUpdate((el, { tab, category }) => {
         // Don't load sounds when gallery is shown first
         if (tab !== 'soundboard') return;
