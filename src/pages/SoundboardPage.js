@@ -39,9 +39,7 @@ const SoundRowsForCategory = (category) => {
   const rows = [];
   const arr = [...soundList];
   while (arr.length) rows.push(arr.splice(0, rowSize));
-  return rows.map((items) => SoundboardRow()
-    .setStyles({ justifyContent: items.length === rowSize ? 'center' : 'start' })
-    .setChildren(items.map(toSoundByte)));
+  return rows.map((items) => SoundboardRow().setChildren(items.map(toSoundByte)));
 };
 
 /**
