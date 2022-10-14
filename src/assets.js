@@ -95,6 +95,8 @@ Assets.sounds = [
   { id: 'noirecorrect',   categories: [],               label: 'Correct Guess',       icon: 'noirecorrect.png',   sound: 'noirecorrect'               },
   { id: 'noirewrong',     categories: [],               label: 'Incorrect Guess',     icon: 'noirewrong.png',     sound: 'noirewrong'                 },
   { id: 'davywet',        categories: ['sot'],          label: 'Afraid to get wet?',  icon: 'davywet.png',        sound: 'davywet'                    },
+  { id: 'hilarious',      categories: [],               label: 'Actually hilarious',  icon: 'hilarious.png',      sound: 'hilarious'                  },
+  { id: 'meatmenu',       categories: [],               label: 'Meat\'s back',        icon: 'meatmenu.png',       sound: 'meatmenu'                   },
 ];
 
 Assets.storyPages = [
