@@ -14,6 +14,7 @@ const Pill = ({ category }) => fabricate('Column')
     cursor: 'pointer',
     fontWeight: 'bold',
     justifyContent: 'center',
+    transition: '0.3s',
   })
   .onClick(() => fabricate.update({ category }))
   .onUpdate((el, state) => {
@@ -27,7 +28,11 @@ const Pill = ({ category }) => fabricate('Column')
  * SoundboardCategorySelect component.
  */
 fabricate.declare('SoundboardCategorySelect', () => fabricate('Row')
-  .setStyles({ backgroundColor: '#eee', padding: '10px 5px' })
+  .setStyles({
+    backgroundColor: '#eee',
+    padding: '10px 5px',
+    boxShadow: 'black 1px 4px 6px -4px inset',
+  })
   .setChildren([
     Pill({ category: 'all' }).setText('All'),
     Pill({ category: 'favorites', vPad: 3 })

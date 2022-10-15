@@ -87,7 +87,11 @@ fabricate.declare('GalleryPage', () => {
   while (imgs.length) rows.push(imgs.splice(0, 2));
 
   return fabricate('Column')
-    .setStyles({ backgroundColor: '#eee', paddingTop: '10px' })
+    .setStyles({
+      backgroundColor: '#eee',
+      paddingTop: '10px',
+      boxShadow: 'black 1px 4px 6px -4px inset',
+    })
     .setChildren([
       ...rows.map((items) => GalleryRow().setChildren(items.map(GalleryThumbnail))),
       Attribution(),

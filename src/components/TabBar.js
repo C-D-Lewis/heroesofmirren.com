@@ -26,6 +26,7 @@ fabricate.declare('Tab', ({ tab }) => fabricate('Column')
     cursor: 'pointer',
     flex: '1',
     justifyContent: 'center',
+    transition: '0.3s',
   })
   .onUpdate((el, state) => {
     const isSelected = state.tab === tab;

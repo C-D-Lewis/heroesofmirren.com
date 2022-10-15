@@ -30,10 +30,9 @@ fabricate.declare('SoundboardButton', ({ data }) => {
       width: `${BUTTON_WIDTH}px`,
       margin: '5px',
       opacity: '0.2',
-      transition: '1s',
+      transition: '0.6s',
       overflow: 'hidden',
       position: 'relative',
-      boxShadow: Theme.styles.boxShadow,
     });
 
   const labelSpan = fabricate('span')
@@ -42,7 +41,7 @@ fabricate.declare('SoundboardButton', ({ data }) => {
       width: '100%',
       display: 'flex',
       justifyContent: 'center',
-      padding: '5px',
+      padding: '3px',
       paddingLeft: '0px',
     })
     .setText('...');
@@ -72,10 +71,13 @@ fabricate.declare('SoundboardButton', ({ data }) => {
     })
     .setStyles({
       position: 'absolute',
-      width: '28px',
-      height: '28px',
-      right: '5px',
-      top: '5px',
+      width: '24px',
+      height: '24px',
+      right: '0px',
+      top: '0px',
+      backgroundColor: 'white',
+      borderBottomLeftRadius: '10px',
+      padding: '0px 0px 1px 2px',
     })
     .onUpdate((el, state) => {
       el.setAttributes({ src: getFavoriteIcon(state[isFavoriteKey]) });
@@ -89,7 +91,12 @@ fabricate.declare('SoundboardButton', ({ data }) => {
    * Set the visibly loaded state.
    */
   const setVisiblyLoaded = () => {
-    container.setStyles({ backgroundColor: 'white', opacity: '1' });
+    container.setStyles({
+      backgroundColor: 'white',
+      opacity: '1',
+      cursor: 'pointer',
+      boxShadow: Theme.styles.boxShadow,
+    });
     labelSpan.setText(label);
   };
 
@@ -104,7 +111,13 @@ fabricate.declare('SoundboardButton', ({ data }) => {
       // If already loaded
       if (state[audioLoadedKey]) setVisiblyLoaded();
     })
-    .onUpdate(setVisiblyLoaded, [audioLoadedKey]);
+    .onUpdate(setVisiblyLoaded, [audioLoadedKey])
+    .onHover((el, state, hovering) => {
+      // Do nothing until loaded
+      if (!state[audioLoadedKey]) return;
+
+      el.setStyles({ boxShadow: hovering ? Theme.styles.boxShadowDark : Theme.styles.boxShadow });
+    });
 
   return container;
 });

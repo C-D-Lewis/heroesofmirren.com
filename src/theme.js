@@ -9,5 +9,5 @@ Theme.colors = {
 /** App common styles */
 Theme.styles = {
   boxShadow: '2px 2px 3px 1px #5556',
-  boxShadowDark: '2px 2px 3px 1px #0006',
+  boxShadowDark: '2px 2px 3px 1px #000C',
 };
