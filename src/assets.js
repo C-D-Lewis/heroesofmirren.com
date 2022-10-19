@@ -98,6 +98,7 @@ Assets.sounds = [
   { id: 'hilarious',      categories: [],               label: 'Actually hilarious',  icon: 'hilarious.png',      sound: 'hilarious'                   },
   { id: 'meatmenu',       categories: [],               label: 'Meat\'s back',        icon: 'meatmenu.png',       sound: 'meatmenu'                    },
   { id: 'wizardharry',    categories: [],               label: 'YER A WIZARD',        icon: 'wizardharry.png',    soundPrefix: 'wizardharry_', max: 21 },
+  { id: 'whatacnt',       categories: [],               label: 'What a c**t',         icon: 'whatacnt.png',       sound: 'whatacnt'                    },
 ];
 
 Assets.storyPages = [
