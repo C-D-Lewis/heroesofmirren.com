@@ -19,19 +19,13 @@ fabricate.declare('Footer', () => fabricate('Column')
       .setChildren([
         fabricate('img')
           .setAttributes({ src: './assets/images/github.png' })
-          .setStyles({ width: '32px', height: '32px' }),
-        fabricate('span')
           .setStyles({
-            color: 'white',
-            marginLeft: '10px',
-            marginRight: '5px',
+            width: '32px',
+            height: '32px',
+            cursor: 'pointer',
           })
-          .setText('Source available'),
-        fabricate('a')
-          .setAttributes({
-            href: 'https://github.com/C-D-Lewis/heroesofmirren.com',
-            target: '_blank',
-          })
-          .setText('on GitHub'),
+          .onClick(() => window.open('https://github.com/C-D-Lewis/heroesofmirren.com', '_blank')),
+        fabricate('FabricateAttribution')
+          .setStyles({ marginLeft: '15px' }),
       ]),
   ]));
