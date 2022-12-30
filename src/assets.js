@@ -103,6 +103,7 @@ Assets.sounds = [
   { id: 'boourns',        categories: [],               label: 'Boourns',             icon: 'boourns.png',        sound: 'boourns'                     },
   { id: 'yepyepyep',      categories: [],               label: 'Yep yep yep',         icon: 'yepyepyep.png',      sound: 'yepyepyep'                   },
   { id: 'philflex',       categories: [],               label: 'Flex Tape',           icon: 'philflex.png',       soundPrefix: 'philflex_', max: 32    },
+  { id: 'diggyhole',      categories: ['drg'],          label: 'Diggy Diggy Hole',    icon: 'diggyhole.png',      soundPrefix: 'diggyhole_', max: 9    },
 ];
 
 Assets.storyPages = [

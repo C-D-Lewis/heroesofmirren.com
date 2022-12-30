@@ -8,7 +8,7 @@
   "author": "Chris Lewis",
   "license": "MIT",
   "devDependencies": {
-    "@chris-lewis/eslint-config": "^1.0.2",
+    "@chris-lewis/eslint-config": "^1.0.3",
     "http-server": "^14.1.1"
   },
   "eslintConfig": {
