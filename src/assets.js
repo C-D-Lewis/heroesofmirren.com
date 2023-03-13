@@ -105,6 +105,8 @@ Assets.sounds = [
   { id: 'philflex',       categories: [],               label: 'Flex Tape',           icon: 'philflex.png',       soundPrefix: 'philflex_', max: 32       },
   { id: 'diggyhole',      categories: ['drg'],          label: 'Diggy Diggy Hole',    icon: 'diggyhole.png',      soundPrefix: 'diggyhole_', max: 9       },
   { id: 'missioncontrol', categories: ['drg'],          label: 'Mission Control',     icon: 'missioncontrol.png', soundPrefix: 'missioncontrol_', max: 28 },
+  { id: 'tossme',         categories: [],               label: 'Toss me',             icon: 'tossme.png',         sound: 'tossme'                         },
+  { id: 'hellothere',     categories: [],               label: 'Hello there',         icon: 'hellothere.png',     sound: 'hellothere'                     },
 ];
 
 Assets.storyPages = [
