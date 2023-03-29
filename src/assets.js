@@ -107,6 +107,7 @@ Assets.sounds = [
   { id: 'missioncontrol', categories: ['drg'],          label: 'Mission Control',     icon: 'missioncontrol.png', soundPrefix: 'missioncontrol_', max: 28 },
   { id: 'tossme',         categories: [],               label: 'Toss me',             icon: 'tossme.png',         sound: 'tossme'                         },
   { id: 'hellothere',     categories: [],               label: 'Hello there',         icon: 'hellothere.png',     sound: 'hellothere'                     },
+  { id: 'byazura',        categories: [],               label: 'BY AZURA',            icon: 'byazura.png',        soundPrefix: 'byazura_', max: 2         },
 ];
 
 Assets.storyPages = [
