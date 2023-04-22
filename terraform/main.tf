@@ -1,14 +1,3 @@
-module "main" {
-  source          = "./infrastructure"
-  region          = var.region
-  project_name    = var.project_name
-  vpc_id          = var.vpc_id
-  zone_id         = var.zone_id
-  domain_name     = var.domain_name
-  alt_domain_name = var.alt_domain_name
-  certificate_arn = var.certificate_arn
-}
-
 provider "aws" {
   region = var.region
 }
@@ -28,4 +17,15 @@ terraform {
     key    = "heroesofmirren"
     region = "us-east-1"
   }
+}
+
+module "main" {
+  source = "github.com/c-d-lewis/terraform-s3-cloudfront-website?ref=master"
+
+  region          = "us-east-1"
+  project_name    = "heroesofmirren"
+  zone_id         = "Z0035116JDBHMXY8KYEK"
+  domain_name     = "heroesofmirren.com"
+  alt_domain_name = "www.heroesofmirren.com"
+  certificate_arn = "arn:aws:acm:us-east-1:617929423658:certificate/3599134e-eb85-4349-991b-d294b7291787"
 }
