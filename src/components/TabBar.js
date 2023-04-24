@@ -19,8 +19,9 @@ fabricate.declare('TabBar', () => fabricate('Row')
  */
 fabricate.declare('Tab', ({ tab }) => fabricate('Column')
   .setStyles({
-    fontSize: fabricate.isNarrow() ? '1.2rem' : '1.5rem',
+    fontSize: '1.2rem',
     fontWeight: 'bold',
+    fontFamily: 'PerryGothic',
     color: '#555',
     padding: '10px 10px',
     cursor: 'pointer',
@@ -34,5 +35,8 @@ fabricate.declare('Tab', ({ tab }) => fabricate('Column')
     el.setStyles({
       backgroundColor: isSelected ? Theme.colors.primary : 'initial',
       color: isSelected ? 'white' : '#555',
+      textShadow: isSelected
+        ? '-2px -2px 0 #555, 2px -2px 0 #555, -2px 2px 0 #555, 2px 2px 0 #555'
+        : 'none',
     });
   }, ['fabricate:init', 'tab']));
