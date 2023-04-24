@@ -21,7 +21,7 @@ fabricate.declare('Tab', ({ tab }) => fabricate('Column')
   .setStyles({
     fontSize: '1.2rem',
     fontWeight: 'bold',
-    fontFamily: 'PerryGothic',
+    // fontFamily: 'PerryGothic',
     color: '#555',
     padding: '10px 10px',
     cursor: 'pointer',
@@ -35,8 +35,8 @@ fabricate.declare('Tab', ({ tab }) => fabricate('Column')
     el.setStyles({
       backgroundColor: isSelected ? Theme.colors.primary : 'initial',
       color: isSelected ? 'white' : '#555',
-      textShadow: isSelected
-        ? '-2px -2px 0 #555, 2px -2px 0 #555, -2px 2px 0 #555, 2px 2px 0 #555'
-        : 'none',
+      // textShadow: isSelected
+      //   ? '-2px -2px 0 #555, 2px -2px 0 #555, -2px 2px 0 #555, 2px 2px 0 #555'
+      //   : 'none',
     });
   }, ['fabricate:init', 'tab']));
