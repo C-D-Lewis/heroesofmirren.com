@@ -4,7 +4,7 @@
   "description": "yo yo yo let me tell you something real quick",
   "scripts": {
     "build": "node ./scripts/build-story-index.js",
-    "start": "http-server"
+    "start": "npm run build && http-server"
   },
   "author": "Chris Lewis",
   "license": "MIT",
