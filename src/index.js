@@ -1,30 +1,30 @@
+// TODO: Remove once story tab is complete
+const showStoryTab = Utils.getQueryParam('story');
+
 /**
  * AppTabBar component.
+ *
+ * @returns {HTMLElement} The component.
  */
-const AppTabBar = () => {
-  // TODO: Remove once story tab is complete
-  const showStoryTab = Utils.getQueryParam('story');
-
-  return fabricate('TabBar')
-    .setChildren([
-      fabricate('Tab', { tab: 'gallery' })
-        .onClick(() => fabricate.update({ tab: 'gallery' }))
-        .setText('Gallery'),
-      fabricate('Tab', { tab: 'soundboard' })
-        .onClick(() => fabricate.update({ tab: 'soundboard' }))
-        .setText('Soundboard'),
-      showStoryTab
-        ? fabricate('Tab', { tab: 'story' })
-          .onClick(() => fabricate.update({ tab: 'story' }))
-          .setText('Story')
-        : fabricate('div'),
-    ]);
-};
+const AppTabBar = () => fabricate('TabBar')
+  .setChildren([
+    fabricate('Tab', { tab: 'gallery' })
+      .onClick(() => fabricate.update({ tab: 'gallery' }))
+      .setText('Gallery'),
+    fabricate('Tab', { tab: 'soundboard' })
+      .onClick(() => fabricate.update({ tab: 'soundboard' }))
+      .setText('Soundboard'),
+    showStoryTab
+      ? fabricate('Tab', { tab: 'story' })
+        .onClick(() => fabricate.update({ tab: 'story' }))
+        .setText('Story')
+      : fabricate('div'),
+  ]);
 
 /**
  * Application component.
  *
- * @returns {HTMLElement}
+ * @returns {HTMLElement} The component.
  */
 const Application = () => fabricate('Column')
   .setStyles({
@@ -48,7 +48,8 @@ const Application = () => fabricate('Column')
   ]);
 
 const initialState = {
-  tab: 'gallery',
+  tab: showStoryTab ? 'story' : 'gallery',
   category: 'all',
+  selectedStory: window.StoryPages[0],
 };
 fabricate.app(Application(), initialState);

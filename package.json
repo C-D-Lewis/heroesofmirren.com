@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "yo yo yo let me tell you something real quick",
   "scripts": {
+    "build": "node ./scripts/build-story-index.js",
     "start": "http-server"
   },
   "author": "Chris Lewis",

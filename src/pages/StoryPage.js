@@ -1,35 +1,32 @@
 const desktopStyles = {
-  fontSize: '20px',
-  rotate: '-4.5deg',
-  marginLeft: '90px',
-  marginTop: '130px',
-  maxWidth: '480px',
-  maxHeight: '560px',
+  fontSize: '22px',
+  marginLeft: '65px',
+  marginTop: '85px',
+  maxWidth: '515px',
+  maxHeight: '660px',
 };
 
 const mobileStyles = {
   fontSize: '18px',
-  rotate: '-4.5deg',
-  marginLeft: '61px',
-  marginTop: '80px',
-  maxWidth: '290px',
-  maxHeight: '370px',
+  marginLeft: '45px',
+  marginTop: '50px',
+  maxWidth: '325px',
+  maxHeight: '440px',
 };
 
 /**
  * StoryPage component.
  *
- * @param {object} props - Component props.
- * @param {string} props.text - Page data.
- * @returns {HTMLElement}
+ * @returns {HTMLElement} The fabricate component.
  */
-const StoryPage = ({ text }) => fabricate('Column')
+const StoryPage = () => fabricate('Column')
   .setChildren([
     fabricate('Image', { src: 'assets/images/paper.png' })
       .setStyles({
-        width: '90%',
-        height: 'auto',
         margin: 'auto',
+        width: '100%',
+        height: 'auto',
+        objectFit: 'cover',
       }),
     fabricate('Text')
       .setStyles({
@@ -42,7 +39,10 @@ const StoryPage = ({ text }) => fabricate('Column')
 
         ...(fabricate.isNarrow() ? mobileStyles : desktopStyles),
       })
-      .setText(text),
+      .onUpdate(async (el, { selectedStory }) => {
+        const content = await fetch(`assets/story/${selectedStory}`).then((r) => r.text());
+        el.setText(content);
+      }, ['fabricate:init', 'selectedStory']),
   ]);
 
 /**
@@ -55,4 +55,6 @@ fabricate.declare('StoryPage', () => fabricate('Column')
     backgroundImage: 'url("assets/images/desk-bg.jpg")',
     backgroundSize: 'cover',
   })
-  .setChildren([...Assets.storyPages.map(StoryPage)]));
+  .setChildren([
+    StoryPage(),
+  ]));
