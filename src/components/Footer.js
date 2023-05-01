@@ -26,6 +26,9 @@ fabricate.declare('Footer', () => fabricate('Column')
           })
           .onClick(() => window.open('https://github.com/C-D-Lewis/heroesofmirren.com', '_blank')),
         fabricate('FabricateAttribution')
-          .setStyles({ marginLeft: '15px' }),
+          .setStyles({
+            marginLeft: '15px',
+            width: '50px',
+          }),
       ]),
   ]));

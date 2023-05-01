@@ -1,6 +1,3 @@
-// TODO: Remove once story tab is complete
-const showStoryTab = Utils.getQueryParam('story');
-
 /**
  * AppTabBar component.
  *
@@ -14,11 +11,9 @@ const AppTabBar = () => fabricate('TabBar')
     fabricate('Tab', { tab: 'soundboard' })
       .onClick(() => fabricate.update({ tab: 'soundboard' }))
       .setText('Soundboard'),
-    showStoryTab
-      ? fabricate('Tab', { tab: 'story' })
-        .onClick(() => fabricate.update({ tab: 'story' }))
-        .setText('Story')
-      : fabricate('div'),
+    fabricate('Tab', { tab: 'story' })
+      .onClick(() => fabricate.update({ tab: 'story' }))
+      .setText('Story'),
   ]);
 
 /**
@@ -48,8 +43,8 @@ const Application = () => fabricate('Column')
   ]);
 
 const initialState = {
-  tab: showStoryTab ? 'story' : 'gallery',
+  tab: 'gallery',
   category: 'all',
-  selectedStory: window.StoryPages[0],
+  storyIndex: 0,
 };
 fabricate.app(Application(), initialState);
