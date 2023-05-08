@@ -4,23 +4,24 @@ const Assets = {};
 
 /** List of images shown in Gallery */
 Assets.galleryImages = [
-  { name: 'minecart.png'    },
-  { name: 'bartop.jpg'      },
-  { name: 'clyde-steph.jpg' },
-  { name: 'clyde-cat.jpg'   },
-  { name: 'tackle.jpeg'     },
-  { name: 'paper-plane.jpg' },
-  { name: 'harpie.jpg'      },
-  { name: 'mouse-owl.jpg'   },
-  { name: 'reykjavik.jpg'   },
-  { name: 'special.jpeg'    },
-  { name: 'butt-hammer.jpg' },
-  { name: 'clyde-coat.jpg'  },
-  { name: 'ana-clyde-2.jpg' },
-  { name: 'clyde-fight.jpg' },
-  { name: 'ana-clyde.jpg'   },
-  { name: 'megaclyde.jpg'   },
-  { name: 'ishmael.jpg'     },
+  { name: 'minecart.png'      },
+  { name: 'bartop.jpg'        },
+  { name: 'clyde-steph.jpg'   },
+  { name: 'clyde-cat.jpg'     },
+  { name: 'tackle.jpeg'       },
+  { name: 'paper-plane.jpg'   },
+  { name: 'harpie.jpg'        },
+  { name: 'mouse-owl.jpg'     },
+  { name: 'reykjavik.jpg'     },
+  { name: 'special.jpeg'      },
+  { name: 'butt-hammer.jpg'   },
+  { name: 'clyde-coat.jpg'    },
+  { name: 'ana-clyde-2.jpg'   },
+  { name: 'clyde-fight.jpg'   },
+  { name: 'ana-clyde.jpg'     },
+  { name: 'megaclyde.jpg'     },
+  { name: 'ishmael.jpg'       },
+  { name: 'friend-mantle.png' },
 ];
 
 /**
@@ -108,4 +109,5 @@ Assets.sounds = [
   { id: 'tossme',         categories: [],               label: 'Toss me',             icon: 'tossme.png',         sound: 'tossme'                         },
   { id: 'hellothere',     categories: [],               label: 'Hello there',         icon: 'hellothere.png',     sound: 'hellothere'                     },
   { id: 'byazura',        categories: [],               label: 'BY AZURA',            icon: 'byazura.png',        soundPrefix: 'byazura_', max: 2         },
+  { id: 'mindfield',      categories: ['dnd'],          label: 'Mindfield',           icon: 'mindfield.png',      sound: 'mindfield'                      },
 ];
