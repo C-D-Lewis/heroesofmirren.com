@@ -22,6 +22,7 @@ Assets.galleryImages = [
   { name: 'megaclyde.jpg'     },
   { name: 'ishmael.jpg'       },
   { name: 'friend-mantle.png' },
+  { name: 'mirror_man.png'    },
 ];
 
 /**
