@@ -30,11 +30,7 @@ The site is deployed by GitHub actions when a new commit is added to the
 Alternatively, it can be deployed manually via Terraform and AWS CLI:
 
 ```
-./pipeline/upload-assets.sh
-
-./pipeline/update-infra.sh
-
-./pipeline/invalidation.sh
+./deploy.sh
 ```
 
 
