@@ -111,4 +111,5 @@ Assets.sounds = [
   { id: 'hellothere',     categories: [],               label: 'Hello there',         icon: 'hellothere.png',     sound: 'hellothere'                     },
   { id: 'byazura',        categories: [],               label: 'BY AZURA',            icon: 'byazura.png',        soundPrefix: 'byazura_', max: 2         },
   { id: 'mindfield',      categories: ['dnd'],          label: 'Mindfield',           icon: 'mindfield.png',      sound: 'mindfield'                      },
+  { id: 'uch-no',         categories: [],               label: 'UCH - NOO!',          icon: 'uch-no.png',         sound: 'uch-no'                         },
 ];
