@@ -4,5 +4,3 @@ dist
 *.DS_Store
 .terraform
 assets/story/index.js
-index.html
-index.html.bak

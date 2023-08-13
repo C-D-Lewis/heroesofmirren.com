@@ -5,8 +5,7 @@
   "scripts": {
     "clean": "rm -rf ./dist",
     "build:story": "node ./scripts/build-story-index.js",
-    "build:index": "./scripts/build-index.sh",
-    "build": "npm run build:story && npm run build:index && npm run build:site",
+    "build": "npm run build:story && npm run build:site",
     "build:site": "npm run clean && webpack --mode production",
     "build:site:dev": "npm run clean && webpack --mode development",
     "start": "npm run build:site && npm run build:site:dev && http-server"
