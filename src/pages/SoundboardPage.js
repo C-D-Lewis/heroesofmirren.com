@@ -53,10 +53,7 @@ fabricate.declare('SoundboardPage', () => fabricate('Column')
     fabricate('SoundboardCategorySelect'),
     fabricate('Column')
       .setStyles({ backgroundColor: '#eee', padding: '0px 10px 20px 10px', flex: 1 })
-      .onUpdate((el, { tab, category }) => {
-        // Don't load sounds when gallery is shown first
-        if (tab !== 'soundboard') return;
-
+      .onUpdate((el, { category }) => {
         el.setChildren(SoundRowsForCategory(category));
       }, ['fabricate:init', 'favoritesUpdated', 'category', 'tab']),
   ]));

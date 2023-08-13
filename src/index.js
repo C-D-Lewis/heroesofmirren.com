@@ -35,9 +35,18 @@ const Application = () => fabricate('Column')
     fabricate('Column')
       .setStyles({ flex: 1 })
       .setChildren([
-        fabricate('GalleryPage').when(({ tab }) => tab === 'gallery'),
-        fabricate('SoundboardPage').when(({ tab }) => tab === 'soundboard'),
-        fabricate('StoryPage').when(({ tab }) => tab === 'story'),
+        fabricate.conditional(
+          ({ tab }) => tab === 'gallery',
+          () => fabricate('GalleryPage'),
+        ),
+        fabricate.conditional(
+          ({ tab }) => tab === 'soundboard',
+          () => fabricate('SoundboardPage'),
+        ),
+        fabricate.conditional(
+          ({ tab }) => tab === 'story',
+          () => fabricate('StoryPage'),
+        ),
       ]),
     fabricate('Footer'),
   ]);
