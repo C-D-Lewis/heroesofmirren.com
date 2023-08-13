@@ -1,10 +1,19 @@
+import { Fabricate } from 'fabricate.js';
+import { AppState } from '../types';
+import Theme from '../theme';
+import { galleryAssets } from '../assets';
+
+declare const fabricate: Fabricate<AppState>;
+
 /**
  * AtributionLinkIcon component.
  *
  * @param {object} props - Component props.
- * @returns {HTMLElement}
+ * @param {string} props.img - Image to use.
+ * @param {string} props.url - URL to use.
+ * @returns {HTMLElement} AtributionLinkIcon component.
  */
-const AttributionLinkIcon = ({ img, url }) => fabricate('a')
+const AttributionLinkIcon = ({ img, url }: { img: string, url: string }) => fabricate('a')
   .setAttributes({ href: url, target: '_blank' })
   .setChildren([
     fabricate('Image', { src: `./assets/images/${img}` })
@@ -18,7 +27,7 @@ const AttributionLinkIcon = ({ img, url }) => fabricate('a')
 /**
  * Atribution component.
  *
- * @returns {HTMLElement}
+ * @returns {HTMLElement} Attribution component.
  */
 const Attribution = () => fabricate('Row')
   .setStyles({
@@ -46,9 +55,9 @@ const Attribution = () => fabricate('Row')
  *
  * @param {object} props - Component props.
  * @param {string} props.name - Name of the image.
- * @returns {HTMLElement}
+ * @returns {HTMLElement} GalleryThumbnail component.
  */
-const GalleryThumbnail = ({ name }) => {
+const GalleryThumbnail = ({ name }: { name: string }) => {
   const src = `./assets/gallery/${name}`;
 
   return fabricate('Image', { src })
@@ -71,7 +80,7 @@ const GalleryThumbnail = ({ name }) => {
 /**
  * GalleryRow component.
  *
- * @returns {HTMLElement}
+ * @returns {HTMLElement} GalleryRow component.
  */
 const GalleryRow = () => fabricate('Row')
   .setStyles({ justifyContent: 'center', padding: '5px' });
@@ -79,11 +88,11 @@ const GalleryRow = () => fabricate('Row')
 /**
  * GalleryPage component.
  *
- * @returns {HTMLElement}
+ * @returns {HTMLElement} GalleryPage component.
  */
-fabricate.declare('GalleryPage', () => {
+const GalleryPage = () => {
   const rows = [];
-  const imgs = [...Assets.galleryImages];
+  const imgs = [...galleryAssets];
   while (imgs.length) rows.push(imgs.splice(0, 2));
 
   return fabricate('Column')
@@ -96,4 +105,6 @@ fabricate.declare('GalleryPage', () => {
       ...rows.map((items) => GalleryRow().setChildren(items.map(GalleryThumbnail))),
       Attribution(),
     ]);
-});
+};
+
+export default GalleryPage;

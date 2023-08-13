@@ -1,13 +1,20 @@
+import { Fabricate, FabricateComponent } from 'fabricate.js';
+import { AppState, CategoryType } from '../types';
+import Theme from '../theme';
+
+declare const fabricate: Fabricate<AppState>;
+
 /**
  * Pill component.
  *
  * @param {object} props - Component props.
- * @returns {HTMLElement}
+ * @param {CategoryType} props.category - Category.
+ * @returns {HTMLElement} Pill component.
  */
-const Pill = ({ category }) => fabricate('Column')
+const Pill = ({ category }: { category: CategoryType }) => fabricate('Column')
   .setStyles({
     borderRadius: '50px',
-    backgroundColor: Theme.colors.primary,
+    backgroundColor: Theme.palette.primary,
     padding: '3px 10px',
     color: '#555',
     margin: '3px',
@@ -26,8 +33,10 @@ const Pill = ({ category }) => fabricate('Column')
 
 /**
  * SoundboardCategorySelect component.
+ *
+ * @returns {FabricateComponent} SoundboardCategorySelect component.
  */
-fabricate.declare('SoundboardCategorySelect', () => fabricate('Row')
+const SoundboardCategorySelect = () => fabricate('Row')
   .setStyles({
     backgroundColor: '#eee',
     padding: '10px 5px',
@@ -35,7 +44,7 @@ fabricate.declare('SoundboardCategorySelect', () => fabricate('Row')
   })
   .setChildren([
     Pill({ category: 'all' }).setText('All'),
-    Pill({ category: 'favorites', vPad: 3 })
+    Pill({ category: 'favorites' })
       .setChildren([
         fabricate('Image', { src: './assets/images/star_on.png' })
           .setStyles({ width: '24px', height: '24px' }),
@@ -45,4 +54,6 @@ fabricate.declare('SoundboardCategorySelect', () => fabricate('Row')
     Pill({ category: 'songs' }).setText('Songs'),
     Pill({ category: 'drg' }).setText('DRG'),
     Pill({ category: 'sot' }).setText('SoT'),
-  ]));
+  ]);
+
+export default SoundboardCategorySelect;

@@ -1,3 +1,8 @@
+import { Fabricate, FabricateComponent } from 'fabricate.js';
+import { AppState } from '../types';
+
+declare const fabricate: Fabricate<AppState>;
+
 const desktopStyles = {
   fontSize: '22px',
   maxWidth: '540px',
@@ -29,19 +34,32 @@ const ControlRow = () => fabricate('Row')
       .setText('Previous'),
     fabricate('Button')
       .onClick((el, { storyIndex }) => {
-        fabricate.update({ storyIndex: Math.min(storyIndex + 1, window.StoryPages.length - 1) });
+        // @ts-ignore global StoryPages from build
+        fabricate.update({ storyIndex: Math.min(storyIndex + 1, StoryPages.length - 1) });
       })
       .setText('Next'),
   ]);
 
-fabricate.declare(
-  'StoryPage',
+/**
+ * StoryPage component.
+ *
+ * @returns {FabricateComponent} StoryPage component.
+ */
+const StoryPage = () => {
   /**
-   * StoryPage component.
+   * Update content.
    *
-   * @returns {HTMLElement} fabricate component.
+   * @param {FabricateComponent} el - Element.
+   * @param {AppState} state - App state.
    */
-  () => fabricate('Column')
+  const updateStoryPage = async (el: FabricateComponent<AppState>, { storyIndex }: AppState) => {
+    // @ts-ignore global StoryPages from build
+    const fileName = StoryPages[storyIndex];
+    const content = await fetch(`assets/story/${fileName}`).then((r) => r.text());
+    el.setText(content);
+  };
+
+  return fabricate('Column')
     .setStyles({
       background: 'url(assets/images/parchment.jpg)',
       backgroundPositionX: '-50px',
@@ -63,10 +81,9 @@ fabricate.declare(
           width: '100%',
           ...(fabricate.isNarrow() ? mobileStyles : desktopStyles),
         })
-        .onUpdate(async (el, { storyIndex }) => {
-          const fileName = window.StoryPages[storyIndex];
-          const content = await fetch(`assets/story/${fileName}`).then((r) => r.text());
-          el.setText(content);
-        }, ['fabricate:init', 'storyIndex']),
-    ]),
-);
+        .onCreate(updateStoryPage)
+        .onUpdate(updateStoryPage, ['fabricate:init', 'storyIndex']),
+    ]);
+};
+
+export default StoryPage;

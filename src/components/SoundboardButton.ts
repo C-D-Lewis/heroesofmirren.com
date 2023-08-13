@@ -1,3 +1,9 @@
+import { Fabricate } from 'fabricate.js';
+import { AppState, SoundBoardAsset } from '../types';
+import Theme from '../theme';
+
+declare const fabricate: Fabricate<AppState>;
+
 /** Button width */
 const BUTTON_WIDTH = 110;
 /** Button height */
@@ -9,19 +15,19 @@ const BUTTON_HEIGHT = 70;
  * @param {boolean} isFavorite - true if this sound is a favorite.
  * @returns {string} Icon path.
  */
-const getFavoriteIcon = (isFavorite) => `./assets/images/star_${isFavorite ? 'on' : 'off'}.png`;
+const getFavoriteIcon = (isFavorite: boolean) => `./assets/images/star_${isFavorite ? 'on' : 'off'}.png`;
 
 /**
  * SoundboardButton component, shared by SountByte and RandomSoundByte.
  *
  * @param {object} props - Component props.
- * @returns {HTMLElement}
+ * @param {SoundBoardAsset} props.asset - Asset to use.
+ * @returns {HTMLElement} SoundboardButton component.
  */
-fabricate.declare('SoundboardButton', ({ data }) => {
-  const { id, icon, label } = data;
+const SoundboardButton = ({ asset }: { asset: SoundBoardAsset }) => {
+  const { id, icon, label } = asset;
 
-  const audioLoadedKey = Utils.audioLoadedKey(id);
-  const isFavoriteKey = Utils.isFavoriteKey(id);
+  const audioLoadedKey = fabricate.buildKey('audioLoaded', id);
 
   const container = fabricate('Column')
     .setStyles({
@@ -56,18 +62,14 @@ fabricate.declare('SoundboardButton', ({ data }) => {
 
   const favoriteButton = fabricate('Image', { src: getFavoriteIcon(false) })
     .onClick((el, state) => {
-      const isFavorite = !state[isFavoriteKey];
+      const { favorites } = state;
 
-      // Update list in localStorage, either adding or deleting
-      const favorites = FavoritesService.load();
-      const newList = isFavorite ? [...favorites, id] : [...favorites.filter((p) => p !== id)];
-      FavoritesService.save(newList);
+      const newList = !favorites.includes(id)
+        ? [...favorites, id]
+        : [...favorites.filter((p) => p !== id)];
 
       // Update app state
-      fabricate.update({
-        [isFavoriteKey]: isFavorite,
-        favoritesUpdated: Date.now(),
-      });
+      fabricate.update({ favorites: newList });
     })
     .setStyles({
       position: 'absolute',
@@ -79,13 +81,9 @@ fabricate.declare('SoundboardButton', ({ data }) => {
       borderBottomLeftRadius: '10px',
       padding: '0px 0px 1px 2px',
     })
-    .onUpdate((el, state) => {
-      el.setAttributes({ src: getFavoriteIcon(state[isFavoriteKey]) });
-    }, [isFavoriteKey])
-    .onCreate((el, state) => {
-      // Re-created each time 'category' changes
-      el.setAttributes({ src: getFavoriteIcon(state[isFavoriteKey]) });
-    });
+    .onUpdate((el, { favorites }) => {
+      el.setAttributes({ src: getFavoriteIcon(favorites.includes(id)) });
+    }, ['favorites']);
 
   /**
    * Set the visibly loaded state.
@@ -111,7 +109,7 @@ fabricate.declare('SoundboardButton', ({ data }) => {
       // If already loaded
       if (state[audioLoadedKey]) setVisiblyLoaded();
     })
-    .onUpdate(setVisiblyLoaded, [audioLoadedKey])
+    .onUpdate(setVisiblyLoaded, [audioLoadedKey, 'tab'])
     .onHover((el, state, hovering) => {
       // Do nothing until loaded
       if (!state[audioLoadedKey]) return;
@@ -120,4 +118,6 @@ fabricate.declare('SoundboardButton', ({ data }) => {
     });
 
   return container;
-});
+};
+
+export default SoundboardButton;

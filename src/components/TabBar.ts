@@ -1,23 +1,30 @@
+import { Fabricate } from 'fabricate.js';
+import { AppState, TabType } from '../types';
+import Theme from '../theme';
+
+declare const fabricate: Fabricate<AppState>;
+
 /**
  * TabBar component.
  *
- * @returns {HTMLElement}
+ * @returns {HTMLElement} TabBar component.
  */
-fabricate.declare('TabBar', () => fabricate('Row')
+export const TabBar = () => fabricate('Row')
   .setStyles({
-    backgroundColor: Theme.colors.secondary,
+    backgroundColor: Theme.palette.secondary,
     width: '100%',
     height: fabricate.isNarrow() ? '40px' : '50px',
     justifyContent: 'center',
-  }));
+  });
 
 /**
  * Tab component.
  *
  * @param {object} props - Component props.
- * @returns {HTMLElement}
+ * @param {TabType} props.tab - Tab used.
+ * @returns {HTMLElement} Tab component.
  */
-fabricate.declare('Tab', ({ tab }) => fabricate('Column')
+export const Tab = ({ tab }: { tab: TabType }) => fabricate('Column')
   .setStyles({
     fontSize: '1.2rem',
     fontWeight: 'bold',
@@ -33,10 +40,7 @@ fabricate.declare('Tab', ({ tab }) => fabricate('Column')
     const isSelected = state.tab === tab;
 
     el.setStyles({
-      backgroundColor: isSelected ? Theme.colors.primary : 'initial',
+      backgroundColor: isSelected ? Theme.palette.primary : 'initial',
       color: isSelected ? 'white' : '#555',
-      // textShadow: isSelected
-      //   ? '-2px -2px 0 #555, 2px -2px 0 #555, -2px 2px 0 #555, 2px 2px 0 #555'
-      //   : 'none',
     });
-  }, ['fabricate:init', 'tab']));
+  }, ['fabricate:init', 'tab']);

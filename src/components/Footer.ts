@@ -1,9 +1,14 @@
+import { Fabricate } from 'fabricate.js';
+import { AppState } from '../types';
+
+declare const fabricate: Fabricate<AppState>;
+
 /**
  * Footer component.
  *
- * @returns {HTMLElement}
+ * @returns {HTMLElement} Footer component.
  */
-fabricate.declare('Footer', () => fabricate('Column')
+const Footer = () => fabricate('Column')
   .setStyles({
     justifyContent: 'center',
     backgroundColor: '#444',
@@ -31,4 +36,6 @@ fabricate.declare('Footer', () => fabricate('Column')
             width: '50px',
           }),
       ]),
-  ]));
+  ]);
+
+export default Footer;

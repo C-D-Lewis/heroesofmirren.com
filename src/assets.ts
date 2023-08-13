@@ -1,9 +1,9 @@
 /* eslint-disable object-curly-newline */
 
-const Assets = {};
+import { GalleryAsset, SoundBoardAsset } from './types';
 
 /** List of images shown in Gallery */
-Assets.galleryImages = [
+export const galleryAssets: GalleryAsset[] = [
   { name: 'minecart.png'      },
   { name: 'bartop.jpg'        },
   { name: 'clyde-steph.jpg'   },
@@ -35,7 +35,7 @@ Assets.galleryImages = [
  *
  * Note - id is used for favorites list, don't change after adding!
  */
-Assets.sounds = [
+export const soundAssets: SoundBoardAsset[] = [
   { id: 'rick',           categories: ['ia', 'songs'],  label: 'Angels',              icon: 'rick.jpg',           sound: 'angels'                         },
   { id: 'knuckles',       categories: ['ia'],           label: 'Oh No',               icon: 'knuckles.jpg',       sound: 'ohno'                           },
   { id: 'butters',        categories: ['ia'],           label: 'Robot Friend',        icon: 'butters.jpg',        sound: 'robot'                          },

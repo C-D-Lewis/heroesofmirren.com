@@ -1,12 +1,17 @@
+import { Fabricate } from 'fabricate.js';
+import { AppState } from '../types';
+
+declare const fabricate: Fabricate<AppState>;
+
 /** Header height */
 const HEADER_SIZE = 200;
 
 /**
  * Header component.
  *
- * @returns {HTMLElement}
+ * @returns {HTMLElement} Header component.
  */
-fabricate.declare('Header', () => fabricate('Row')
+const Header = () => fabricate('Row')
   .setStyles({
     height: `${HEADER_SIZE}px`,
     justifyContent: 'center',
@@ -20,4 +25,6 @@ fabricate.declare('Header', () => fabricate('Row')
         height: 'auto',
         objectFit: 'contain',
       }),
-  ]));
+  ]);
+
+export default Header;
