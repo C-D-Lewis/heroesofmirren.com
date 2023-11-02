@@ -23,6 +23,7 @@ export const galleryAssets: GalleryAsset[] = [
   { name: 'ishmael.jpg'       },
   { name: 'friend-mantle.png' },
   { name: 'mirror_man.png'    },
+  { name: 'peter-cliff.png'   },
 ];
 
 /**
