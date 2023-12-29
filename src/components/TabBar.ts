@@ -1,6 +1,5 @@
 import { Fabricate } from 'fabricate.js';
 import { AppState, TabType } from '../types';
-import Theme from '../theme';
 
 declare const fabricate: Fabricate<AppState>;
 
@@ -10,12 +9,12 @@ declare const fabricate: Fabricate<AppState>;
  * @returns {HTMLElement} TabBar component.
  */
 export const TabBar = () => fabricate('Row')
-  .setStyles({
-    backgroundColor: Theme.palette.secondary,
+  .setStyles(({ palette }) => ({
+    backgroundColor: palette.secondary,
     width: '100%',
     height: fabricate.isNarrow() ? '40px' : '50px',
     justifyContent: 'center',
-  });
+  }));
 
 /**
  * Tab component.
@@ -28,7 +27,6 @@ export const Tab = ({ tab }: { tab: TabType }) => fabricate('Column')
   .setStyles({
     fontSize: '1.2rem',
     fontWeight: 'bold',
-    // fontFamily: 'PerryGothic',
     color: '#555',
     padding: '10px 10px',
     cursor: 'pointer',
@@ -39,8 +37,8 @@ export const Tab = ({ tab }: { tab: TabType }) => fabricate('Column')
   .onUpdate((el, state) => {
     const isSelected = state.tab === tab;
 
-    el.setStyles({
-      backgroundColor: isSelected ? Theme.palette.primary : 'initial',
+    el.setStyles(({ palette }) => ({
+      backgroundColor: isSelected ? palette.primary : 'initial',
       color: isSelected ? 'white' : '#555',
-    });
+    }));
   }, ['fabricate:init', 'tab']);

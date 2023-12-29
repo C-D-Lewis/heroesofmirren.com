@@ -6,6 +6,7 @@ import GalleryPage from './pages/GalleryPage';
 import SoundboardPage from './pages/SoundboardPage';
 import StoryPage from './pages/StoryPage';
 import Footer from './components/Footer';
+import Theme from './theme';
 
 declare const fabricate: Fabricate<AppState>;
 
@@ -28,11 +29,11 @@ const AppTabBar = () => TabBar()
   ]);
 
 /**
- * Application component.
+ * App component.
  *
  * @returns {HTMLElement} The component.
  */
-const Application = () => fabricate('Column')
+const App = () => fabricate('Column')
   .setStyles({
     textAlign: 'center',
     width: '100%',
@@ -62,7 +63,7 @@ const initialState: AppState = {
 
 const options: FabricateOptions = {
   persistState: ['favorites'],
-  strict: true,
+  theme: Theme,
 };
 
-fabricate.app(Application(), initialState, options);
+fabricate.app(App, initialState, options);

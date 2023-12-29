@@ -2,6 +2,7 @@ import { Fabricate, FabricateComponent } from 'fabricate.js';
 import { AppState } from '../types';
 
 declare const fabricate: Fabricate<AppState>;
+declare const StoryPages: string[];
 
 const desktopStyles = {
   fontSize: '22px',
@@ -34,7 +35,6 @@ const ControlRow = () => fabricate('Row')
       .setText('Previous'),
     fabricate('Button')
       .onClick((el, { storyIndex }) => {
-        // @ts-ignore global StoryPages from build
         fabricate.update({ storyIndex: Math.min(storyIndex + 1, StoryPages.length - 1) });
       })
       .setText('Next'),
@@ -53,7 +53,6 @@ const StoryPage = () => {
    * @param {AppState} state - App state.
    */
   const updateStoryPage = async (el: FabricateComponent<AppState>, { storyIndex }: AppState) => {
-    // @ts-ignore global StoryPages from build
     const fileName = StoryPages[storyIndex];
     const content = await fetch(`assets/story/${fileName}`).then((r) => r.text());
     el.setText(content);
@@ -65,7 +64,6 @@ const StoryPage = () => {
       backgroundPositionX: '-50px',
       backgroundPositionY: '-50px',
       backgroundRepeat: 'no-repeat',
-      // backgroundSize: 'contain',
       height: '100%',
       width: '100%',
     })
@@ -81,8 +79,7 @@ const StoryPage = () => {
           width: '100%',
           ...(fabricate.isNarrow() ? mobileStyles : desktopStyles),
         })
-        .onCreate(updateStoryPage)
-        .onUpdate(updateStoryPage, ['fabricate:init', 'storyIndex']),
+        .onUpdate(updateStoryPage, ['fabricate:init', 'fabricate:created', 'storyIndex']),
     ]);
 };
 

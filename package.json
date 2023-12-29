@@ -13,7 +13,7 @@
   "author": "Chris Lewis",
   "license": "MIT",
   "dependencies": {
-    "fabricate.js": "^2.9.1"
+    "fabricate.js": "^3.0.0"
   },
   "devDependencies": {
     "@chris-lewis/eslint-config": "^1.0.3",
@@ -33,7 +33,9 @@
       "plugin:@typescript-eslint/recommended"
     ],
     "parser": "@typescript-eslint/parser",
-    "plugins": ["@typescript-eslint"],
+    "plugins": [
+      "@typescript-eslint"
+    ],
     "settings": {
       "import/resolver": {
         "typescript": {}

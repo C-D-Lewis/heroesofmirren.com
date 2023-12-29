@@ -1,6 +1,5 @@
 import { Fabricate, FabricateComponent } from 'fabricate.js';
 import { AppState, CategoryType } from '../types';
-import Theme from '../theme';
 
 declare const fabricate: Fabricate<AppState>;
 
@@ -12,9 +11,9 @@ declare const fabricate: Fabricate<AppState>;
  * @returns {HTMLElement} Pill component.
  */
 const Pill = ({ category }: { category: CategoryType }) => fabricate('Column')
-  .setStyles({
+  .setStyles(({ palette }) => ({
     borderRadius: '50px',
-    backgroundColor: Theme.palette.primary,
+    backgroundColor: palette.primary,
     padding: '3px 10px',
     color: '#555',
     margin: '3px',
@@ -22,10 +21,9 @@ const Pill = ({ category }: { category: CategoryType }) => fabricate('Column')
     fontWeight: 'bold',
     justifyContent: 'center',
     transition: '0.3s',
-  })
+  }))
   .onClick(() => fabricate.update({ category }))
   .onUpdate((el, state) => {
-    // When category selection changes
     const isSelected = state.category === category;
 
     el.setStyles({ color: isSelected ? 'white' : '#555' });

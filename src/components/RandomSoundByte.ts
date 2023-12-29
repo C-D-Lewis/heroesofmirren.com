@@ -31,7 +31,6 @@ const RandomIcon = () => fabricate('Image', { src: 'assets/images/shuffle.png' }
  */
 const RandomSoundByte = ({ asset }: { asset: SoundBoardAsset }) => {
   const { id, max, soundPrefix } = asset;
-
   let lastIndex = 0;
 
   /**
@@ -48,12 +47,10 @@ const RandomSoundByte = ({ asset }: { asset: SoundBoardAsset }) => {
     audio.play();
   };
 
-  // TODO Show shuffle icon
-
   return SoundboardButton({ asset })
     .addChildren([RandomIcon()])
     .onClick(playRandomSound)
-    .onCreate(() => loadAudio(id, `${soundPrefix}1`));
+    .onUpdate(() => loadAudio(id, `${soundPrefix}1`), ['fabricate:created']);
 };
 
 export default RandomSoundByte;

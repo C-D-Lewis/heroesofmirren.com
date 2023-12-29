@@ -1,6 +1,5 @@
 import { Fabricate } from 'fabricate.js';
 import { AppState, SoundBoardAsset } from '../types';
-import Theme from '../theme';
 
 declare const fabricate: Fabricate<AppState>;
 
@@ -83,18 +82,18 @@ const SoundboardButton = ({ asset }: { asset: SoundBoardAsset }) => {
     })
     .onUpdate((el, { favorites }) => {
       el.setAttributes({ src: getFavoriteIcon(favorites.includes(id)) });
-    }, ['favorites']);
+    }, ['fabricate:created', 'favorites']);
 
   /**
    * Set the visibly loaded state.
    */
   const setVisiblyLoaded = () => {
-    container.setStyles({
+    container.setStyles(({ styles }) => ({
       backgroundColor: 'white',
       opacity: '1',
       cursor: 'pointer',
-      boxShadow: Theme.styles.boxShadow,
-    });
+      boxShadow: styles.boxShadow,
+    }));
     labelSpan.setText(label);
   };
 
@@ -105,16 +104,22 @@ const SoundboardButton = ({ asset }: { asset: SoundBoardAsset }) => {
       favoriteButton,
       labelSpan,
     ])
-    .onCreate((el, state) => {
-      // If already loaded
-      if (state[audioLoadedKey]) setVisiblyLoaded();
-    })
-    .onUpdate(setVisiblyLoaded, [audioLoadedKey, 'tab'])
+    .onUpdate((el, state, keys) => {
+      if (keys.includes('fabricate:created')) {
+        // If already loaded
+        if (state[audioLoadedKey]) setVisiblyLoaded();
+        return;
+      }
+
+      setVisiblyLoaded();
+    }, ['fabricate:created', audioLoadedKey, 'tab'])
     .onHover((el, state, hovering) => {
       // Do nothing until loaded
       if (!state[audioLoadedKey]) return;
 
-      el.setStyles({ boxShadow: hovering ? Theme.styles.boxShadowDark : Theme.styles.boxShadow });
+      el.setStyles(({ styles }) => ({
+        boxShadow: hovering ? styles.boxShadowDark : styles.boxShadow,
+      }));
     });
 
   return container;

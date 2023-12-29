@@ -1,6 +1,5 @@
 import { Fabricate } from 'fabricate.js';
 import { AppState } from '../types';
-import Theme from '../theme';
 import { galleryAssets } from '../assets';
 
 declare const fabricate: Fabricate<AppState>;
@@ -61,9 +60,8 @@ const GalleryThumbnail = ({ name }: { name: string }) => {
   const src = `./assets/gallery/${name}`;
 
   return fabricate('Image', { src })
-    .setStyles({
+    .setStyles(({ styles }) => ({
       flex: '1 1 0',
-      // minWidth: '0',
       margin: '0px 5px',
       objectFit: 'contain',
       cursor: 'pointer',
@@ -72,8 +70,8 @@ const GalleryThumbnail = ({ name }: { name: string }) => {
       height: '160px',
       padding: '5px',
       backgroundColor: 'white',
-      boxShadow: Theme.styles.boxShadow,
-    })
+      boxShadow: styles.boxShadow,
+    }))
     .onClick(() => window.open(src, '_blank'));
 };
 

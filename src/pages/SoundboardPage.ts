@@ -67,12 +67,14 @@ const SoundboardPage = () => fabricate('Column')
     SoundboardCategorySelect(),
     fabricate('Column')
       .setStyles({ backgroundColor: '#eee', padding: '0px 10px 20px 10px', flex: '1' })
-      .onCreate((el, { category, favorites }) => {
+      .onUpdate((el, { category, favorites }, keys) => {
+        if (keys.includes('fabricate:created')) {
+          el.setChildren(SoundRowsForCategory({ category, favorites }));
+          return;
+        }
+
         el.setChildren(SoundRowsForCategory({ category, favorites }));
-      })
-      .onUpdate((el, { category, favorites }) => {
-        el.setChildren(SoundRowsForCategory({ category, favorites }));
-      }, ['fabricate:init', 'favorites', 'category', 'tab']),
+      }, ['fabricate:init', 'fabricate:created', 'favorites', 'category', 'tab']),
   ]);
 
 export default SoundboardPage;
