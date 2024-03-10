@@ -114,4 +114,6 @@ export const soundAssets: SoundBoardAsset[] = [
   { id: 'mindfield',      categories: ['dnd'],          label: 'Mindfield',           icon: 'mindfield.png',      sound: 'mindfield'                      },
   { id: 'uch-no',         categories: [],               label: 'UCH - NOO!',          icon: 'uch-no.png',         sound: 'uch-no'                         },
   { id: 'siriusyes',      categories: [],               label: '... Yes.',            icon: 'siriusyes.jpg',      sound: 'siriusyes'                      },
+  { id: 'false',          categories: [],               label: 'It\'s false',         icon: 'false.png',          soundPrefix: 'false_',        max: 21   },
+  { id: 'right',          categories: [],               label: 'You\'re right',       icon: 'right.png',          soundPrefix: 'right_',        max: 16   },
 ];
