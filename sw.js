@@ -12,7 +12,11 @@ const checkCache = async (request) => {
       return cached;
     }
 
-    const res = await fetch(request);
+    const res = await fetch(request, {
+      headers: {
+        Range: undefined,
+      },
+    });
 
     if (res.status === 206) {
       res = res.clone();
