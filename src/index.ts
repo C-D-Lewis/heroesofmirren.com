@@ -21,14 +21,15 @@ const registerServiceWorker = async () => {
   try {
     const res = await navigator.serviceWorker.register('/sw.js', { scope: '/' });
     if (res.installing) {
-      alert('Service worker installing');
+      console.log('Service worker installing');
     } else if (res.waiting) {
-      alert('Service worker installed');
+      console.log('Service worker installed');
     } else if (res.active) {
-      alert('Service worker active');
+      console.log('Service worker active');
     }
   } catch (e) {
-    alert(`Registration failed ${e}`);
+    console.log(e);
+    alert(`Service worker registration failed ${e}`);
   }
 };
 
