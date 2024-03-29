@@ -12,7 +12,7 @@ const checkCache = async (request) => {
       return cached;
     }
 
-    const res = await fetch(request);
+    const res = await fetch(request, { cache: 'no-store' });
 
     // Add to cache
     const cache = await caches.open("v1");
