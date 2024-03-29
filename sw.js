@@ -12,12 +12,13 @@ const checkCache = async (request) => {
       return cached;
     }
 
+    // One of these (Range, 200) solved the error
+    // Failed to execute 'put' on 'Cache': Partial response (status code 206) is unsupported
     const res = await fetch(request, {
       headers: {
         Range: undefined,
       },
     });
-
     if (res.status === 206) {
       res = res.clone();
       res.status = 200;
@@ -35,6 +36,7 @@ const checkCache = async (request) => {
 };
 
 self.addEventListener('install', () => {
+  // Immediately install new version
   self.skipWaiting();
 });
 
