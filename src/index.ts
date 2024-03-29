@@ -10,6 +10,29 @@ import Theme from './theme';
 declare const fabricate: Fabricate<AppState>;
 
 /**
+ * Register cache service worker.
+ */
+const registerServiceWorker = async () => {
+  if (!navigator.serviceWorker) {
+    console.log('Service worker not supported');
+    return;
+  }
+
+  try {
+    const res = await navigator.serviceWorker.register('/sw.js', { scope: '/' });
+    if (res.installing) {
+      alert('Service worker installing');
+    } else if (res.waiting) {
+      alert('Service worker installed');
+    } else if (res.active) {
+      alert('Service worker active');
+    }
+  } catch (e) {
+    alert(`Registration failed ${e}`);
+  }
+};
+
+/**
  * App component.
  *
  * @returns {HTMLElement} The component.
@@ -53,3 +76,4 @@ const options: FabricateOptions = {
 };
 
 fabricate.app(App, initialState, options);
+registerServiceWorker();

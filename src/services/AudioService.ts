@@ -19,14 +19,6 @@ export const loadAudio = (id: string, name: string): Promise<HTMLAudioElement> =
 
     const fullPath = `./assets/sounds/${name}.mp3`;
 
-    // Try to use Web Cache API
-    // caches.open('sounds').then((cache) => {
-    //   cache.addAll([fullPath])
-    //     .then(() => {
-    //       console.log('Cached!');
-    //     });
-    // });
-
     if (localCache[name]) {
       resolve(localCache[name]);
       return;
