@@ -34,6 +34,10 @@ const checkCache = async (request) => {
   }
 };
 
+self.addEventListener('install', () => {
+  self.skipWaiting();
+});
+
 // eslint-disable-next-line no-restricted-globals
 self.addEventListener('fetch', (event) => {
   // Intercept requests for audio files
