@@ -20,14 +20,18 @@ export const loadAudio = (id: string, name: string): Promise<HTMLAudioElement> =
     const fullPath = `./assets/sounds/${name}.mp3`;
 
     if (localCache[name]) {
+      console.log(`localCache ${fullPath}`);
       resolve(localCache[name]);
       return;
     }
 
     const audio = new Audio(fullPath);
+    console.log(`newAudio ${fullPath}`);
     audio.addEventListener('canplaythrough', () => {
       // Only notify once
       if (localCache[name]) return;
+
+      console.log(`canplaythrough ${fullPath}`);
 
       localCache[name] = audio;
       fabricate.update(audioLoadedKey, true);
