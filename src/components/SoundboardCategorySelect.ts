@@ -36,7 +36,6 @@ const Pill = ({ category }: { category: CategoryType }) => fabricate('Column')
  */
 const SoundboardCategorySelect = () => fabricate('Row')
   .setStyles({
-    backgroundColor: '#eee',
     padding: '10px 5px',
     boxShadow: 'black 1px 4px 6px -4px inset',
   })

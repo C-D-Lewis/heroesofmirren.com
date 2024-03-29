@@ -9,7 +9,6 @@ export type AppState = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 
-  tab: TabType;
   category: CategoryType;
   storyIndex: number;
   favorites: string[];

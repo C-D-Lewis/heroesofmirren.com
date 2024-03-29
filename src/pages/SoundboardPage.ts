@@ -62,11 +62,14 @@ const SoundRowsForCategory = ({
  * @returns {HTMLElement} SoundboardPage component.
  */
 const SoundboardPage = () => fabricate('Column')
-  .setStyles({ flex: '1' })
+  .setStyles({
+    flex: '1',
+    backgroundColor: '#ddd',
+  })
   .setChildren([
     SoundboardCategorySelect(),
     fabricate('Column')
-      .setStyles({ backgroundColor: '#eee', padding: '0px 10px 20px 10px', flex: '1' })
+      .setStyles({ padding: '0px 10px 20px 10px', flex: '1' })
       .onUpdate((el, { category, favorites }) => {
         el.setChildren(SoundRowsForCategory({ category, favorites }));
       }, [fabricate.StateKeys.Created, 'favorites', 'category', 'tab']),

@@ -95,7 +95,7 @@ const GalleryPage = () => {
 
   return fabricate('Column')
     .setStyles({
-      backgroundColor: '#eee',
+      backgroundColor: '#ddd',
       paddingTop: '10px',
       boxShadow: 'black 1px 4px 6px -4px inset',
     })
