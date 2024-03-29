@@ -41,4 +41,4 @@ export const Tab = ({ tab }: { tab: TabType }) => fabricate('Column')
       backgroundColor: isSelected ? palette.primary : 'initial',
       color: isSelected ? 'white' : '#555',
     }));
-  }, ['fabricate:init', 'tab']);
+  }, [fabricate.StateKeys.Created, 'tab']);

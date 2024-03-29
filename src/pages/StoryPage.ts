@@ -79,7 +79,7 @@ const StoryPage = () => {
           width: '100%',
           ...(fabricate.isNarrow() ? mobileStyles : desktopStyles),
         })
-        .onUpdate(updateStoryPage, ['fabricate:init', 'fabricate:created', 'storyIndex']),
+        .onUpdate(updateStoryPage, [fabricate.StateKeys.Created, 'storyIndex']),
     ]);
 };
 

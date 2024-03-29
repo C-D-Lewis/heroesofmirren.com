@@ -13,7 +13,7 @@
   "author": "Chris Lewis",
   "license": "MIT",
   "dependencies": {
-    "fabricate.js": "^3.0.0"
+    "fabricate.js": "^3.5.0"
   },
   "devDependencies": {
     "@chris-lewis/eslint-config": "^1.0.3",

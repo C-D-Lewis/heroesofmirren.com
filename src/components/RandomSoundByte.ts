@@ -5,6 +5,9 @@ import SoundboardButton from './SoundboardButton';
 
 declare const fabricate: Fabricate<AppState>;
 
+/** Amount of non-repeated sounds */
+const RANDOM_HISTORY_LENGTH = 3;
+
 /**
  * Icon showing sound is randomised.
  *
@@ -31,17 +34,20 @@ const RandomIcon = () => fabricate('Image', { src: 'assets/images/shuffle.png' }
  */
 const RandomSoundByte = ({ asset }: { asset: SoundBoardAsset }) => {
   const { id, max, soundPrefix } = asset;
-  let lastIndex = 0;
+  const lastIndexes = [0];
 
   /**
    * Play a random sound.
    */
   const playRandomSound = async () => {
-    let next = lastIndex;
-    while (next === lastIndex) {
+    let next = lastIndexes[0];
+    while (lastIndexes.includes(next)) {
       next = Math.round(Math.random() * (max! - 1));
     }
-    lastIndex = next;
+    lastIndexes.unshift(next);
+    while (lastIndexes.length > RANDOM_HISTORY_LENGTH) {
+      lastIndexes.pop();
+    }
 
     const audio = await loadAudio(id, `${soundPrefix}${next + 1}`);
     audio.play();
@@ -50,7 +56,7 @@ const RandomSoundByte = ({ asset }: { asset: SoundBoardAsset }) => {
   return SoundboardButton({ asset })
     .addChildren([RandomIcon()])
     .onClick(playRandomSound)
-    .onUpdate(() => loadAudio(id, `${soundPrefix}1`), ['fabricate:created']);
+    .onCreate(() => loadAudio(id, `${soundPrefix}1`));
 };
 
 export default RandomSoundByte;

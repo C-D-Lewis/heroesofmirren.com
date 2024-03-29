@@ -27,7 +27,7 @@ const Pill = ({ category }: { category: CategoryType }) => fabricate('Column')
     const isSelected = state.category === category;
 
     el.setStyles({ color: isSelected ? 'white' : '#555' });
-  }, ['fabricate:init', 'category']);
+  }, [fabricate.StateKeys.Created, 'category']);
 
 /**
  * SoundboardCategorySelect component.

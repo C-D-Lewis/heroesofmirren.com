@@ -82,7 +82,7 @@ const SoundboardButton = ({ asset }: { asset: SoundBoardAsset }) => {
     })
     .onUpdate((el, { favorites }) => {
       el.setAttributes({ src: getFavoriteIcon(favorites.includes(id)) });
-    }, ['fabricate:created', 'favorites']);
+    }, [fabricate.StateKeys.Created, 'favorites']);
 
   /**
    * Set the visibly loaded state.
@@ -105,14 +105,10 @@ const SoundboardButton = ({ asset }: { asset: SoundBoardAsset }) => {
       labelSpan,
     ])
     .onUpdate((el, state, keys) => {
-      if (keys.includes('fabricate:created')) {
-        // If already loaded
-        if (state[audioLoadedKey]) setVisiblyLoaded();
-        return;
-      }
+      if (keys.includes(fabricate.StateKeys.Created) && !state[audioLoadedKey]) return;
 
       setVisiblyLoaded();
-    }, ['fabricate:created', audioLoadedKey, 'tab'])
+    }, [fabricate.StateKeys.Created, audioLoadedKey, 'tab'])
     .onHover((el, state, hovering) => {
       // Do nothing until loaded
       if (!state[audioLoadedKey]) return;
