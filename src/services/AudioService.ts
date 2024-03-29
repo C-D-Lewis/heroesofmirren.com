@@ -3,7 +3,7 @@ import { AppState } from '../types';
 
 declare const fabricate: Fabricate<AppState>;
 
-const cache: Record<string, HTMLAudioElement> = {};
+const localCache: Record<string, HTMLAudioElement> = {};
 
 /**
  * Load an audio file if not cached already.
@@ -17,17 +17,27 @@ export const loadAudio = (id: string, name: string): Promise<HTMLAudioElement> =
   (resolve) => {
     const audioLoadedKey = fabricate.buildKey('audioLoaded', id);
 
-    if (cache[name]) {
-      resolve(cache[name]);
+    const fullPath = `./assets/sounds/${name}.mp3`;
+
+    // Try to use Web Cache API
+    // caches.open('sounds').then((cache) => {
+    //   cache.addAll([fullPath])
+    //     .then(() => {
+    //       console.log('Cached!');
+    //     });
+    // });
+
+    if (localCache[name]) {
+      resolve(localCache[name]);
       return;
     }
 
-    const audio = new Audio(`./assets/sounds/${name}.mp3`);
+    const audio = new Audio(fullPath);
     audio.addEventListener('canplaythrough', () => {
       // Only notify once
-      if (cache[name]) return;
+      if (localCache[name]) return;
 
-      cache[name] = audio;
+      localCache[name] = audio;
       fabricate.update(audioLoadedKey, true);
       resolve(audio);
     });
