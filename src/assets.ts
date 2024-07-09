@@ -116,4 +116,5 @@ export const soundAssets: SoundBoardAsset[] = [
   { id: 'siriusyes',      categories: [],               label: '... Yes.',            icon: 'siriusyes.jpg',      sound: 'siriusyes'                      },
   { id: 'false',          categories: [],               label: 'It\'s false',         icon: 'false.png',          soundPrefix: 'false_',        max: 21   },
   { id: 'right',          categories: [],               label: 'You\'re right',       icon: 'right.png',          soundPrefix: 'right_',        max: 16   },
+  { id: 'bruh',           categories: [],               label: 'BRUH',                icon: 'bruh.png',           sound: 'bruh'                           },
 ];

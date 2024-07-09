@@ -8,7 +8,8 @@
     "build": "npm run build:story && npm run build:site",
     "build:site": "npm run clean && webpack --mode production",
     "build:site:dev": "npm run clean && webpack --mode development",
-    "start": "npm run build:site && npm run build:site:dev && http-server"
+    "start:dev": "npm run build:site:dev && http-server",
+    "start": "pm2 start --name 'heroesofmirren' 'npm run start:dev'"
   },
   "author": "Chris Lewis",
   "license": "MIT",
