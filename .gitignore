@@ -4,3 +4,5 @@ dist
 *.DS_Store
 .terraform
 assets/story/index.js
+deploy.sh
+
