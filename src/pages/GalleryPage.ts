@@ -1,6 +1,6 @@
 import { Fabricate } from 'fabricate.js';
 import { AppState } from '../types';
-import { galleryAssets } from '../assets';
+import { GALLERY_ASSETS } from '../assets';
 
 declare const fabricate: Fabricate<AppState>;
 
@@ -90,7 +90,7 @@ const GalleryRow = () => fabricate('Row')
  */
 const GalleryPage = () => {
   const rows = [];
-  const imgs = [...galleryAssets];
+  const imgs = [...GALLERY_ASSETS];
   while (imgs.length) rows.push(imgs.splice(0, 2));
 
   return fabricate('Column')

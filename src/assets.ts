@@ -1,9 +1,9 @@
 /* eslint-disable object-curly-newline */
 
-import { GalleryAsset, SoundBoardAsset } from './types';
+import { GalleryAsset, LocationItem, SoundBoardAsset } from './types';
 
 /** List of images shown in Gallery */
-export const galleryAssets: GalleryAsset[] = [
+export const GALLERY_ASSETS: GalleryAsset[] = [
   { name: 'minecart.png'      },
   { name: 'bartop.jpg'        },
   { name: 'clyde-steph.jpg'   },
@@ -36,7 +36,7 @@ export const galleryAssets: GalleryAsset[] = [
  *
  * Note - id is used for favorites list, don't change after adding!
  */
-export const soundAssets: SoundBoardAsset[] = [
+export const SOUND_ASSETS: SoundBoardAsset[] = [
   { id: 'rick',           categories: ['ia', 'songs'],  label: 'Angels',              icon: 'rick.jpg',           sound: 'angels'                         },
   { id: 'knuckles',       categories: ['ia'],           label: 'Oh No',               icon: 'knuckles.jpg',       sound: 'ohno'                           },
   { id: 'butters',        categories: ['ia'],           label: 'Robot Friend',        icon: 'butters.jpg',        sound: 'robot'                          },
@@ -117,4 +117,42 @@ export const soundAssets: SoundBoardAsset[] = [
   { id: 'false',          categories: [],               label: 'It\'s false',         icon: 'false.png',          soundPrefix: 'false_',        max: 21   },
   { id: 'right',          categories: [],               label: 'You\'re right',       icon: 'right.png',          soundPrefix: 'right_',        max: 16   },
   { id: 'bruh',           categories: [],               label: 'BRUH',                icon: 'bruh.png',           sound: 'bruh'                           },
+];
+
+export const SERVER_LOCATIONS: LocationItem[] = [
+  {
+    name: 'Winter Village',
+    img: 'assets/images/mc-winter-village.jpg',
+    coordinates: '14 69 -10',
+    date: 'December 2020',
+    description: 'Includes THE LODGE, farm, Cranny shop, stables, ice rink, circular railway, fishing hut, church, animal sanctuary, and a funfair including ferris wheel, stalls, and rollercoaster.',
+  },
+  {
+    name: 'Wild West Town',
+    img: 'assets/images/mc-wild-west-town.jpg',
+    coordinates: '0 64 5852',
+    date: 'January 2021',
+    description: 'Includes Cranny shop, saloon, bank, blacksmith, Hill Valley clocktower hall, stables, campsite, oil derrick, and railway station.',
+  },
+  {
+    name: 'Dwarf City',
+    img: 'assets/images/mc-dwarf-city.jpg',
+    coordinates: '11281 8 2102',
+    date: 'December 2021',
+    description: 'Includes lava foundry, copper sun gate and basin, and pickaxe monument. On the surface is a mountain path, farm, and riverside hovel.',
+  },
+  {
+    name: 'Frostvale Haven',
+    img: 'assets/images/mc-frostvale-haven.jpg',
+    coordinates: '1766 131 2508',
+    date: 'December 2023',
+    description: 'Includes Frostvale village, Cranny shop, personal lodges, toy workshop, musical tunnel, mob farms, and North Pole beacon.',
+  },
+  {
+    name: 'Coral Atoll',
+    img: 'assets/images/mc-coral-atoll.jpg',
+    coordinates: '12786 65 5317',
+    date: 'August 2024',
+    description: 'Includes Portal pier, bee hive beach, Cranny DeepSea base, lighthouse, Cranny shop, bamboo beach bar, boathouse, fountain square, lagoon fishing pier, and hidden treasure.',
+  },
 ];

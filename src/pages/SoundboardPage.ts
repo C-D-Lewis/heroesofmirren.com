@@ -1,6 +1,6 @@
 import { Fabricate } from 'fabricate.js';
 import { AppState, CategoryType, SoundBoardAsset } from '../types';
-import { soundAssets } from '../assets';
+import { SOUND_ASSETS } from '../assets';
 import SoundByte from '../components/SoundByte';
 import RandomSoundByte from '../components/RandomSoundByte';
 import SoundboardCategorySelect from '../components/SoundboardCategorySelect';
@@ -42,7 +42,7 @@ const SoundRowsForCategory = ({
 }) => {
   const rowSize = fabricate.isNarrow() ? 3 : 5;
 
-  const soundList = soundAssets.filter(
+  const soundList = SOUND_ASSETS.filter(
     (p) => (category === 'favorites'
       // Just the favorites, regardless of category
       ? favorites.includes(p.id)

@@ -6,32 +6,10 @@ import SoundboardPage from './pages/SoundboardPage';
 import StoryPage from './pages/StoryPage';
 import Footer from './components/Footer';
 import Theme from './theme';
+import { registerServiceWorker } from './utils';
+import ServerPage from './pages/ServerPage';
 
 declare const fabricate: Fabricate<AppState>;
-
-/**
- * Register cache service worker.
- */
-const registerServiceWorker = async () => {
-  if (!navigator.serviceWorker) {
-    console.log('Service worker not supported');
-    return;
-  }
-
-  try {
-    const res = await navigator.serviceWorker.register('/sw.js', { scope: '/' });
-    if (res.installing) {
-      console.log('Service worker installing');
-    } else if (res.waiting) {
-      console.log('Service worker installed');
-    } else if (res.active) {
-      console.log('Service worker active');
-    }
-  } catch (e) {
-    console.log(e);
-    alert(`Service worker registration failed ${e}`);
-  }
-};
 
 /**
  * App component.
@@ -53,11 +31,12 @@ const App = () => fabricate('Column')
         Gallery: GalleryPage,
         Soundboard: SoundboardPage,
         Story: StoryPage,
+        Server: ServerPage,
       },
       tabStyles: {
         height: '28px',
         backgroundColor: Theme.palette.primary,
-        fontSize: '1.2rem',
+        fontSize: '1.1rem',
         display: 'flex',  // Library
         justifyContent: 'center',  // Library
       },

@@ -1,3 +1,6 @@
+/** Version of the sounds cache */
+const CACHE_VERSION = 'v1';
+
 /**
  * Check an URL is cached.
  *
@@ -25,7 +28,7 @@ const checkCache = async (request) => {
     }
 
     // Add to cache
-    const cache = await caches.open("v1");
+    const cache = await caches.open(CACHE_VERSION);
     await cache.put(request, res.clone());
     console.log(`MISS: ${request.url}`);
 
@@ -40,7 +43,6 @@ self.addEventListener('install', () => {
   self.skipWaiting();
 });
 
-// eslint-disable-next-line no-restricted-globals
 self.addEventListener('fetch', (event) => {
   // Intercept requests for audio files
   if (!event.request.url.match(/\.(mp3|wav)$/)) return;

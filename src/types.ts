@@ -29,3 +29,12 @@ export type SoundBoardAsset = {
 export type GalleryAsset = {
   name: string;
 };
+
+/** A location list item data type */
+export type LocationItem = {
+  name: string;
+  img: string;
+  coordinates: string;
+  date: string;
+  description: string;
+};
