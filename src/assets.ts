@@ -146,7 +146,7 @@ export const SERVER_LOCATIONS: LocationItem[] = [
     img: 'assets/images/mc-frostvale-haven.jpg',
     coordinates: '1766 131 2508',
     date: 'December 2023',
-    description: 'Includes Frostvale village, Cranny shop, personal lodges, toy workshop, musical tunnel, mob farms, and North Pole beacon.',
+    description: 'Includes Frostvale village, Cranny shop, personal lodges, toy workshop, advent calendar, musical tunnel, mob farms, and North Pole beacon.',
   },
   {
     name: 'Coral Atoll',
