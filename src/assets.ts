@@ -153,6 +153,6 @@ export const SERVER_LOCATIONS: LocationItem[] = [
     img: 'assets/images/mc-coral-atoll.jpg',
     coordinates: '12786 65 5317',
     date: 'August 2024',
-    description: 'Includes Portal pier, bee hive beach, Cranny DeepSea base, lighthouse, Cranny shop, bamboo beach bar, boathouse, fountain square, lagoon fishing pier, and hidden treasure.',
+    description: 'Includes portal pier, bee hive beach, Cranny DeepSea base, lighthouse, Cranny shop, bamboo beach bar, boathouse, fountain square, lagoon fishing pier, and hidden treasure.',
   },
 ];
