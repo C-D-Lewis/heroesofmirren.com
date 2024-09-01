@@ -95,6 +95,26 @@ const LocationList = () => fabricate('Column')
   .setChildren(SERVER_LOCATIONS.map((location) => LocationListItem({ location })));
 
 /**
+ * NetherMap component.
+ *
+ * @returns {HTMLElement} NetherMap component.
+ */
+const NetherMap = () => fabricate('div')
+  .setStyles(({ styles }) => ({
+    margin: '20px',
+    marginTop: '0px',
+    padding: '0px',
+    borderRadius: '8px',
+    backgroundColor: 'white',
+    boxShadow: styles.boxShadow,
+    overflow: 'hidden',
+  }))
+  .setChildren([
+    fabricate('Image', { src: 'assets/images/nether-map.png' })
+      .setStyles({ width: '100%', height: 'auto' }),
+  ]);
+
+/**
  * Footer component.
  *
  * @returns {HTMLElement} Footer component.
@@ -116,6 +136,7 @@ const ServerPage = () => fabricate('Column')
   .setChildren([
     ServerInfo(),
     LocationList(),
+    NetherMap(),
     Footer(),
   ]);
 
