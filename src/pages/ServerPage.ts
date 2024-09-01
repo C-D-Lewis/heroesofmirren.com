@@ -5,6 +5,15 @@ import { SERVER_LOCATIONS } from '../assets';
 declare const fabricate: Fabricate<AppState>;
 
 /**
+ * Header component.
+ *
+ * @returns {HTMLElement} Header component.
+ */
+const Header = () => fabricate('Text')
+  .setStyles({ fontSize: '1.3rem', fontWeight: 'bold' })
+  .setNarrowStyles({ fontSize: '1.1rem' });
+
+/**
  * ServerInfo component.
  *
  * @returns {HTMLElement} ServerInfo component.
@@ -72,10 +81,7 @@ const LocationListItem = ({ location }: { location: LocationItem }) => fabricate
     fabricate('Column')
       .setStyles({ padding: '8px' })
       .setChildren([
-        fabricate('Text')
-          .setStyles({ fontSize: '1.3rem', fontWeight: 'bold' })
-          .setNarrowStyles({ fontSize: '1.1rem' })
-          .setText(location.name),
+        Header().setText(location.name),
         fabricate('Text')
           .setStyles({ fontStyle: 'italic', color: '#777' })
           .setText(`From ${location.date} @ ${location.coordinates}`),
@@ -110,6 +116,9 @@ const NetherMap = () => fabricate('div')
     overflow: 'hidden',
   }))
   .setChildren([
+    Header()
+      .setStyles({ margin: '10px 0px' })
+      .setText('Nether Road Map'),
     fabricate('Image', { src: 'assets/images/nether-map.png' })
       .setStyles({ width: '100%', height: 'auto' }),
   ]);
