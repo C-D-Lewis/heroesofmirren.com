@@ -5,11 +5,8 @@
   "scripts": {
     "clean": "rm -rf ./dist",
     "build:story": "node ./scripts/build-story-index.js",
-    "build": "npm run build:story && npm run build:site",
-    "build:site": "npm run clean && webpack --mode production",
-    "build:site:dev": "npm run clean && webpack --mode development",
-    "start:dev": "npm run build:site:dev && http-server",
-    "start": "pm2 start --name 'heroesofmirren' 'npm run start:dev'"
+    "build": "npm run clean && npm run build:story && vite build",
+    "start": "vite"
   },
   "author": "Chris Lewis",
   "license": "MIT",
@@ -24,8 +21,8 @@
     "http-server": "^14.1.1",
     "ts-loader": "^9.4.4",
     "typescript": "^5.1.6",
-    "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4"
+    "vite": "^6.3.5",
+    "vite-plugin-static-copy": "^2.3.1"
   },
   "eslintConfig": {
     "extends": [
