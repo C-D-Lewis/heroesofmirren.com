@@ -28,3 +28,7 @@ module "main" {
   certificate_arn     = "arn:aws:acm:us-east-1:617929423658:certificate/3599134e-eb85-4349-991b-d294b7291787"
   default_root_object = "dist/index.html"
 }
+
+output "distribution_id" {
+  value = module.main.distribution_id
+}
