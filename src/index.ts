@@ -3,7 +3,6 @@ import { AppState } from './types';
 import Header from './components/Header';
 import GalleryPage from './pages/GalleryPage';
 import SoundboardPage from './pages/SoundboardPage';
-import StoryPage from './pages/StoryPage';
 import Footer from './components/Footer';
 import Theme from './theme';
 import { registerServiceWorker } from './utils';
@@ -30,7 +29,7 @@ const App = () => fabricate('Column')
       tabs: {
         Gallery: GalleryPage,
         Soundboard: SoundboardPage,
-        Story: StoryPage,
+        // Story: StoryPage,
         Server: ServerPage,
       },
       tabStyles: {

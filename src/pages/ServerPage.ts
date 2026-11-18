@@ -1,6 +1,10 @@
 import { Fabricate } from 'fabricate.js';
 import { AppState, LocationItem } from '../types';
 import { SERVER_LOCATIONS } from '../assets';
+import Theme from '../theme';
+
+/** URL to the map image */
+const MAP_URL = 'https://s3.us-east-1.amazonaws.com/public-files.chrislewis.me.uk/shared/minecraft/map.png';
 
 declare const fabricate: Fabricate<AppState>;
 
@@ -48,7 +52,7 @@ const ServerInfo = () => fabricate('Row')
             fontWeight: 'bold',
           })
           .setNarrowStyles({ fontSize: '1rem' })
-          .setText('minecraft.heroesofmirren.com'),
+          .setText('minecraft.heroesofmirren.com:25501'),
         fabricate('Text')
           .setStyles({
             fontStyle: 'italic',
@@ -132,6 +136,23 @@ const Footer = () => fabricate('Image', { src: 'assets/images/mc-footer.jpg' })
   .setStyles({ width: '100%', height: 'auto' });
 
 /**
+ * Button to open the map.
+ *
+ * @returns {HTMLElement} MapButton component.
+ */
+const MapButton = () => fabricate('Button', {
+  text: 'View Server Map',
+  color: 'white',
+  backgroundColor: Theme.palette.primary,
+})
+  .setStyles({
+    margin: '16px auto 0px auto',
+    padding: '12px',
+    fontSize: '1.2rem',
+  })
+  .onClick(() => window.open(MAP_URL, '_blank'));
+
+/**
  * ServerPage component.
  *
  * @returns {HTMLElement} ServerPage component.
@@ -144,6 +165,7 @@ const ServerPage = () => fabricate('Column')
   })
   .setChildren([
     ServerInfo(),
+    MapButton(),
     LocationList(),
     NetherMap(),
     Footer(),
